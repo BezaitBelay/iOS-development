@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SecondUnit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IjW-I7-ITo">
+                                <rect key="frame" x="50" y="20" width="275" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pRf-lV-OVn">
+                                <rect key="frame" x="50" y="87.5" width="275" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4WZ-LP-OBC">
+                                <rect key="frame" x="0.0" y="171.5" width="375" height="30"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KrA-xF-aTg">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="N1S-LJ-Cve"/>
+                                            <constraint firstAttribute="width" constant="75" id="nVk-Yg-VNQ"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5p-Ma-qOV">
+                                        <rect key="frame" x="75" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="loginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o1P-KS-DJp"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVt-sg-XJI">
+                                        <rect key="frame" x="150" y="0.0" width="75" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ckl-mV-LSB">
+                                                <rect key="frame" x="11.5" y="0.0" width="52" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Log out"/>
+                                                <connections>
+                                                    <action selector="logoutClocked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ig-Sf-xuj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Ckl-mV-LSB" firstAttribute="centerY" secondItem="kVt-sg-XJI" secondAttribute="centerY" id="BEq-2c-pza"/>
+                                            <constraint firstAttribute="height" constant="30" id="ELh-hS-BaT"/>
+                                            <constraint firstAttribute="width" constant="75" id="IrZ-gx-ODG"/>
+                                            <constraint firstItem="Ckl-mV-LSB" firstAttribute="centerX" secondItem="kVt-sg-XJI" secondAttribute="centerX" id="iuV-Zf-sWT"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsq-AX-bbs">
+                                        <rect key="frame" x="225" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Register"/>
+                                        <connections>
+                                            <action selector="registerClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PAu-mN-ard"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niS-ZI-bBp">
+                                        <rect key="frame" x="300" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="DKq-gz-B9b"/>
+                                            <constraint firstAttribute="width" constant="75" id="K8N-Pa-SCx"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsH-ir-ehz">
+                                <rect key="frame" x="166.5" y="220" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IjW-I7-ITo" secondAttribute="trailing" constant="50" id="D9G-S3-Ajj"/>
+                            <constraint firstItem="ZsH-ir-ehz" firstAttribute="top" secondItem="4WZ-LP-OBC" secondAttribute="bottom" constant="18.5" id="PcL-Vj-Ytf"/>
+                            <constraint firstItem="pRf-lV-OVn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="QKC-k8-Dow"/>
+                            <constraint firstItem="4WZ-LP-OBC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Tas-cC-WPo"/>
+                            <constraint firstItem="IjW-I7-ITo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Thf-p3-fUu"/>
+                            <constraint firstItem="pRf-lV-OVn" firstAttribute="top" secondItem="IjW-I7-ITo" secondAttribute="bottom" constant="33.5" id="W38-yl-vSt"/>
+                            <constraint firstItem="ZsH-ir-ehz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cgk-fj-xJB"/>
+                            <constraint firstItem="IjW-I7-ITo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="gDJ-1e-9YE"/>
+                            <constraint firstAttribute="trailing" secondItem="4WZ-LP-OBC" secondAttribute="trailing" id="mdG-tg-5wZ"/>
+                            <constraint firstItem="4WZ-LP-OBC" firstAttribute="top" secondItem="pRf-lV-OVn" secondAttribute="bottom" constant="50" id="nxS-l0-ZWP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pRf-lV-OVn" secondAttribute="trailing" constant="50" id="xht-Wc-94Q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MzM-bI-tNt" appends="YES" id="HuU-DR-nF7"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="Z5p-Ma-qOV" id="0oD-QK-FPd"/>
+                        <outlet property="logoutButton" destination="Ckl-mV-LSB" id="dES-Ce-XMc"/>
+                        <outlet property="messageLabel" destination="ZsH-ir-ehz" id="I78-0n-zaE"/>
+                        <outlet property="passwordLabel" destination="pRf-lV-OVn" id="dz8-H7-QzV"/>
+                        <outlet property="registerButton" destination="qsq-AX-bbs" id="YHE-Jn-nlc"/>
+                        <outlet property="usernameField" destination="IjW-I7-ITo" id="Cl1-7w-taW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MzM-bI-tNt">
+                    <connections>
+                        <action selector="taoRecognizer:" destination="BYZ-38-t0r" id="bRY-jI-RxF"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-58.399999999999999" y="112.89355322338831"/>
+        </scene>
+    </scenes>
+</document>
