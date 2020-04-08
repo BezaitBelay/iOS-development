@@ -86,55 +86,54 @@ class ViewController: UIViewController {
     
     
     @IBAction func plusSoupTapped(_ sender: UIButton) {
-        if var editValue = Int(soupFIeld.text ?? "") {
+        guard var editValue = Int(soupFIeld.text ?? "") else { return }
             if editValue < 10 {
                 editValue += 1
                 soupFIeld.text = String(editValue)
             }
-        }
+        
     }
     @IBAction func minusSoupTapped(_ sender: Any) {
-        if var editValue = Int(soupFIeld.text ?? "") {
+        guard var editValue = Int(soupFIeld.text ?? "") else { return }
             if editValue > 0 {
                 editValue -= 1
                 soupFIeld.text = String(editValue)
             }
-        }
+    
     }
     
     @IBAction func plusDishTapped(_ sender: Any) {
-        if var editValue = Int(dishField.text ?? "") {
+        guard var editValue = Int(dishField.text ?? "") else { return }
             if editValue < 10 {
                 editValue += 1
                 dishField.text = String(editValue)
             }
-        }
+        
     }
     
     @IBAction func minusDishTapped(_ sender: Any) {
-        if var editValue = Int(dishField.text ?? "") {
+        guard var editValue = Int(dishField.text ?? "") else { return }
             if editValue > 0 {
                 editValue -= 1
                 dishField.text = String(editValue)
             }
-        }
+        
     }
     @IBAction func plusDesertTapped(_ sender: Any) {
-        if var editValue = Int(desertField.text ?? "") {
+        guard var editValue = Int(desertField.text ?? "") else { return }
             if editValue < 10 {
                 editValue += 1
                 desertField.text = String(editValue)
             }
-        }
+        
     }
     
     @IBAction func minusDeserTapped(_ sender: Any) {
-        if var editValue = Int(desertField.text ?? "") {
+        guard var editValue = Int(desertField.text ?? "") else { return }
             if editValue > 0 {
                 editValue -= 1
                 desertField.text = String(editValue)
             }
-        }
     }
     
     @IBAction func colaSliderMoved(_ sender: UISlider) {
