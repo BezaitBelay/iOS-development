@@ -17,10 +17,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordLabel: UITextField!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         logoutButton.isHidden = true
         messageLabel.text = ""
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     @IBAction func registerClicked(_ sender: Any) {
         guard let name = usernameField.text ,let password = passwordLabel.text else { return }
@@ -31,10 +35,9 @@ class ViewController: UIViewController {
             
         } else {
             UserDefaults.standard.set(password, forKey: name)
-            loginButton.isHidden = true
-            registerButton.isHidden = true
-            logoutButton.isHidden = false
-            messageLabel.text = ""
+            messageLabel.text = "Logged in as \(name)"
+            setToLogin()
+            clearFields()
         }
     }
     @IBAction func logoutClocked(_ sender: Any) {
@@ -44,19 +47,27 @@ class ViewController: UIViewController {
     }
     @IBAction func loginClicked(_ sender: Any) {
         guard let name = usernameField.text, let password = passwordLabel.text else { return }
-        
-        guard let existing = UserDefaults.standard.string(forKey: name)
-            else { return }
+        guard let existing = UserDefaults.standard.string(forKey: name) else { messageLabel.text = "Username does not exist"; return }
         
         if existing == password {
-            loginButton.isHidden = true
-            registerButton.isHidden = true
-            logoutButton.isHidden = false
-            messageLabel.text = ""
+            setToLogin()
+            clearFields()
+            messageLabel.text = "Logged in as \(name)"
             
         } else {
             messageLabel.text = "Wrong password"
         }
+    }
+    
+    func setToLogin(){
+        loginButton.isHidden = true
+        registerButton.isHidden = true
+        logoutButton.isHidden = false
+    }
+    
+    func clearFields(){
+        usernameField.text = ""
+        passwordLabel.text = ""
     }
 }
 

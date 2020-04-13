@@ -15,49 +15,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ac-OQ-15g">
-                                <rect key="frame" x="39" y="34.5" width="70" height="40"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="NSf-d7-yxd"/>
-                                    <constraint firstAttribute="height" constant="40" id="WcQ-YC-238"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="USD">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="currencyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KJq-zu-zHu"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCn-VY-Xtg">
-                                <rect key="frame" x="145" y="35" width="70" height="40"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="152.5" y="35" width="70" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1wv-as-NHx"/>
                                     <constraint firstAttribute="width" constant="70" id="Xes-07-YPT"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="EUR">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="currencyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pQC-yJ-7ST"/>
+                                    <action selector="currencyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aWw-0l-NrA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0z-Jl-Qcl">
-                                <rect key="frame" x="251" y="35" width="70" height="40"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="267.5" y="35" width="70" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="5ct-99-sVn"/>
                                     <constraint firstAttribute="height" constant="40" id="Ev8-bG-8qC"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="BGN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="currencyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fw3-Ba-4Ax"/>
+                                    <action selector="currencyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hqt-wQ-NTt"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Add-qM-ioZ">
@@ -67,19 +50,28 @@
                                         <rect key="frame" x="182" y="12" width="59" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="TextFieldEdited:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="MFa-OD-zl1"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QQe-bN-Ltq">
                                         <rect key="frame" x="182" y="74" width="59" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="TextFieldEdited:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="byX-Vq-May"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pJI-xb-lAJ">
                                         <rect key="frame" x="182" y="146" width="59" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="TextFieldEdited:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="vKY-Vj-e3u"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cd-uR-aVh">
                                         <rect key="frame" x="249" y="9" width="40" height="38"/>
@@ -190,7 +182,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggb-zO-Vck">
-                                        <rect key="frame" x="240" y="381" width="64" height="30"/>
+                                        <rect key="frame" x="228" y="376" width="82" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Calculate"/>
                                         <connections>
@@ -200,37 +192,61 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ac-OQ-15g">
+                                <rect key="frame" x="37.5" y="35" width="70" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="NSf-d7-yxd"/>
+                                    <constraint firstAttribute="height" constant="40" id="WcQ-YC-238"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="USD">
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="currencyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vue-ai-yun"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="X0z-Jl-Qcl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-278.5" id="3ih-Cz-W9W"/>
-                            <constraint firstItem="X0z-Jl-Qcl" firstAttribute="leading" secondItem="sCn-VY-Xtg" secondAttribute="trailing" constant="36" id="6n1-hJ-yyH"/>
+                            <constraint firstItem="sCn-VY-Xtg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-278.5" id="80G-gU-qnR"/>
+                            <constraint firstItem="3ac-OQ-15g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-115" id="BlA-rt-AIo"/>
+                            <constraint firstItem="X0z-Jl-Qcl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-278.5" id="Cf3-WG-EoL"/>
                             <constraint firstItem="Add-qM-ioZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KSo-Ll-sMa"/>
-                            <constraint firstItem="3ac-OQ-15g" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-279" id="KX7-iT-XNC"/>
-                            <constraint firstItem="sCn-VY-Xtg" firstAttribute="leading" secondItem="3ac-OQ-15g" secondAttribute="trailing" constant="36" id="OXP-ku-sLb"/>
-                            <constraint firstItem="3ac-OQ-15g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-113.5" id="OeQ-nj-jKd"/>
                             <constraint firstItem="Add-qM-ioZ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="RXq-DS-CL4"/>
-                            <constraint firstItem="Add-qM-ioZ" firstAttribute="top" secondItem="sCn-VY-Xtg" secondAttribute="bottom" constant="72" id="aml-ub-QbS"/>
+                            <constraint firstItem="sCn-VY-Xtg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XLa-GR-DrG"/>
                             <constraint firstAttribute="bottom" secondItem="Add-qM-ioZ" secondAttribute="bottom" constant="20" symbolic="YES" id="e77-aw-h4y"/>
-                            <constraint firstItem="X0z-Jl-Qcl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="98.5" id="fBp-iG-BKx"/>
-                            <constraint firstItem="sCn-VY-Xtg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-278.5" id="fC9-2X-iFP"/>
-                            <constraint firstItem="sCn-VY-Xtg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-7.5" id="hYN-Cp-cbw"/>
+                            <constraint firstItem="3ac-OQ-15g" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-278.5" id="lmX-ql-Mya"/>
+                            <constraint firstItem="X0z-Jl-Qcl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="115" id="scy-3d-1Pl"/>
+                            <constraint firstItem="Add-qM-ioZ" firstAttribute="top" secondItem="sCn-VY-Xtg" secondAttribute="bottom" constant="72" id="vVr-bh-Tlr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="n6R-fs-FDv" appends="YES" id="dev-V1-Ajd"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="BGN" destination="X0z-Jl-Qcl" id="tj7-bl-pdY"/>
-                        <outlet property="EUR" destination="sCn-VY-Xtg" id="fBh-94-52o"/>
-                        <outlet property="USD" destination="3ac-OQ-15g" id="hIo-ay-RQC"/>
                         <outlet property="calculateLabel" destination="KrA-CM-uNN" id="ypZ-n5-Uug"/>
                         <outlet property="colaSLider" destination="EaU-3P-EHT" id="4pK-wD-U4V"/>
                         <outlet property="deliveryToggle" destination="gTx-cP-5Ba" id="1xg-y5-fft"/>
                         <outlet property="desertField" destination="pJI-xb-lAJ" id="kP4-QV-UqK"/>
                         <outlet property="dishField" destination="QQe-bN-Ltq" id="lgF-Yz-K8w"/>
                         <outlet property="soupFIeld" destination="tiH-BD-DKh" id="ApH-ma-3mH"/>
+                        <outletCollection property="myButtons" destination="0Cd-uR-aVh" collectionClass="NSMutableArray" id="IwI-uv-ivJ"/>
+                        <outletCollection property="myButtons" destination="pQj-Me-dPr" collectionClass="NSMutableArray" id="IeG-5t-NrJ"/>
+                        <outletCollection property="myButtons" destination="1CK-MS-tuv" collectionClass="NSMutableArray" id="cq3-Sr-ttH"/>
+                        <outletCollection property="myButtons" destination="kXJ-WD-869" collectionClass="NSMutableArray" id="Kiq-ru-X3W"/>
+                        <outletCollection property="myButtons" destination="CLZ-cg-x6h" collectionClass="NSMutableArray" id="3Tf-fx-sR8"/>
+                        <outletCollection property="myButtons" destination="qGA-Yb-JFs" collectionClass="NSMutableArray" id="ENI-Rh-coh"/>
+                        <outletCollection property="myButtons" destination="Ggb-zO-Vck" collectionClass="NSMutableArray" id="0jH-u6-hy1"/>
+                        <outletCollection property="myButtons" destination="3ac-OQ-15g" collectionClass="NSMutableArray" id="Oap-Fb-NhS"/>
+                        <outletCollection property="myButtons" destination="X0z-Jl-Qcl" collectionClass="NSMutableArray" id="Ijd-d9-dUt"/>
+                        <outletCollection property="myButtons" destination="sCn-VY-Xtg" collectionClass="NSMutableArray" id="pW2-t2-pif"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="n6R-fs-FDv"/>
             </objects>
             <point key="canvasLocation" x="-58.399999999999999" y="114.69265367316342"/>
         </scene>
