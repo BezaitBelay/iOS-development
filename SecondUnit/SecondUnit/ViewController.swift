@@ -21,7 +21,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logoutButton.isHidden = true
-        messageLabel.text = ""
+        if let name = UserDefaults.standard.string(forKey: "logged"){
+
+            messageLabel.text = "Logged in as \(name)"
+            setToLogin()
+        }
+        else
+        {
+            messageLabel.text = ""
+        }
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
@@ -38,12 +46,16 @@ class ViewController: UIViewController {
             messageLabel.text = "Logged in as \(name)"
             setToLogin()
             clearFields()
+            
+            UserDefaults.standard.set(name, forKey: "logged")
         }
     }
     @IBAction func logoutClocked(_ sender: Any) {
         logoutButton.isHidden = true
         loginButton.isHidden = false
         registerButton.isHidden = false
+        UserDefaults.standard.set(nil, forKey: "logged")
+        messageLabel.text = ""
     }
     @IBAction func loginClicked(_ sender: Any) {
         guard let name = usernameField.text, let password = passwordLabel.text else { return }
@@ -53,6 +65,7 @@ class ViewController: UIViewController {
             setToLogin()
             clearFields()
             messageLabel.text = "Logged in as \(name)"
+            UserDefaults.standard.set(name, forKey: "logged")
             
         } else {
             messageLabel.text = "Wrong password"
