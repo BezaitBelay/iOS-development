@@ -6,16 +6,15 @@
 //  Copyright © 2020 Dynamo Software. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct Cinema {
-    var images:[UIImage?]
+    var mainImages: UIImage?
+    var secondImage: UIImage?
     var title: String
     var address: String
     var workingHours: String
     var phoneNumber: String
     var parkingPlaces: Int
-    
 }
 

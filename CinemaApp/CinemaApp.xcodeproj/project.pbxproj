@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3A04DCED245D7AB6005409AA /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04DCEC245D7AB6005409AA /* MovieTableViewController.swift */; };
+		3A431CE6246A7CCC00F99F03 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CE5246A7CCC00F99F03 /* MovieTableViewCell.swift */; };
+		3A431CE8246A8F3900F99F03 /* ReservationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CE7246A8F3900F99F03 /* ReservationTableViewCell.swift */; };
 		3A440A322460664500C79754 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A440A312460664500C79754 /* InfoViewController.swift */; };
-		3A497BAB246029C300C7E048 /* ReservationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A497BAA246029C300C7E048 /* ReservationTableViewCell.swift */; };
-		3A4CCE10245DC34900D026E8 /* ReservationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CCE0F245DC34900D026E8 /* ReservationTableViewController.swift */; };
+		3A4CCE10245DC34900D026E8 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CCE0F245DC34900D026E8 /* ReservationViewController.swift */; };
 		3A4DB0E02459B14000DF7D8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4DB0DF2459B14000DF7D8D /* AppDelegate.swift */; };
 		3A4DB0E22459B14000DF7D8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4DB0E12459B14000DF7D8D /* SceneDelegate.swift */; };
 		3A4DB0E72459B14000DF7D8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A4DB0E52459B14000DF7D8D /* Main.storyboard */; };
@@ -25,9 +26,10 @@
 
 /* Begin PBXFileReference section */
 		3A04DCEC245D7AB6005409AA /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieTableViewController.swift; path = CinemaApp/MovieTableViewController.swift; sourceTree = "<group>"; };
+		3A431CE5246A7CCC00F99F03 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		3A431CE7246A8F3900F99F03 /* ReservationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReservationTableViewCell.swift; path = CinemaApp/ReservationTableViewCell.swift; sourceTree = "<group>"; };
 		3A440A312460664500C79754 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoViewController.swift; path = CinemaApp/InfoViewController.swift; sourceTree = "<group>"; };
-		3A497BAA246029C300C7E048 /* ReservationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReservationTableViewCell.swift; path = CinemaApp/ReservationTableViewCell.swift; sourceTree = "<group>"; };
-		3A4CCE0F245DC34900D026E8 /* ReservationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReservationTableViewController.swift; path = CinemaApp/ReservationTableViewController.swift; sourceTree = "<group>"; };
+		3A4CCE0F245DC34900D026E8 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReservationViewController.swift; path = CinemaApp/ReservationViewController.swift; sourceTree = "<group>"; };
 		3A4DB0DC2459B14000DF7D8D /* CinemaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4DB0DF2459B14000DF7D8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A4DB0E12459B14000DF7D8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,13 +76,14 @@
 			children = (
 				3A4DB0DF2459B14000DF7D8D /* AppDelegate.swift */,
 				3A4DB0E12459B14000DF7D8D /* SceneDelegate.swift */,
-				3A4DB0FB2459BAA400DF7D8D /* CinemaTableViewCell.swift */,
 				3A4DB0E52459B14000DF7D8D /* Main.storyboard */,
 				3A440A312460664500C79754 /* InfoViewController.swift */,
-				3A497BAA246029C300C7E048 /* ReservationTableViewCell.swift */,
-				3A4CCE0F245DC34900D026E8 /* ReservationTableViewController.swift */,
+				3A4CCE0F245DC34900D026E8 /* ReservationViewController.swift */,
+				3A431CE7246A8F3900F99F03 /* ReservationTableViewCell.swift */,
 				3A04DCEC245D7AB6005409AA /* MovieTableViewController.swift */,
+				3A431CE5246A7CCC00F99F03 /* MovieTableViewCell.swift */,
 				3A4DB0F92459B99800DF7D8D /* CinemaTableViewController.swift */,
+				3A4DB0FB2459BAA400DF7D8D /* CinemaTableViewCell.swift */,
 				3A4DB0F32459B61D00DF7D8D /* Cinema.swift */,
 				3A4DB0F52459B7A300DF7D8D /* Movie.swift */,
 				3A4DB0F72459B7DA00DF7D8D /* Reservation.swift */,
@@ -164,14 +167,15 @@
 			files = (
 				3A04DCED245D7AB6005409AA /* MovieTableViewController.swift in Sources */,
 				3A440A322460664500C79754 /* InfoViewController.swift in Sources */,
+				3A431CE8246A8F3900F99F03 /* ReservationTableViewCell.swift in Sources */,
+				3A431CE6246A7CCC00F99F03 /* MovieTableViewCell.swift in Sources */,
 				3A4DB0F42459B61D00DF7D8D /* Cinema.swift in Sources */,
 				3A4DB0F82459B7DA00DF7D8D /* Reservation.swift in Sources */,
 				3A4DB0E02459B14000DF7D8D /* AppDelegate.swift in Sources */,
 				3A4DB0FC2459BAA400DF7D8D /* CinemaTableViewCell.swift in Sources */,
-				3A4CCE10245DC34900D026E8 /* ReservationTableViewController.swift in Sources */,
+				3A4CCE10245DC34900D026E8 /* ReservationViewController.swift in Sources */,
 				3A4DB0E22459B14000DF7D8D /* SceneDelegate.swift in Sources */,
 				3A4DB0FA2459B99800DF7D8D /* CinemaTableViewController.swift in Sources */,
-				3A497BAB246029C300C7E048 /* ReservationTableViewCell.swift in Sources */,
 				3A4DB0F62459B7A300DF7D8D /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

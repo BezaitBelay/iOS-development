@@ -11,8 +11,6 @@ import UIKit
 class InfoViewController: UIViewController {
 
     var cinema: Cinema?
-    
-    
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
@@ -22,16 +20,13 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         updateFields()
-        // Do any additional setup after loading the view.
     }
     
-
-    func updateFields() {
+    private func updateFields() {
         guard let currentCinema = cinema else {return}
-            image1.image  = currentCinema.images[0]
-            image2.image = currentCinema.images[1]
+            image1.image  = currentCinema.mainImages
+            image2.image = currentCinema.secondImage
             addressLabel.text = "Address: \n" + currentCinema.address
             workingTimeLabel.text = "Working hours: \n" + currentCinema.workingHours
             telephoneLabel.text = "Phone number: \n " + currentCinema.phoneNumber
@@ -39,14 +34,4 @@ class InfoViewController: UIViewController {
         navigationItem.title = currentCinema.title
         navigationItem.backBarButtonItem?.title = "Back"
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

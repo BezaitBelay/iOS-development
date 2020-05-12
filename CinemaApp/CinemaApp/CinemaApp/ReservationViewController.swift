@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ReservationTableViewController: UITableViewController {
+class ReservationViewController: UIViewController {
     
     var movie: Movie?
     var cinema: Cinema?
     var reservation: Reservation?
     
     @IBOutlet weak var movieNameLabel: UILabel!
-    @IBOutlet weak var ticketsCountTextField: UITextView!
+    @IBOutlet weak var ticketsCountTextField: UITextField!
     @IBOutlet weak var reserveButton: UIButton!
     
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class ReservationTableViewController: UITableViewController {
             movieNameLabel.text = movie.title
             ticketsCountTextField.text = ""
         }
+        navigationItem.title = "Buy Tickets"
         reserveButton.layer.cornerRadius = 5
     }
     
@@ -46,14 +47,14 @@ class ReservationTableViewController: UITableViewController {
     }
 }
 
-// MARK: - UITextViewDelegate
-extension ReservationTableViewController :UITextViewDelegate {
+// MARK: - UITextFieldDelegate
+extension ReservationViewController :UITextFieldDelegate {
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
-        let compSepByCharInSet = text.components(separatedBy: aSet)
+        let compSepByCharInSet = string.components(separatedBy: aSet)
         let numberFiltered = compSepByCharInSet.joined(separator: "")
-        return text == numberFiltered
+        return string == numberFiltered
     }
     
 }
