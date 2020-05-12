@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3A431CE124692D7600F99F03 /* AllContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CE024692D7600F99F03 /* AllContactsTableViewController.swift */; };
-		3A431CE42469361200F99F03 /* FamilyContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CE22469361200F99F03 /* FamilyContactTableViewCell.swift */; };
+		3A431CED246AB3DA00F99F03 /* WorkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CEC246AB3DA00F99F03 /* WorkTableViewCell.swift */; };
+		3A431CEF246AB3E300F99F03 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CEE246AB3E300F99F03 /* FriendsTableViewCell.swift */; };
+		3A431CF1246ACCF700F99F03 /* FamilyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CF0246ACCF700F99F03 /* FamilyTableViewCell.swift */; };
 		3A4B4C132465559C00683454 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4C122465559C00683454 /* AppDelegate.swift */; };
 		3A4B4C152465559C00683454 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4C142465559C00683454 /* SceneDelegate.swift */; };
 		3A4B4C172465559C00683454 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4C162465559C00683454 /* ViewController.swift */; };
@@ -21,7 +23,9 @@
 
 /* Begin PBXFileReference section */
 		3A431CE024692D7600F99F03 /* AllContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllContactsTableViewController.swift; sourceTree = "<group>"; };
-		3A431CE32469361200F99F03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = ContactApp/Base.lproj/FamilyContactTableViewCell.swift; sourceTree = "<group>"; };
+		3A431CEC246AB3DA00F99F03 /* WorkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTableViewCell.swift; sourceTree = "<group>"; };
+		3A431CEE246AB3E300F99F03 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		3A431CF0246ACCF700F99F03 /* FamilyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTableViewCell.swift; sourceTree = "<group>"; };
 		3A4B4C0F2465559C00683454 /* ContactApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4B4C122465559C00683454 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A4B4C142465559C00683454 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +68,6 @@
 		3A4B4C112465559C00683454 /* ContactApp */ = {
 			isa = PBXGroup;
 			children = (
-				3A431CE22469361200F99F03 /* FamilyContactTableViewCell.swift */,
 				3A431CE024692D7600F99F03 /* AllContactsTableViewController.swift */,
 				3A4B4C122465559C00683454 /* AppDelegate.swift */,
 				3A4B4C142465559C00683454 /* SceneDelegate.swift */,
@@ -75,6 +78,9 @@
 				3A4B4C1B2465559F00683454 /* Assets.xcassets */,
 				3A4B4C1D2465559F00683454 /* LaunchScreen.storyboard */,
 				3A4B4C202465559F00683454 /* Info.plist */,
+				3A431CF0246ACCF700F99F03 /* FamilyTableViewCell.swift */,
+				3A431CEC246AB3DA00F99F03 /* WorkTableViewCell.swift */,
+				3A431CEE246AB3E300F99F03 /* FriendsTableViewCell.swift */,
 			);
 			path = ContactApp;
 			sourceTree = "<group>";
@@ -152,10 +158,12 @@
 			files = (
 				3A4B4C272465733C00683454 /* Contact.swift in Sources */,
 				3A4B4C172465559C00683454 /* ViewController.swift in Sources */,
+				3A431CEF246AB3E300F99F03 /* FriendsTableViewCell.swift in Sources */,
 				3A431CE124692D7600F99F03 /* AllContactsTableViewController.swift in Sources */,
+				3A431CED246AB3DA00F99F03 /* WorkTableViewCell.swift in Sources */,
 				3A4B4C292465759B00683454 /* ContactBook.swift in Sources */,
-				3A431CE42469361200F99F03 /* FamilyContactTableViewCell.swift in Sources */,
 				3A4B4C132465559C00683454 /* AppDelegate.swift in Sources */,
+				3A431CF1246ACCF700F99F03 /* FamilyTableViewCell.swift in Sources */,
 				3A4B4C152465559C00683454 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,14 +171,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3A431CE22469361200F99F03 /* FamilyContactTableViewCell.swift */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3A431CE32469361200F99F03 /* Base */,
-			);
-			name = FamilyContactTableViewCell.swift;
-			sourceTree = "<group>";
-		};
 		3A4B4C182465559C00683454 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
