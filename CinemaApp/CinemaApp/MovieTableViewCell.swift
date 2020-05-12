@@ -1,5 +1,5 @@
 //
-//  ReservationTableViewCell.swift
+//  MovieTableViewCell.swift
 //  CinemaApp
 //
 //  Created by Dynamo Software on 12.05.20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReservationTableViewCell: UITableViewCell {
+class MovieTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

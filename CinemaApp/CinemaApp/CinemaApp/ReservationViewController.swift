@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReservationTableViewController: UITableViewController,UITextViewDelegate {
+class ReservationTableViewController: UITableViewController {
     
     var movie: Movie?
     var cinema: Cinema?
@@ -16,6 +16,7 @@ class ReservationTableViewController: UITableViewController,UITextViewDelegate {
     
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var ticketsCountTextField: UITextView!
+    @IBOutlet weak var reserveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,35 +27,33 @@ class ReservationTableViewController: UITableViewController,UITextViewDelegate {
         self.ticketsCountTextField.delegate = self
     }
     
+    private func updateFields() {
+        if let movie = self.movie {
+            movieNameLabel.text = movie.title
+            ticketsCountTextField.text = ""
+        }
+        reserveButton.layer.cornerRadius = 5
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ReserveUnwind" else {return}
+        
+        let movieName = movieNameLabel.text ?? ""
+        let ticketsQuantity = Int(ticketsCountTextField.text ?? "0") ?? 0
+        let cinemaName = cinema?.title ?? ""
+        let movieTime = movie?.showTime ?? ""
+        reservation = Reservation(cinemaName: cinemaName, ticketsCount:ticketsQuantity, movieName: movieName, movieShowTime: movieTime)
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension ReservationTableViewController :UITextViewDelegate {
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
         let compSepByCharInSet = text.components(separatedBy: aSet)
         let numberFiltered = compSepByCharInSet.joined(separator: "")
         return text == numberFiltered
     }
-    
-    // MARK: - Table view data source
-    
-    func updateFields() {
-        if let movie = self.movie {
-            movieNameLabel.text = movie.title
-            ticketsCountTextField.text = ""
-        }
-    }
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "ReserveUnwind" else {return}
-        
-        let movieName = movieNameLabel.text ?? ""
-        let ticketsQuantity = Int(ticketsCountTextField.text ?? "0")
-        let cinemaName = cinema?.title ?? ""
-        let movieTime = movie?.showTime ?? ""
-        
-        reservation = Reservation(cinemaName: cinemaName, ticketsCount:ticketsQuantity!, movieName: movieName, movieShowTime: movieTime)
-    }
-    
     
 }

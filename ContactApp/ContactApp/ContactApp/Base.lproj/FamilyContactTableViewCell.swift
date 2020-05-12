@@ -1,14 +1,14 @@
 //
-//  ReservationTableViewCell.swift
-//  CinemaApp
+//  ContactTableViewCell.swift
+//  ContactApp
 //
-//  Created by Dynamo Software on 12.05.20.
+//  Created by Dynamo Software on 11.05.20.
 //  Copyright © 2020 Dynamo Software. All rights reserved.
 //
 
 import UIKit
 
-class ReservationTableViewCell: UITableViewCell {
+class ContactTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
