@@ -149,7 +149,9 @@
                             <outlet property="delegate" destination="Qgb-Wl-Ogc" id="SxK-JO-qcj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cinemas" id="Atp-7e-EB7"/>
+                    <navigationItem key="navigationItem" title="Cinemas" id="Atp-7e-EB7">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Wvv-Ge-EE8"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OFf-gw-763" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,7 +240,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="IKF-IT-XdF"/>
                     </view>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="Kcz-eG-JD1"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="Kcz-eG-JD1">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="G9X-tw-oxz"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="xBK-Al-GLJ" id="O0m-EN-aEG"/>
                         <outlet property="image1" destination="CYN-w1-L5m" id="7if-3D-rhz"/>
@@ -250,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBE-3Y-bre" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1399.2" y="235.23238380809596"/>
+            <point key="canvasLocation" x="1212" y="405"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="wen-mL-A6W">
@@ -310,7 +314,9 @@
                             <outlet property="delegate" destination="JPi-KS-42T" id="RVD-xf-tMn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" leftItemsSupplementBackButton="YES" id="d51-QH-mne"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" leftItemsSupplementBackButton="YES" id="d51-QH-mne">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="1N0-uV-0V1"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVF-Br-gLE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -378,7 +384,9 @@
                             <outletCollection property="gestureRecognizers" destination="m1M-ZH-SET" appends="YES" id="B7x-Zp-JOM"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="MD0-4m-VlK"/>
+                    <navigationItem key="navigationItem" title="Title" id="MD0-4m-VlK">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="lrz-Qe-i9D"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="movieNameLabel" destination="aFc-rv-Ndh" id="BeR-Rj-lzs"/>
                         <outlet property="reserveButton" destination="ooG-jt-T0E" id="qfU-7M-SiP"/>
@@ -390,22 +398,6 @@
                 <tapGestureRecognizer id="m1M-ZH-SET"/>
             </objects>
             <point key="canvasLocation" x="1259" y="1263"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="699-WZ-k2D">
-            <objects>
-                <navigationController id="oNW-et-0aZ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YXb-DS-AJl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="JPi-KS-42T" kind="relationship" relationship="rootViewController" id="JUL-7D-eEQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zXd-be-Nv4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-740" y="1151"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U3t-uZ-mMD">
@@ -424,7 +416,4 @@
             <point key="canvasLocation" x="-739" y="406"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="yEN-ei-fOa"/>
-    </inferredMetricsTieBreakers>
 </document>
