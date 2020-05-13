@@ -19,6 +19,9 @@
                             <rect key="frame" x="0.0" y="493.5" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="+"/>
+                            <connections>
+                                <segue destination="4Wv-Lw-c7U" kind="show" id="XVa-Mz-doc"/>
+                            </connections>
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FamilyCell" rowHeight="140" id="xyd-WZ-9S6" customClass="FamilyTableViewCell" customModule="ContactApp" customModuleProvider="target">
@@ -205,7 +208,6 @@
                             <outlet property="delegate" destination="nGB-ge-lkK" id="eRW-eW-fMB"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="Ghe-X9-KPE"/>
                     <navigationItem key="navigationItem" title="Contacts" id="qBH-hN-IGl">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="ITz-Pu-UVZ">
                             <connections>
@@ -216,7 +218,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZ2-2u-Eee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="-32"/>
+            <point key="canvasLocation" x="1863.2" y="-32.833583208395808"/>
         </scene>
         <!--Item-->
         <scene sceneID="cKU-bv-YFo">
@@ -259,7 +261,7 @@
         <!--Root View Controller-->
         <scene sceneID="FHz-9Z-Yo8">
             <objects>
-                <tableViewController id="4Wv-Lw-c7U" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="4Wv-Lw-c7U" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="wXI-QF-Mdg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -364,7 +366,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="im8-Wc-pQL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1759" y="-33"/>
+            <point key="canvasLocation" x="2696.8000000000002" y="-33.733133433283363"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="v2G-RY-4Pq">
@@ -376,13 +378,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="nGB-ge-lkK" kind="relationship" relationship="viewControllers" id="yV7-46-cSc"/>
+                        <segue destination="IcZ-sY-uSg" kind="relationship" relationship="viewControllers" id="yV7-46-cSc"/>
                         <segue destination="BU7-Ca-s4k" kind="relationship" relationship="viewControllers" id="Rjg-u5-wm5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMD-Ql-IdT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-131" y="260"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Dx8-Ru-yHX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IcZ-sY-uSg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Ghe-X9-KPE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iA7-b6-cCL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nGB-ge-lkK" kind="relationship" relationship="rootViewController" id="NDR-8c-mwi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WOe-kd-ZWp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="924" y="-32.833583208395808"/>
         </scene>
     </scenes>
 </document>
