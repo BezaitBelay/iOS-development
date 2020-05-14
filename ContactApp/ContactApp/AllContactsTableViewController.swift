@@ -10,13 +10,13 @@ import UIKit
 
 class AllContactsTableViewController: UITableViewController {
     
-    var splitContactList = [Group.family: ContactBook.shared.contacts.filter({$0.group == .family}),
-                            Group.work: ContactBook.shared.contacts.filter({$0.group == .work}),
-                            Group.friend: ContactBook.shared.contacts.filter({$0.group == .friend})]
+    var contactList = ContactBook.shared
+    var splitContactList = [Group: [Contact]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        splitContactList = contactList.splitContactsToGroup()
+        navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     // MARK: - Table view data source
@@ -34,7 +34,7 @@ class AllContactsTableViewController: UITableViewController {
             guard let work = splitContactList[Group.work] else { return 0 }
             return work.count
         case 2:
-            guard let friends = splitContactList[Group.friend] else { return 0 }
+            guard let friends = splitContactList[Group.friends] else { return 0 }
             return friends.count
         default:
             return 0
@@ -59,7 +59,7 @@ class AllContactsTableViewController: UITableViewController {
         }
         if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsTableViewCell
-            let friends = splitContactList[Group.friend] ?? [Contact]()
+            let friends = splitContactList[Group.friends] ?? [Contact]()
             let contact = friends[indexPath.row]
             cell.updateFriendContact(with: contact)
             initCell = cell
@@ -73,9 +73,9 @@ class AllContactsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0: return "Family"
-        case 1: return "Work"
-        case 2: return "Friends"
+        case 0: return Group.family.rawValue
+        case 1: return Group.work.rawValue
+        case 2: return Group.friends.rawValue
         default: return ""
         }
     }
@@ -89,7 +89,7 @@ class AllContactsTableViewController: UITableViewController {
             switch indexPath.section {
             case 0: splitContactList[Group.family]?.remove(at: indexPath.row)
             case 1: splitContactList[Group.work]?.remove(at: indexPath.row)
-            case 2: splitContactList[Group.friend]?.remove(at: indexPath.row)
+            case 2: splitContactList[Group.friends]?.remove(at: indexPath.row)
             default: break
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -100,6 +100,13 @@ class AllContactsTableViewController: UITableViewController {
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
         let tableViewEditingMode = tableView.isEditing
         tableView.setEditing(!tableViewEditingMode, animated: true)
+    }
+    
+    @IBAction func unwindFromAddContact(segue: UIStoryboardSegue) {
+        if segue.identifier == "SaveUnwind" {
+            splitContactList = contactList.splitContactsToGroup()
+            tableView.reloadData()
+        }
     }
     
 }

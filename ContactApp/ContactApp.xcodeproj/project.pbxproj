@@ -19,6 +19,7 @@
 		3A4B4C1F2465559F00683454 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A4B4C1D2465559F00683454 /* LaunchScreen.storyboard */; };
 		3A4B4C272465733C00683454 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4C262465733C00683454 /* Contact.swift */; };
 		3A4B4C292465759B00683454 /* ContactBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4C282465759B00683454 /* ContactBook.swift */; };
+		3A4CEAF7246C128B00371943 /* AddContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CEAF6246C128B00371943 /* AddContactTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		3A4B4C202465559F00683454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A4B4C262465733C00683454 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		3A4B4C282465759B00683454 /* ContactBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactBook.swift; sourceTree = "<group>"; };
+		3A4CEAF6246C128B00371943 /* AddContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		3A4B4C112465559C00683454 /* ContactApp */ = {
 			isa = PBXGroup;
 			children = (
+				3A4CEAF6246C128B00371943 /* AddContactTableViewController.swift */,
 				3A431CE024692D7600F99F03 /* AllContactsTableViewController.swift */,
 				3A4B4C122465559C00683454 /* AppDelegate.swift */,
 				3A4B4C142465559C00683454 /* SceneDelegate.swift */,
@@ -160,6 +163,7 @@
 				3A4B4C172465559C00683454 /* ViewController.swift in Sources */,
 				3A431CEF246AB3E300F99F03 /* FriendsTableViewCell.swift in Sources */,
 				3A431CE124692D7600F99F03 /* AllContactsTableViewController.swift in Sources */,
+				3A4CEAF7246C128B00371943 /* AddContactTableViewController.swift in Sources */,
 				3A431CED246AB3DA00F99F03 /* WorkTableViewCell.swift in Sources */,
 				3A4B4C292465759B00683454 /* ContactBook.swift in Sources */,
 				3A4B4C132465559C00683454 /* AppDelegate.swift in Sources */,

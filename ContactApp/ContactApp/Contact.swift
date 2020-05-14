@@ -36,6 +36,8 @@ class Contact {
 }
 
 
-enum Group {
-    case family, work, friend
+enum Group: String {
+    case family = "Family"
+    case work = "Work"
+    case friends = "Friends"
 }
