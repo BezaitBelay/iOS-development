@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A431CE124692D7600F99F03 /* AllContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CE024692D7600F99F03 /* AllContactsTableViewController.swift */; };
-		3A431CED246AB3DA00F99F03 /* WorkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CEC246AB3DA00F99F03 /* WorkTableViewCell.swift */; };
-		3A431CEF246AB3E300F99F03 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CEE246AB3E300F99F03 /* FriendsTableViewCell.swift */; };
-		3A431CF1246ACCF700F99F03 /* FamilyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CF0246ACCF700F99F03 /* FamilyTableViewCell.swift */; };
+		3A431CF1246ACCF700F99F03 /* AllContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A431CF0246ACCF700F99F03 /* AllContactTableViewCell.swift */; };
 		3A4B4C132465559C00683454 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4C122465559C00683454 /* AppDelegate.swift */; };
 		3A4B4C152465559C00683454 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B4C142465559C00683454 /* SceneDelegate.swift */; };
 		3A4B4C1A2465559C00683454 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A4B4C182465559C00683454 /* Main.storyboard */; };
@@ -25,9 +23,7 @@
 
 /* Begin PBXFileReference section */
 		3A431CE024692D7600F99F03 /* AllContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllContactsTableViewController.swift; sourceTree = "<group>"; };
-		3A431CEC246AB3DA00F99F03 /* WorkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTableViewCell.swift; sourceTree = "<group>"; };
-		3A431CEE246AB3E300F99F03 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
-		3A431CF0246ACCF700F99F03 /* FamilyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTableViewCell.swift; sourceTree = "<group>"; };
+		3A431CF0246ACCF700F99F03 /* AllContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllContactTableViewCell.swift; sourceTree = "<group>"; };
 		3A4B4C0F2465559C00683454 /* ContactApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4B4C122465559C00683454 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A4B4C142465559C00683454 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,9 +80,7 @@
 				3A4B4C1B2465559F00683454 /* Assets.xcassets */,
 				3A4B4C1D2465559F00683454 /* LaunchScreen.storyboard */,
 				3A4B4C202465559F00683454 /* Info.plist */,
-				3A431CF0246ACCF700F99F03 /* FamilyTableViewCell.swift */,
-				3A431CEC246AB3DA00F99F03 /* WorkTableViewCell.swift */,
-				3A431CEE246AB3E300F99F03 /* FriendsTableViewCell.swift */,
+				3A431CF0246ACCF700F99F03 /* AllContactTableViewCell.swift */,
 			);
 			path = ContactApp;
 			sourceTree = "<group>";
@@ -165,13 +159,11 @@
 				3A7E87002472636100D542E7 /* ContactTableViewCell.swift in Sources */,
 				3A7E86FE24725B6300D542E7 /* MailTableViewController.swift in Sources */,
 				3A4B4C272465733C00683454 /* Contact.swift in Sources */,
-				3A431CEF246AB3E300F99F03 /* FriendsTableViewCell.swift in Sources */,
 				3A431CE124692D7600F99F03 /* AllContactsTableViewController.swift in Sources */,
 				3A4CEAF7246C128B00371943 /* AddContactTableViewController.swift in Sources */,
-				3A431CED246AB3DA00F99F03 /* WorkTableViewCell.swift in Sources */,
 				3A4B4C292465759B00683454 /* ContactBook.swift in Sources */,
 				3A4B4C132465559C00683454 /* AppDelegate.swift in Sources */,
-				3A431CF1246ACCF700F99F03 /* FamilyTableViewCell.swift in Sources */,
+				3A431CF1246ACCF700F99F03 /* AllContactTableViewCell.swift in Sources */,
 				3A4B4C152465559C00683454 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

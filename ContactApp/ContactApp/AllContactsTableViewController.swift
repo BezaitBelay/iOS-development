@@ -12,6 +12,7 @@ class AllContactsTableViewController: UITableViewController {
     
     var contactList = ContactBook.shared
     var contact: Contact?
+    let headerTitles = [Group.family.rawValue, Group.work.rawValue, Group.friends.rawValue]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,51 +20,20 @@ class AllContactsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return ContactBook.shared.splitContactsInGroups().count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            let family = contactList.getContactListBy(group: .family)
-            return family.count
-        case 1:
-            let work = contactList.getContactListBy(group: .work)
-            return work.count
-        case 2:
-            let friends = contactList.getContactListBy(group: .friends)
-            return friends.count
-        default:
-            return 0
-        }
+        return ContactBook.shared.splitContactsInGroups()[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var initCell = UITableViewCell()
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FamilyCell", for: indexPath) as! FamilyTableViewCell
-            let family = contactList.getContactListBy(group: .family)
-            let contact = family[indexPath.row]
-            cell.updateFamilyContact(with: contact)
-            initCell = cell
-        }
-        if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkCell", for: indexPath) as! WorkTableViewCell
-            let work = contactList.getContactListBy(group: .work)
-            let contact = work[indexPath.row]
-            cell.updateWorkContact(with: contact)
-            initCell = cell
-        }
-        if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsTableViewCell
-            let friends = contactList.getContactListBy(group: .friends)
-            let contact = friends[indexPath.row]
-            cell.updateFriendContact(with: contact)
-            initCell = cell
-        }
-        return initCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllContactCell", for: indexPath) as? AllContactTableViewCell else {return UITableViewCell()}
+        let contactListByGroup = contactList.getContactListBy(group: contactList[indexPath].group)
+        let contact = contactListByGroup[indexPath.row]
+        cell.updateContact(with: contact)
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,12 +41,7 @@ class AllContactsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0: return Group.family.rawValue
-        case 1: return Group.work.rawValue
-        case 2: return Group.friends.rawValue
-        default: return ""
-        }
+        return headerTitles[section]
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -90,6 +55,7 @@ class AllContactsTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Action methods
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
         let tableViewEditingMode = tableView.isEditing
         tableView.setEditing(!tableViewEditingMode, animated: true)
@@ -105,6 +71,7 @@ class AllContactsTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditContactSegue" {
             guard let navDestination = segue.destination as? UINavigationController else {return}
