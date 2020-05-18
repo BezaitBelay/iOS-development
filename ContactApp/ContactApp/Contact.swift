@@ -30,14 +30,32 @@ class Contact {
         self.picture = picture
         self.group = group
     }
-    
-    
-    
 }
 
+// MARK: - Equatable
+extension Contact: Equatable {
+    static func ==(lhs: Contact, rhs: Contact) -> Bool {
+        return lhs.firstName == rhs.firstName
+            && lhs.lastName == rhs.lastName
+            && lhs.email == rhs.email
+            && lhs.group == rhs.group
+            && lhs.homeAddress == rhs.homeAddress
+            && lhs.phoneNumber == rhs.phoneNumber
+            && lhs.picture == rhs.picture
+    }
+}
 
 enum Group: String {
     case family = "Family"
     case work = "Work"
     case friends = "Friends"
+    
+    var number: Int
+    {
+        switch self {
+        case .family: return 0
+        case .work: return 1
+        case .friends: return 2
+        }
+    }
 }

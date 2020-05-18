@@ -15,6 +15,7 @@ class ContactBook {
     var count: Int {
         contacts.count
     }
+    
     private init() {
         contacts = [
             Contact(firstName: "Georgi", lastName: "Georgiev", phoneNumber: "0988876544", email: "gosho@gmail.com", homeAddress: "Sofia, bl. 310, ap. 15", picture:UIImage.self(named: "img2") , group: .friends),
@@ -24,20 +25,44 @@ class ContactBook {
         ]
     }
     
+    subscript(index: IndexPath) -> Contact {
+        get {
+            getContactBy(indexPath: index)
+        }
+        set(newValue) {
+            guard let contactIndex = contacts.firstIndex(of: getContactBy(indexPath: index)) else {return}
+            contacts[contactIndex] = newValue
+        }
+    }
+    
+    subscript(index: Int) -> Contact {
+        get {
+            contacts[index]
+        }
+        set(newValue) {
+            contacts[index] = newValue
+        }
+    }
+    
     func append(contact: Contact) {
         contacts.append(contact)
     }
     
-    func removeAt(at index: Int) {
-        contacts.remove(at: index)
+    func removeAt(at index: IndexPath) {
+        guard let contactIndex = contacts.firstIndex(of: getContactBy(indexPath: index)) else {return}
+        contacts.remove(at: contactIndex)
     }
     
-    func splitContactsToGroup() -> [Group: [Contact]] {
-        let returnValue = [Group.family: contacts.filter({$0.group == .family}),
-        Group.work: contacts.filter({$0.group == .work}),
-        Group.friends: contacts.filter({$0.group == .friends})]
-        return returnValue
+    func getContactBy(indexPath: IndexPath) -> Contact {
+        let contactInGroup = getContactListBy(groupNumber: indexPath.section)
+        return contactInGroup[indexPath.row]
     }
     
+    func getContactListBy(group: Group) -> [Contact]{
+        return contacts.filter({$0.group == group})
+    }
     
+    private func getContactListBy(groupNumber: Int) -> [Contact] {
+        return contacts.filter({$0.group.number == groupNumber})
+    }
 }

@@ -25,7 +25,4 @@ class FriendsTableViewCell: UITableViewCell {
         friendNameLabel.text = contact.fullName
         friendEmailLabel.text = contact.email
     }
-    
-    
-    
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class WorkTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var workImage: UIImageView!
     @IBOutlet weak var workPhoneLabel: UILabel!
     @IBOutlet weak var workNameLabel: UILabel!
@@ -20,11 +20,10 @@ class WorkTableViewCell: UITableViewCell {
     }
     
     func updateWorkContact(with contact: Contact) {
-        
         workImage.image = contact.picture ?? UIImage.self(named: "img0")
         workPhoneLabel.text = contact.phoneNumber
         workNameLabel.text = contact.fullName
         workEmailLabel.text = contact.email
     }
-
+    
 }

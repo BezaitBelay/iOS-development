@@ -11,11 +11,10 @@ import UIKit
 class AllContactsTableViewController: UITableViewController {
     
     var contactList = ContactBook.shared
-    var splitContactList = [Group: [Contact]]()
+    var contact: Contact?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        splitContactList = contactList.splitContactsToGroup()
         navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
@@ -28,13 +27,13 @@ class AllContactsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            guard let family = splitContactList[Group.family] else { return 0 }
+            let family = contactList.getContactListBy(group: .family)
             return family.count
         case 1:
-            guard let work = splitContactList[Group.work] else { return 0 }
+            let work = contactList.getContactListBy(group: .work)
             return work.count
         case 2:
-            guard let friends = splitContactList[Group.friends] else { return 0 }
+            let friends = contactList.getContactListBy(group: .friends)
             return friends.count
         default:
             return 0
@@ -45,21 +44,21 @@ class AllContactsTableViewController: UITableViewController {
         var initCell = UITableViewCell()
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FamilyCell", for: indexPath) as! FamilyTableViewCell
-            let family = splitContactList[Group.family] ?? [Contact]()
+            let family = contactList.getContactListBy(group: .family)
             let contact = family[indexPath.row]
             cell.updateFamilyContact(with: contact)
             initCell = cell
         }
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkCell", for: indexPath) as! WorkTableViewCell
-            let work = splitContactList[Group.work] ?? [Contact]()
+            let work = contactList.getContactListBy(group: .work)
             let contact = work[indexPath.row]
             cell.updateWorkContact(with: contact)
             initCell = cell
         }
         if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsTableViewCell
-            let friends = splitContactList[Group.friends] ?? [Contact]()
+            let friends = contactList.getContactListBy(group: .friends)
             let contact = friends[indexPath.row]
             cell.updateFriendContact(with: contact)
             initCell = cell
@@ -86,16 +85,10 @@ class AllContactsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            switch indexPath.section {
-            case 0: splitContactList[Group.family]?.remove(at: indexPath.row)
-            case 1: splitContactList[Group.work]?.remove(at: indexPath.row)
-            case 2: splitContactList[Group.friends]?.remove(at: indexPath.row)
-            default: break
-            }
+            contactList.removeAt(at: indexPath)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
     
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
         let tableViewEditingMode = tableView.isEditing
@@ -103,9 +96,21 @@ class AllContactsTableViewController: UITableViewController {
     }
     
     @IBAction func unwindFromAddContact(segue: UIStoryboardSegue) {
-        if segue.identifier == "SaveUnwind" {
-            splitContactList = contactList.splitContactsToGroup()
-            tableView.reloadData()
+        guard segue.identifier == "SaveUnwind", let contact = contact else { return }
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            contactList[selectedIndexPath] = contact
+        } else {
+            contactList.append(contact: contact)
+        }
+        tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditContactSegue" {
+            guard let navDestination = segue.destination as? UINavigationController else {return}
+            guard let destination = navDestination.topViewController as? AddContactTableViewController else {return}
+            let indexPath = tableView.indexPathForSelectedRow!
+            destination.contact = contactList.getContactBy(indexPath: indexPath)
         }
     }
     
