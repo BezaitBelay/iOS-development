@@ -106,8 +106,13 @@ class AddContactTableViewController: UITableViewController {
         updateSaveEditButtonState()
     }
     
+    func image(image1: UIImage, isEqualTo image2: UIImage?) -> Bool {
+        guard let data1 = image1.pngData(), let data2 = image2?.pngData() else { return false }
+        return data1 == data2
+    }
+    
     private func updateImageButtonText(){
-        if let picture = contact?.picture, picture != UIImage(named: "img0") {
+        if let picture = contact?.picture, image(image1: picture, isEqualTo: UIImage(named: "img0")) == false {
             changePhotoButton.setTitle("Change picture", for: .normal)
         }
         else {
