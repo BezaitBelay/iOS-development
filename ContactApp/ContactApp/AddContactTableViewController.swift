@@ -18,20 +18,22 @@ class AddContactTableViewController: UITableViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var homeAddressTextField: UITextField!
-    @IBOutlet weak var groupPicker: UIPickerView!
+    @IBOutlet weak var groupTextField: UITextField!
     var pickerData = [Group.family.rawValue, Group.work.rawValue, Group.friends.rawValue]
+    var contactGroup: Group?
+    
     @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var saveEditButton: UIBarButtonItem!
     
     @IBOutlet var textFieldCollection: [UITextField]!
     
     var contact: Contact?
-    var contactGroup: Group?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+        createPickerView()
         updateFieldsContent()
         updateImageButtonText()
         addImageDelegate()
@@ -97,7 +99,8 @@ class AddContactTableViewController: UITableViewController {
         phoneNumberTextField.text = contact.phoneNumber
         emailTextField.text = contact.email
         homeAddressTextField.text = contact.homeAddress
-        groupPicker.selectRow(contact.group.number, inComponent: 0, animated: false)
+        groupTextField.text = contact.group.rawValue
+        //groupPicker.selectRow(contact.group.number, inComponent: 0, animated: false)
     }
     
     private func updateContentForEdit() {
@@ -106,7 +109,7 @@ class AddContactTableViewController: UITableViewController {
         updateSaveEditButtonState()
     }
     
-    func image(image1: UIImage, isEqualTo image2: UIImage?) -> Bool {
+    private func image(image1: UIImage, isEqualTo image2: UIImage?) -> Bool {
         guard let data1 = image1.pngData(), let data2 = image2?.pngData() else { return false }
         return data1 == data2
     }
@@ -119,7 +122,6 @@ class AddContactTableViewController: UITableViewController {
             changePhotoButton.setTitle("Add picture", for: .normal)
         }
     }
-    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -143,7 +145,7 @@ class AddContactTableViewController: UITableViewController {
 
 extension AddContactTableViewController: UIImagePickerControllerDelegate &  UINavigationControllerDelegate {
     
-    func addImageDelegate() {
+    private func addImageDelegate() {
         imagePicker.delegate = self
     }
     
@@ -164,6 +166,12 @@ extension AddContactTableViewController: UIImagePickerControllerDelegate &  UINa
 // MARK: - UIPickerViewDelegate, UIPickerViewDataSource
 
 extension AddContactTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func createPickerView() {
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        groupTextField.inputView = pickerView
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -177,8 +185,8 @@ extension AddContactTableViewController: UIPickerViewDelegate, UIPickerViewDataS
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let index = pickerView.selectedRow(inComponent: 0)
-        contactGroup = Group(rawValue: pickerData[index]) ?? Group.friends
+        contactGroup = Group(rawValue: pickerData[row])
+        groupTextField.text = pickerData[row]
     }
 }
 

@@ -43,7 +43,7 @@ class ContactBook {
             contacts[index] = newValue
         }
     }
-    
+
     func splitContactsInGroups() -> [[Contact]] {
         return [getContactListBy(group: .family),getContactListBy(group: .work), getContactListBy(group: .friends)]
     }
@@ -64,6 +64,10 @@ class ContactBook {
     
     func getContactListBy(group: Group) -> [Contact]{
         return contacts.filter({$0.group == group})
+    }
+    
+    func sorted() -> [Contact]{
+        return contacts.sorted(by: {$0.fullName < $1.fullName})
     }
     
     private func getContactListBy(groupNumber: Int) -> [Contact] {

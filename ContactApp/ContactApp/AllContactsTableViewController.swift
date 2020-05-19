@@ -14,9 +14,12 @@ class AllContactsTableViewController: UITableViewController {
     var contact: Contact?
     let headerTitles = [Group.family.rawValue, Group.work.rawValue, Group.friends.rawValue]
     
+    @IBOutlet weak var addContactButton: UIButton!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = self.editButtonItem
+        addContactButton.isHidden = true
     }
     
     // MARK: - Table view data source
@@ -58,6 +61,12 @@ class AllContactsTableViewController: UITableViewController {
     // MARK: - Action methods
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
         let tableViewEditingMode = tableView.isEditing
+        addContactButton.isHidden = tableViewEditingMode
+        if tableViewEditingMode == true {
+            editButton.title = "Edit"
+        } else {
+            editButton.title = "Done"
+        }
         tableView.setEditing(!tableViewEditingMode, animated: true)
     }
     

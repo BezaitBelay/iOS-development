@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 class MailTableViewController: UITableViewController {
-
+    
     var contactList = ContactBook.shared
     
     override func viewDidLoad() {
@@ -20,14 +20,15 @@ class MailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactList.count
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        cell.textLabel?.text = contactList[indexPath.row].fullName
+        let sortedList = contactList.sorted()
+        cell.textLabel?.text = sortedList[indexPath.row].fullName
         return cell
     }
     
@@ -40,7 +41,10 @@ class MailTableViewController: UITableViewController {
             present(mailComposeViewController,animated: true, completion: nil)
         }
         else {
-            print("No mail service available")
+            let alert = UIAlertController(title: "Not available!", message: "Mail services are not configured", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
     }
 }
