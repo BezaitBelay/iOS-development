@@ -375,7 +375,7 @@
             </objects>
             <point key="canvasLocation" x="-131" y="260"/>
         </scene>
-        <!--Item-->
+        <!--Mail-->
         <scene sceneID="Fb3-OJ-FkB">
             <objects>
                 <tableViewController id="YVk-Os-eb3" customClass="MailTableViewController" customModule="ContactApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -407,17 +407,17 @@
                             <outlet property="delegate" destination="YVk-Os-eb3" id="zxg-Pn-Bd1"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="NRL-Gf-sP0"/>
+                    <tabBarItem key="tabBarItem" title="Mail" image="message.circle" catalog="system" id="NRL-Gf-sP0"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iu8-6a-37N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="760" y="759"/>
         </scene>
-        <!--Item-->
+        <!--Contacts-->
         <scene sceneID="Dx8-Ru-yHX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IcZ-sY-uSg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Ghe-X9-KPE"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="person.crop.circle" catalog="system" id="Ghe-X9-KPE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iA7-b6-cCL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -456,5 +456,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="img0" width="376" height="356"/>
+        <image name="message.circle" catalog="system" width="128" height="121"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>
