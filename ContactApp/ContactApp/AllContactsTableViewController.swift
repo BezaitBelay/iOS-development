@@ -24,11 +24,11 @@ class AllContactsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return ContactBook.shared.splitContactsInGroups().count
+        return contactList.splitContactsInGroups().count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ContactBook.shared.splitContactsInGroups()[section].count
+        return contactList.splitContactsInGroups()[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
