@@ -1,0 +1,19 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://bitbucket.upnetix.com/scm/il/podspecrepo.git'
+
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '10.0'
+
+target 'DynamoSwift' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  
+  # ignore all warnings from all pods
+  inhibit_all_warnings!
+
+  # Pods for DynamoSwift
+  pod 'SwiftLint'
+  pod 'TwoWayBondage', '~> 2.0.1'
+  pod 'Alamofire', '5.0.0-rc.2'
+  pod 'RealmSwift', '~> 3.18'
+end
