@@ -70,6 +70,13 @@ class Coordinator {
         childCoordinators.removeAll()
     }
     
+//    func finishChildCoordinators() {
+//        childCoordinators.forEach { child in
+//            child.finishChildCoordinators()
+//            child.finish()
+//        }
+//    }
+    
 }
 
 extension Coordinator: Equatable {

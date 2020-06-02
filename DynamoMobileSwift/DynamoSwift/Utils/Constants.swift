@@ -22,4 +22,10 @@ struct Constants {
         //The wrapper uses domains.first() ONLY!!!
         static let domains: [String] = ["Common"]
     }
+    
+    struct Storyboards {
+        static let contacts = "Contacts"
+        static let recent = "Recent"
+        static let main = "MainNavigation"
+    }
 }

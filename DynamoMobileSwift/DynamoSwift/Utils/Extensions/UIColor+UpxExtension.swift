@@ -64,6 +64,11 @@ extension UIColor {
         
         return nil
     }
+    static func color(_ colorName: String) -> UIColor {
+        return UIColor(named: colorName) ?? UIColor()
+    }
+    static let baseBlue = color("Base Blue")
+    
 }
 
 extension UIColor {
@@ -139,5 +144,32 @@ extension UIColor {
         blue *= 255
         
         return ((red), (green), (blue), alpha)
+    }
+}
+
+extension UIView {
+    
+    /**
+     Pin the current view's sides to another view.
+     @params: toView - the view to be pinned to
+     @params: margin - the desired margin. 0 by default
+     @params: attributes: the sides to which you want to pin the view
+     */
+    @discardableResult
+    func pinTo(toView: UIView?, margin: CGFloat = 0, attributes: NSLayoutConstraint.Attribute...) -> [NSLayoutConstraint] {
+        var constraints: [NSLayoutConstraint] = []
+        toView?.translatesAutoresizingMaskIntoConstraints = false
+        for side in attributes {
+            let constraint = NSLayoutConstraint(item: self,
+                                                attribute: side,
+                                                relatedBy: NSLayoutConstraint.Relation.equal,
+                                                toItem: toView,
+                                                attribute: side,
+                                                multiplier: 1.0,
+                                                constant: margin)
+            constraints.append(constraint)
+        }
+        self.addConstraints(constraints)
+        return constraints
     }
 }
