@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (5.0.0-rc.2)
+  - SwiftLint (0.27.0)
+  - TwoWayBondage (2.0.1)
+
+DEPENDENCIES:
+  - Alamofire (= 5.0.0-rc.2)
+  - SwiftLint
+  - TwoWayBondage (~> 2.0.1)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - SwiftLint
+    - TwoWayBondage
+
+SPEC CHECKSUMS:
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  TwoWayBondage: fb56f9e15c725628a4f2b8ecb2a987673286aea9
+
+PODFILE CHECKSUM: 37854cad158f4ea68aba1cb1fae78b05f34bf220
+
+COCOAPODS: 1.8.4
