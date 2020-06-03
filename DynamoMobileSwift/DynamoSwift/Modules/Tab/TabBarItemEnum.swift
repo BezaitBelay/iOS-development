@@ -21,7 +21,7 @@ public enum TabBarItem: Int {
         case .contact:
             return "Contact"
         case .recent:
-            return "Recdent"
+            return "Recent"
         }
     }
 }

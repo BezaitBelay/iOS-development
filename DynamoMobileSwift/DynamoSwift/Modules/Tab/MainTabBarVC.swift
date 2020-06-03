@@ -10,15 +10,11 @@ import UIKit
 
 class MainTabBarVC: UITabBarController {
     
-    weak var tabBarCoordinatorDelegate: TabBarCoordinatorProtocol?
+   // weak var tabBarCoordinatorDelegate: TabBarCoordinatorProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
-    }
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        tabBarCoordinatorDelegate?.didSelectTab(item.tag)
     }
     
     private func configureTabBar() {

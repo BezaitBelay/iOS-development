@@ -1,15 +1,15 @@
 //
-//  ContactsVC.swift
+//  RecentVC.swift
 //  DynamoSwift
 //
-//  Created by Dynamo Software on 29.05.20.
+//  Created by Dynamo Software on 3.06.20.
 //  Copyright © 2020 Upnetix. All rights reserved.
 //
 
 import UIKit
 import TwoWayBondage
 
-class ContactsVC: BaseVC {
+class RecentVC: BaseVC {
     
     /*************************************/
     // MARK: - Properties
@@ -22,28 +22,28 @@ class ContactsVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = Constants.Storyboards.contacts
+        navigationItem.title = Constants.Storyboards.recent
     }
 }
 
 // MARK: UITableViewDataSource methods
-extension ContactsVC: UITableViewDataSource {
+extension RecentVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5//viewModel?.numberOfCellsInSection(section) ?? 0
+        return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1//viewModel?.numberOfSections ?? 0
+        return 1
     }
 }
 
 // MARK: - StoryboardInstantiatable
-extension ContactsVC: StoryboardInstantiatable {
+extension RecentVC: StoryboardInstantiatable {
     static func storyboardName() -> String {
-        return Constants.Storyboards.contacts
+        return Constants.Storyboards.recent
     }
 }

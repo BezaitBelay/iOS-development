@@ -29,7 +29,6 @@ class AppCoordinator: Coordinator {
     override func start() {
         // Start the next coordinator in the heirarchy or the current module rootViewModel
         childCoordinators.first?.start()
-        
     }
     
     override func finish() {
@@ -60,18 +59,10 @@ class AppCoordinator: Coordinator {
     }
     
     func openMainTabsNavigation() {
-        guard let tabsCoordinator = tabsCoordinator,
-            let window = window else { return }
-        let transition = CATransition()
-        transition.startProgress = 0.0
-        transition.endProgress = 1.0
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromRight
-        transition.fillMode = CAMediaTimingFillMode.forwards
-        transition.duration = 0.35
+        guard let tabsCoordinator = tabsCoordinator, let window = window else { return }
+        
         window.rootViewController = tabsCoordinator.rootViewController ?? UIViewController()
         window.makeKeyAndVisible()
-        window.layer.add(transition, forKey: "transition")
     }
     
     // MARK: Scene loading

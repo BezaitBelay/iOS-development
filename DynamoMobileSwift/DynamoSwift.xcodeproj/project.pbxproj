@@ -15,22 +15,13 @@
 		3A41D2D6248134C8003665C4 /* ContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2D5248134C8003665C4 /* ContactsCoordinator.swift */; };
 		3A41D2D82481359D003665C4 /* TabBarItemEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2D72481359D003665C4 /* TabBarItemEnum.swift */; };
 		3A41D2DA2481384B003665C4 /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2D92481384B003665C4 /* ContactsVC.swift */; };
-		3A41D2DC2484E025003665C4 /* ContactsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2DB2484E025003665C4 /* ContactsViewModelProtocol.swift */; };
-		3A41D2DE2484E1C4003665C4 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2DD2484E1C4003665C4 /* ContactsTableViewCell.swift */; };
 		3A41D2E02484EDE0003665C4 /* ScreenLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2DF2484EDE0003665C4 /* ScreenLoadingView.swift */; };
-		3A41D2E22484F24B003665C4 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2E12484F24B003665C4 /* ContactsViewModel.swift */; };
-		3A41D2E42484F415003665C4 /* ContactsEntitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2E32484F415003665C4 /* ContactsEntitiesRepository.swift */; };
-		3A41D2E62484F4E3003665C4 /* PickerItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2E52484F4E3003665C4 /* PickerItemsModel.swift */; };
-		3A41D2E82484F6D3003665C4 /* LinksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2E72484F6D3003665C4 /* LinksModel.swift */; };
-		3A41D2EC2484F7DE003665C4 /* DeserializableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2EB2484F7DE003665C4 /* DeserializableModel.swift */; };
 		3A41D2EE24850582003665C4 /* EntitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2ED24850582003665C4 /* EntitiesManager.swift */; };
-		3A41D2F0248505AA003665C4 /* EntitiesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2EF248505AA003665C4 /* EntitiesListModel.swift */; };
-		3A41D2F2248506E2003665C4 /* EntityListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2F1248506E2003665C4 /* EntityListDataModel.swift */; };
-		3A41D2F424850763003665C4 /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2F324850763003665C4 /* UserDefaultsRepository.swift */; };
-		3A41D2F624850C31003665C4 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2F524850C31003665C4 /* UserData.swift */; };
-		3A41D2F824852629003665C4 /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D2F724852629003665C4 /* InitialViewModel.swift */; };
 		3A41D2FC24852C29003665C4 /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A41D2FB24852C29003665C4 /* Contacts.storyboard */; };
 		3A41D326248632F2003665C4 /* MainNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A41D325248632F2003665C4 /* MainNavigation.storyboard */; };
+		3A41D3292487816A003665C4 /* RecentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3282487816A003665C4 /* RecentCoordinator.swift */; };
+		3A41D32B24878179003665C4 /* RecentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D32A24878179003665C4 /* RecentVC.swift */; };
+		3A41D32D24878191003665C4 /* Recent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A41D32C24878191003665C4 /* Recent.storyboard */; };
 		B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBA247CEFCF00EF0A02 /* ParserInterface.swift */; };
 		B5418DDC247CEFCF00EF0A02 /* NetworkingInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBB247CEFCF00EF0A02 /* NetworkingInterface.swift */; };
 		B5418DDD247CEFCF00EF0A02 /* CacheableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBC247CEFCF00EF0A02 /* CacheableProtocol.swift */; };
@@ -142,22 +133,13 @@
 		3A41D2D5248134C8003665C4 /* ContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCoordinator.swift; sourceTree = "<group>"; };
 		3A41D2D72481359D003665C4 /* TabBarItemEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemEnum.swift; sourceTree = "<group>"; };
 		3A41D2D92481384B003665C4 /* ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
-		3A41D2DB2484E025003665C4 /* ContactsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModelProtocol.swift; sourceTree = "<group>"; };
-		3A41D2DD2484E1C4003665C4 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		3A41D2DF2484EDE0003665C4 /* ScreenLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenLoadingView.swift; sourceTree = "<group>"; };
-		3A41D2E12484F24B003665C4 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
-		3A41D2E32484F415003665C4 /* ContactsEntitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsEntitiesRepository.swift; path = DynamoSwift/Modules/ContactsEntitiesRepository.swift; sourceTree = SOURCE_ROOT; };
-		3A41D2E52484F4E3003665C4 /* PickerItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickerItemsModel.swift; path = DynamoSwift/Modules/PickerItemsModel.swift; sourceTree = SOURCE_ROOT; };
-		3A41D2E72484F6D3003665C4 /* LinksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinksModel.swift; path = DynamoSwift/Modules/LinksModel.swift; sourceTree = SOURCE_ROOT; };
-		3A41D2EB2484F7DE003665C4 /* DeserializableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeserializableModel.swift; sourceTree = "<group>"; };
 		3A41D2ED24850582003665C4 /* EntitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitiesManager.swift; sourceTree = "<group>"; };
-		3A41D2EF248505AA003665C4 /* EntitiesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EntitiesListModel.swift; path = DynamoSwift/Utils/EntitiesListModel.swift; sourceTree = SOURCE_ROOT; };
-		3A41D2F1248506E2003665C4 /* EntityListDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EntityListDataModel.swift; path = DynamoSwift/Utils/EntityListDataModel.swift; sourceTree = SOURCE_ROOT; };
-		3A41D2F324850763003665C4 /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsRepository.swift; path = DynamoSwift/Utils/UserDefaultsRepository.swift; sourceTree = SOURCE_ROOT; };
-		3A41D2F524850C31003665C4 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = DynamoSwift/Utils/UserData.swift; sourceTree = SOURCE_ROOT; };
-		3A41D2F724852629003665C4 /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InitialViewModel.swift; path = DynamoSwift/Utils/InitialViewModel.swift; sourceTree = SOURCE_ROOT; };
 		3A41D2FB24852C29003665C4 /* Contacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
 		3A41D325248632F2003665C4 /* MainNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainNavigation.storyboard; sourceTree = "<group>"; };
+		3A41D3282487816A003665C4 /* RecentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCoordinator.swift; sourceTree = "<group>"; };
+		3A41D32A24878179003665C4 /* RecentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentVC.swift; sourceTree = "<group>"; };
+		3A41D32C24878191003665C4 /* Recent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recent.storyboard; sourceTree = "<group>"; };
 		506EF5A8ACE39114D8968608 /* Pods-Skeleton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.debug.xcconfig"; sourceTree = "<group>"; };
 		64FAEDE524787B8587B1BD96 /* Pods-DynamoSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamoSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DynamoSwift/Pods-DynamoSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		85D930213B5B75D9AA05C80E /* Pods-Skeleton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.release.xcconfig"; sourceTree = "<group>"; };
@@ -250,7 +232,6 @@
 		3A41D2EA2484F7C9003665C4 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				3A41D2EB2484F7DE003665C4 /* DeserializableModel.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -259,10 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				3A41D2D5248134C8003665C4 /* ContactsCoordinator.swift */,
-				3A41D2DD2484E1C4003665C4 /* ContactsTableViewCell.swift */,
-				3A41D2DB2484E025003665C4 /* ContactsViewModelProtocol.swift */,
 				3A41D2D92481384B003665C4 /* ContactsVC.swift */,
-				3A41D2E12484F24B003665C4 /* ContactsViewModel.swift */,
 				3A41D2FB24852C29003665C4 /* Contacts.storyboard */,
 			);
 			path = Contact;
@@ -278,6 +256,16 @@
 				3A41D325248632F2003665C4 /* MainNavigation.storyboard */,
 			);
 			path = Tab;
+			sourceTree = "<group>";
+		};
+		3A41D3272487814A003665C4 /* Recent */ = {
+			isa = PBXGroup;
+			children = (
+				3A41D3282487816A003665C4 /* RecentCoordinator.swift */,
+				3A41D32A24878179003665C4 /* RecentVC.swift */,
+				3A41D32C24878191003665C4 /* Recent.storyboard */,
+			);
+			path = Recent;
 			sourceTree = "<group>";
 		};
 		765A56321FB416363579F524 /* Pods */ = {
@@ -430,8 +418,6 @@
 		B972A805219ABA0D00B4BB6C /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				3A41D2E32484F415003665C4 /* ContactsEntitiesRepository.swift */,
-				3A41D2F324850763003665C4 /* UserDefaultsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -439,12 +425,6 @@
 		B972A806219ABA1500B4BB6C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3A41D2E52484F4E3003665C4 /* PickerItemsModel.swift */,
-				3A41D2E72484F6D3003665C4 /* LinksModel.swift */,
-				3A41D2EF248505AA003665C4 /* EntitiesListModel.swift */,
-				3A41D2F1248506E2003665C4 /* EntityListDataModel.swift */,
-				3A41D2F524850C31003665C4 /* UserData.swift */,
-				3A41D2F724852629003665C4 /* InitialViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -472,6 +452,7 @@
 		B9D7491E2114971D00C5D388 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3A41D3272487814A003665C4 /* Recent */,
 				3A41D2FA24852A27003665C4 /* Tab */,
 				3A41D2F924852A13003665C4 /* Contact */,
 				3A41D2DF2484EDE0003665C4 /* ScreenLoadingView.swift */,
@@ -615,6 +596,7 @@
 				3A41D326248632F2003665C4 /* MainNavigation.storyboard in Resources */,
 				B92D65392111A564008D9A7B /* LaunchScreen.storyboard in Resources */,
 				B92D65552111AA6A008D9A7B /* Assets.xcassets in Resources */,
+				3A41D32D24878191003665C4 /* Recent.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,11 +669,8 @@
 				B9DEA2012122E4EE001A4A61 /* UIView+CurrentFirstResponder.swift in Sources */,
 				B972A7C1219AB6F900B4BB6C /* UIView+GradientExtension.swift in Sources */,
 				B5418DEE247CEFCF00EF0A02 /* ShowSLARequest.swift in Sources */,
-				3A41D2F624850C31003665C4 /* UserData.swift in Sources */,
 				B9D7491521133BEC00C5D388 /* UtilFunctions.swift in Sources */,
-				3A41D2F0248505AA003665C4 /* EntitiesListModel.swift in Sources */,
 				B9D7491321133BB100C5D388 /* UIView+UpxExtension.swift in Sources */,
-				3A41D2EC2484F7DE003665C4 /* DeserializableModel.swift in Sources */,
 				B92D65602111AD26008D9A7B /* AppCoordinator.swift in Sources */,
 				B5418DF0247CEFCF00EF0A02 /* SSOLoginRequest.swift in Sources */,
 				B9D1EE4D219D9798006509CA /* Constants.swift in Sources */,
@@ -701,28 +680,22 @@
 				B972A7B5219AB2E000B4BB6C /* BaseVC.swift in Sources */,
 				B96ADC44219C54D6001EFAD4 /* BaseDataSourceProtocol.swift in Sources */,
 				B5418DE7247CEFCF00EF0A02 /* ResetRequest.swift in Sources */,
-				3A41D2DC2484E025003665C4 /* ContactsViewModelProtocol.swift in Sources */,
 				B9D7491D2113444B00C5D388 /* Url+OpenUrl.swift in Sources */,
 				B972A7BD219AB63B00B4BB6C /* Bundle+VersionNumber.swift in Sources */,
 				B5418DF6247CEFCF00EF0A02 /* BaseAPIRequest.swift in Sources */,
 				B92D655D2111AB14008D9A7B /* Coordinator.swift in Sources */,
-				3A41D2E22484F24B003665C4 /* ContactsViewModel.swift in Sources */,
 				B972A7B4219AB2E000B4BB6C /* BaseViewConfigurator.swift in Sources */,
 				B9D7491B2113424600C5D388 /* Array+UniqueAddRemove.swift in Sources */,
 				B5418DFB247CEFF400EF0A02 /* NetworkKit+NoConnection.swift in Sources */,
 				B5418DE4247CEFCF00EF0A02 /* ApiKeyRequest.swift in Sources */,
 				B972A7BF219AB66D00B4BB6C /* UIView+Animations.swift in Sources */,
 				B5418DE3247CEFCF00EF0A02 /* LoginRequest.swift in Sources */,
-				3A41D2E62484F4E3003665C4 /* PickerItemsModel.swift in Sources */,
 				B5418DE0247CEFCF00EF0A02 /* StatusCode+Utils.swift in Sources */,
-				3A41D2F824852629003665C4 /* InitialViewModel.swift in Sources */,
 				B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */,
 				B9D7491A2113424600C5D388 /* UIColor+UpxExtension.swift in Sources */,
-				3A41D2F2248506E2003665C4 /* EntityListDataModel.swift in Sources */,
 				B9D74917211341B000C5D388 /* UIApplication+UpxExtension.swift in Sources */,
 				3A41D2D4248132BC003665C4 /* MainTabBarVC.swift in Sources */,
 				B5418DE6247CEFCF00EF0A02 /* NewSSOLoginRequest.swift in Sources */,
-				3A41D2E42484F415003665C4 /* ContactsEntitiesRepository.swift in Sources */,
 				B5418DF8247CEFCF00EF0A02 /* APIRequest.swift in Sources */,
 				B9D1EE4F219D97AA006509CA /* LocalizerKeys.swift in Sources */,
 				B5418DEC247CEFCF00EF0A02 /* SearchNextPageRequest.swift in Sources */,
@@ -734,7 +707,6 @@
 				B5418DF7247CEFCF00EF0A02 /* APIConfig.swift in Sources */,
 				B972A7C3219AB73100B4BB6C /* NotificaitonNameExtension.swift in Sources */,
 				B5418DF4247CEFCF00EF0A02 /* EntityDeleteRequest.swift in Sources */,
-				3A41D2F424850763003665C4 /* UserDefaultsRepository.swift in Sources */,
 				B5418DEA247CEFCF00EF0A02 /* BusinessCardRequest.swift in Sources */,
 				B5418DF3247CEFCF00EF0A02 /* SessionTokenRequest.swift in Sources */,
 				B9D749212115C27B00C5D388 /* StoryboardInstantiatable.swift in Sources */,
@@ -751,15 +723,15 @@
 				B5418DF2247CEFCF00EF0A02 /* SLAToyRequest.swift in Sources */,
 				3A41D2CE24812DD9003665C4 /* TabCoordinator.swift in Sources */,
 				3A41D2EE24850582003665C4 /* EntitiesManager.swift in Sources */,
+				3A41D3292487816A003665C4 /* RecentCoordinator.swift in Sources */,
 				B5418DDC247CEFCF00EF0A02 /* NetworkingInterface.swift in Sources */,
-				3A41D2E82484F6D3003665C4 /* LinksModel.swift in Sources */,
 				3A41D2D6248134C8003665C4 /* ContactsCoordinator.swift in Sources */,
 				B5418DE9247CEFCF00EF0A02 /* EntityUpdateRequest.swift in Sources */,
 				B9D1EE44219D6E1E006509CA /* UICollectionView+EmptyCellExtension.swift in Sources */,
-				3A41D2DE2484E1C4003665C4 /* ContactsTableViewCell.swift in Sources */,
 				B5418DEF247CEFCF00EF0A02 /* AllowedLoginServicesRequest.swift in Sources */,
 				B92D65572111AA6A008D9A7B /* AppDelegate.swift in Sources */,
 				3A41D2E02484EDE0003665C4 /* ScreenLoadingView.swift in Sources */,
+				3A41D32B24878179003665C4 /* RecentVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

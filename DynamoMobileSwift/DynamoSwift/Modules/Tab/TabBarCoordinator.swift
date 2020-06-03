@@ -32,13 +32,10 @@ class TabBarCoordinator: Coordinator {
         
         if let tabBarInstantiatedVC = MainTabBarVC.instantiateFromStoryboard() as? MainTabBarVC {
             rootViewController = tabBarInstantiatedVC
-            rootViewController?.tabBarCoordinatorDelegate = self
         }
         
         let contactsCoordinator = ContactsCoordinator()
-        contactsCoordinator.viewModelReadyAction = {[weak self] in
-            self?.manageTabCoordinatorsAndControllersWith(firstCoordinator: contactsCoordinator)
-        }
+        self.manageTabCoordinatorsAndControllersWith(firstCoordinator: contactsCoordinator)
     }
     
     override func start() {
@@ -60,15 +57,15 @@ class TabBarCoordinator: Coordinator {
         var tabCoordinators: [TabCoordinator] = []
         var viewControllers: [UIViewController] = []
         
-        tabCoordinators.append(firstCoordinator) //contactsCoordinator already
+        tabCoordinators.append(firstCoordinator)
         
-//        let contactsCoordinator = ContactsCoordinator()
-//        tabCoordinators.append(contactsCoordinator)
+        let recentCoordinator = RecentCoordinator()
+        tabCoordinators.append(recentCoordinator)
 
-//        // Sort the local coordinators array
-//        tabCoordinators.sort { (c1, c2) -> Bool in
-//            return c1.tabIndex < c2.tabIndex
-//        }
+        // Sort the local coordinators array
+        tabCoordinators.sort { (c1, c2) -> Bool in
+            return c1.tabIndex < c2.tabIndex
+        }
         
         // for each coordinator add the root and a child coordinator
         for coordinator in tabCoordinators {
@@ -92,7 +89,7 @@ extension TabBarCoordinator: TabBarCoordinatorProtocol {
             return false
         }
         if let tabCoordinator = tabCoordinator as? TabCoordinator {
-            //Log.debug("DidSelectTab: \(index)")
+            print("DidSelectTab: \(index)")
             previousTabIndex = index
             tabCoordinator.start()
         }
