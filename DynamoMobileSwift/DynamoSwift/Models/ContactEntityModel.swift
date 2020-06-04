@@ -10,10 +10,9 @@ import Foundation
 
 struct EntityData: Codable {
     let success: Bool
-    let links: [String: String]?
+    let links: [String: URL]?
     let data: [Contact]
     let error: String?
-    
 }
 
 struct Contact: Codable {

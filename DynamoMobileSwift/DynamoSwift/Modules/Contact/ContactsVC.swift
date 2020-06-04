@@ -15,8 +15,9 @@ class ContactsVC: BaseVC {
     // MARK: - Properties
     /*************************************/
     @IBOutlet weak var tableView: UITableView!
+    var cellViewModels = [ContactsCellViewModel]()
+    
     let apiClient = ApiClient()
-    var data: EntityData?
     override var isVisible: Bool {
         return true
     }
@@ -24,6 +25,7 @@ class ContactsVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Constants.Storyboards.contacts
+        tableView.register(cellNames: "\(ContactsTableViewCell.self)")
         loadContacts()
     }
     
@@ -33,7 +35,12 @@ class ContactsVC: BaseVC {
             switch either {
             case .value(let response):
                 print(response)
-                self.data = response
+                self.cellViewModels = response.data.map {
+                    ContactsCellViewModel(id: $0.id, es: $0.es, url: URL(fileURLWithPath: ""))
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             case .error(let error):
                 print(error)
             }
@@ -44,13 +51,14 @@ class ContactsVC: BaseVC {
 // MARK: UITableViewDataSource methods
 extension ContactsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath)
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath) as? ContactsTableViewCell else { return UITableViewCell() }
+        let cellViewModel = cellViewModels[indexPath.row]
+        cell.configureWith(cellViewModel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cellViewModels.count
     }
 }
 
