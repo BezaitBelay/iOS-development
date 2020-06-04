@@ -22,6 +22,10 @@
 		3A41D3292487816A003665C4 /* RecentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3282487816A003665C4 /* RecentCoordinator.swift */; };
 		3A41D32B24878179003665C4 /* RecentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D32A24878179003665C4 /* RecentVC.swift */; };
 		3A41D32D24878191003665C4 /* Recent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A41D32C24878191003665C4 /* Recent.storyboard */; };
+		3A41D3302487D011003665C4 /* ContactEntityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D32F2487D011003665C4 /* ContactEntityModel.swift */; };
+		3A41D3322487D977003665C4 /* BaseApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3312487D977003665C4 /* BaseApiClientProtocol.swift */; };
+		3A41D3342487DD89003665C4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3332487DD89003665C4 /* Endpoint.swift */; };
+		3A41D3362487E340003665C4 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3352487E340003665C4 /* ApiClient.swift */; };
 		B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBA247CEFCF00EF0A02 /* ParserInterface.swift */; };
 		B5418DDC247CEFCF00EF0A02 /* NetworkingInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBB247CEFCF00EF0A02 /* NetworkingInterface.swift */; };
 		B5418DDD247CEFCF00EF0A02 /* CacheableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBC247CEFCF00EF0A02 /* CacheableProtocol.swift */; };
@@ -140,6 +144,10 @@
 		3A41D3282487816A003665C4 /* RecentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCoordinator.swift; sourceTree = "<group>"; };
 		3A41D32A24878179003665C4 /* RecentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentVC.swift; sourceTree = "<group>"; };
 		3A41D32C24878191003665C4 /* Recent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recent.storyboard; sourceTree = "<group>"; };
+		3A41D32F2487D011003665C4 /* ContactEntityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactEntityModel.swift; path = DynamoSwift/Models/ContactEntityModel.swift; sourceTree = SOURCE_ROOT; };
+		3A41D3312487D977003665C4 /* BaseApiClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseApiClientProtocol.swift; path = DynamoSwift/Modules/Recent/BaseApiClientProtocol.swift; sourceTree = SOURCE_ROOT; };
+		3A41D3332487DD89003665C4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = DynamoSwift/Modules/Recent/Endpoint.swift; sourceTree = SOURCE_ROOT; };
+		3A41D3352487E340003665C4 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApiClient.swift; path = DynamoSwift/Modules/Recent/ApiClient.swift; sourceTree = SOURCE_ROOT; };
 		506EF5A8ACE39114D8968608 /* Pods-Skeleton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.debug.xcconfig"; sourceTree = "<group>"; };
 		64FAEDE524787B8587B1BD96 /* Pods-DynamoSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamoSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DynamoSwift/Pods-DynamoSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		85D930213B5B75D9AA05C80E /* Pods-Skeleton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.release.xcconfig"; sourceTree = "<group>"; };
@@ -268,6 +276,16 @@
 			path = Recent;
 			sourceTree = "<group>";
 		};
+		3A41D32E2487CFF5003665C4 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3A41D3312487D977003665C4 /* BaseApiClientProtocol.swift */,
+				3A41D3332487DD89003665C4 /* Endpoint.swift */,
+				3A41D3352487E340003665C4 /* ApiClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		765A56321FB416363579F524 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +374,7 @@
 		B92D652D2111A561008D9A7B /* DynamoSwift */ = {
 			isa = PBXGroup;
 			children = (
+				3A41D32E2487CFF5003665C4 /* API */,
 				B972A806219ABA1500B4BB6C /* Models */,
 				B972A805219ABA0D00B4BB6C /* Repositories */,
 				B9D7491E2114971D00C5D388 /* Modules */,
@@ -425,6 +444,7 @@
 		B972A806219ABA1500B4BB6C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3A41D32F2487D011003665C4 /* ContactEntityModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -452,9 +472,9 @@
 		B9D7491E2114971D00C5D388 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3A41D2F924852A13003665C4 /* Contact */,
 				3A41D3272487814A003665C4 /* Recent */,
 				3A41D2FA24852A27003665C4 /* Tab */,
-				3A41D2F924852A13003665C4 /* Contact */,
 				3A41D2DF2484EDE0003665C4 /* ScreenLoadingView.swift */,
 			);
 			path = Modules;
@@ -694,11 +714,13 @@
 				B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */,
 				B9D7491A2113424600C5D388 /* UIColor+UpxExtension.swift in Sources */,
 				B9D74917211341B000C5D388 /* UIApplication+UpxExtension.swift in Sources */,
+				3A41D3362487E340003665C4 /* ApiClient.swift in Sources */,
 				3A41D2D4248132BC003665C4 /* MainTabBarVC.swift in Sources */,
 				B5418DE6247CEFCF00EF0A02 /* NewSSOLoginRequest.swift in Sources */,
 				B5418DF8247CEFCF00EF0A02 /* APIRequest.swift in Sources */,
 				B9D1EE4F219D97AA006509CA /* LocalizerKeys.swift in Sources */,
 				B5418DEC247CEFCF00EF0A02 /* SearchNextPageRequest.swift in Sources */,
+				3A41D3302487D011003665C4 /* ContactEntityModel.swift in Sources */,
 				B5418DEB247CEFCF00EF0A02 /* ViewsSearchRequest.swift in Sources */,
 				B972A7C5219AB7E900B4BB6C /* UIActivityIndicator+ViewInCenter.swift in Sources */,
 				3A41D2D22481328B003665C4 /* TabBarCoordinator.swift in Sources */,
@@ -720,6 +742,7 @@
 				B5418DE5247CEFCF00EF0A02 /* AvailableEntitiesRequest.swift in Sources */,
 				B5418DE8247CEFCF00EF0A02 /* AccessTokenRequest.swift in Sources */,
 				B5418DED247CEFCF00EF0A02 /* DataRequestWithSearch.swift in Sources */,
+				3A41D3322487D977003665C4 /* BaseApiClientProtocol.swift in Sources */,
 				B5418DF2247CEFCF00EF0A02 /* SLAToyRequest.swift in Sources */,
 				3A41D2CE24812DD9003665C4 /* TabCoordinator.swift in Sources */,
 				3A41D2EE24850582003665C4 /* EntitiesManager.swift in Sources */,
@@ -730,6 +753,7 @@
 				B9D1EE44219D6E1E006509CA /* UICollectionView+EmptyCellExtension.swift in Sources */,
 				B5418DEF247CEFCF00EF0A02 /* AllowedLoginServicesRequest.swift in Sources */,
 				B92D65572111AA6A008D9A7B /* AppDelegate.swift in Sources */,
+				3A41D3342487DD89003665C4 /* Endpoint.swift in Sources */,
 				3A41D2E02484EDE0003665C4 /* ScreenLoadingView.swift in Sources */,
 				3A41D32B24878179003665C4 /* RecentVC.swift in Sources */,
 			);
