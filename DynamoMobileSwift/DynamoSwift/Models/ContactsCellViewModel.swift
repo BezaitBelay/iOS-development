@@ -10,16 +10,17 @@ import UIKit
 
 struct ContactsCellViewModel {
     var id: String
-      var es: String
-    var url: URL
+    var es: String
+//
+//    func loadImage(completion: @escaping (UIImage?) -> Void) {
+//        guard let imageData = try? Data(contentsOf: url) else {
+//            return
+//        }
+//        let image = UIImage(data: imageData)
+//        DispatchQueue.main.async {
+//            completion(image)
+//        }
+//    }
     
-    func loadImage(completion: @escaping (UIImage?) -> Void) {
-        guard let imageData = try? Data(contentsOf: url) else {
-            return
-        }
-        let image = UIImage(data: imageData)
-        DispatchQueue.main.async {
-            completion(image)
-        }
-    }
+    
 }
