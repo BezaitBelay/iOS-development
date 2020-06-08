@@ -22,6 +22,13 @@ class ContactsVC: BaseVC {
         super.viewDidLoad()
         navigationItem.title = Constants.Storyboards.contacts
         tableView.register(cellNames: "\(ContactsTableViewCell.self)")
+        bindViewModel(viewModel)
+    }
+    
+    private func bindViewModel(_ viewModel: ContactsViewModelProtocol?) {
+        viewModel?.entities.bindAndFire { [weak self] _ in
+        self?.tableView.reloadData()
+        }
     }
 }
 
@@ -30,7 +37,7 @@ extension ContactsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let configurator = viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section) else { return UITableViewCell() }
-        guard let contacts = viewModel?.contacts else { return UITableViewCell()}
+        guard let contacts = viewModel?.entities.value else { return UITableViewCell()}
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath)
             as? ContactsTableViewCell else { return UITableViewCell() }
         

@@ -8,15 +8,17 @@
 
 import UIKit
 import TwoWayBondage
-//
-//protocol ContactsViewModelProtocol: BaseDataSource {
-//    //var entities: Observable<[Contact]> {get}
-//    //    var shouldShowLoading: Observable<Bool> {get set}
-//    //    var shouldReloadTable: Observable<Bool> {get set}
-//}
 
-class ContactsViewModel: BaseDataSource {
-    var contacts: [Contact]?
+protocol ContactsViewModelProtocol: BaseDataSource {
+    var entities: Observable<[Contact]> {get}
+    //    var shouldShowLoading: Observable<Bool> {get set}
+        var shouldReloadTable: Observable<Bool> {get set}
+}
+
+class ContactsViewModel: ContactsViewModelProtocol {
+    var entities = Observable<[Contact]>()
+    var shouldReloadTable = Observable<Bool>(false)
+   // var contacts: [Contact]?
     private var currentItemType: String = "contact"
     private var nextPageURL: String?
     private var itemsRepository: ContactsRepositoryProtocol?
@@ -27,19 +29,20 @@ class ContactsViewModel: BaseDataSource {
         itemsRepository = ContactsRepository()
         itemsRepository?.getEntitiesOf(type: currentItemType, nextPageURL: nextPageURL) { (itemsResponse) in
             print(itemsResponse?.data ?? "itemsResponse is nil")
-            self.contacts = itemsResponse?.data
+            self.entities.value = itemsResponse?.data
+            self.shouldReloadTable.value = true
         }
     }
     
     func numberOfCellsInSection(_ section: Int) -> Int? {
-        return contacts?.count
+        return entities.value?.count
     }
     
     func viewConfigurator(at index: Int, in section: Int) -> ViewConfigurator? {
         let configurator: ViewConfigurator
-        let cellModel = ContactCellModel(id: contacts?[index].id ?? "", es: contacts?[index].es ?? "")
+        let cellModel = ContactCellModel(id: entities.value?[index].id ?? "", es: entities.value?[index].es ?? "")
         configurator = ContactCellConfigurator(data: cellModel) {[weak self] in
-            guard let strongSelf = self, let contacts = self?.contacts else { return }
+            guard let strongSelf = self, let contacts = self?.entities.value else { return }
             strongSelf.delegate?.openAllEntities(contacts)
         }
         return configurator
