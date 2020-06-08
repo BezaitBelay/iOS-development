@@ -37,8 +37,6 @@ extension ContactsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let configurator = viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section) else { return UITableViewCell() }
         let cell = tableView.configureCell(for: configurator, at: indexPath)
-        
-        configurator.configure(cell)
         return cell
     }
     
