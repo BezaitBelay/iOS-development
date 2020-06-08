@@ -18,9 +18,10 @@ struct EntityData: Codable {
 struct Contact: Codable {
     var id: String
     var es: String
-    
+    var name: String
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
         case es = "_es"
+        case name = "Identifier"
     }
 }

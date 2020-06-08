@@ -30,6 +30,8 @@
 		3A41D33A2488EF07003665C4 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3392488EF07003665C4 /* ContactsTableViewCell.swift */; };
 		3A41D33C2488F484003665C4 /* ContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A41D33B2488F484003665C4 /* ContactsTableViewCell.xib */; };
 		3A41D33E24893F19003665C4 /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D33D24893F19003665C4 /* ContactsRepository.swift */; };
+		3AD97707248E61EB00AA939E /* DynamoIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AD97705248E409300AA939E /* DynamoIcons.ttf */; };
+		3AD97708248E673800AA939E /* DynamoIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AD97705248E409300AA939E /* DynamoIcons.ttf */; };
 		B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBA247CEFCF00EF0A02 /* ParserInterface.swift */; };
 		B5418DDC247CEFCF00EF0A02 /* NetworkingInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBB247CEFCF00EF0A02 /* NetworkingInterface.swift */; };
 		B5418DDD247CEFCF00EF0A02 /* CacheableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBC247CEFCF00EF0A02 /* CacheableProtocol.swift */; };
@@ -156,6 +158,7 @@
 		3A41D3392488EF07003665C4 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		3A41D33B2488F484003665C4 /* ContactsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsTableViewCell.xib; sourceTree = "<group>"; };
 		3A41D33D24893F19003665C4 /* ContactsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsRepository.swift; path = DynamoSwift/Modules/Contact/ContactsRepository.swift; sourceTree = SOURCE_ROOT; };
+		3AD97705248E409300AA939E /* DynamoIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DynamoIcons.ttf; path = "../../../../../Training/icons-15-10-19/DynamoIcons.ttf"; sourceTree = "<group>"; };
 		506EF5A8ACE39114D8968608 /* Pods-Skeleton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.debug.xcconfig"; sourceTree = "<group>"; };
 		64FAEDE524787B8587B1BD96 /* Pods-DynamoSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamoSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DynamoSwift/Pods-DynamoSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		85D930213B5B75D9AA05C80E /* Pods-Skeleton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.release.xcconfig"; sourceTree = "<group>"; };
@@ -297,6 +300,22 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		3AD97703248E405700AA939E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3AD97704248E406C00AA939E /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3AD97704248E406C00AA939E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3AD97705248E409300AA939E /* DynamoIcons.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		765A56321FB416363579F524 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +404,7 @@
 		B92D652D2111A561008D9A7B /* DynamoSwift */ = {
 			isa = PBXGroup;
 			children = (
+				3AD97703248E405700AA939E /* Resources */,
 				3A41D32E2487CFF5003665C4 /* API */,
 				B972A806219ABA1500B4BB6C /* Models */,
 				B972A805219ABA0D00B4BB6C /* Repositories */,
@@ -628,6 +648,7 @@
 				3A41D326248632F2003665C4 /* MainNavigation.storyboard in Resources */,
 				B92D65392111A564008D9A7B /* LaunchScreen.storyboard in Resources */,
 				B92D65552111AA6A008D9A7B /* Assets.xcassets in Resources */,
+				3AD97708248E673800AA939E /* DynamoIcons.ttf in Resources */,
 				3A41D33C2488F484003665C4 /* ContactsTableViewCell.xib in Resources */,
 				3A41D32D24878191003665C4 /* Recent.storyboard in Resources */,
 			);
@@ -637,6 +658,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AD97707248E61EB00AA939E /* DynamoIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

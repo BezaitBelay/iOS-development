@@ -40,7 +40,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
     
     func viewConfigurator(at index: Int, in section: Int) -> ViewConfigurator? {
         let configurator: ViewConfigurator
-        let cellModel = ContactCellModel(id: entities.value?[index].id ?? "", es: entities.value?[index].es ?? "")
+        let cellModel = Contact(id: entities.value?[index].id ?? "", es: entities.value?[index].es ?? "", name: entities.value?[index].name ?? "")
         configurator = ContactCellConfigurator(data: cellModel) {[weak self] in
             guard let strongSelf = self, let contacts = self?.entities.value else { return }
             strongSelf.delegate?.openAllEntities(contacts)

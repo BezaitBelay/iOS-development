@@ -9,18 +9,18 @@
 import Foundation
 
 class EntitiesManager {
-//    static let shared = EntitiesManager()
-//
-//    private var availableEntities: [EntityModel] = []
-//
-//    func setEntities(_ entities: [EntityModel]) {
-//        availableEntities = entities
-//    }
-//
-//    func getEntityLabelFor(name: String?) -> String? {
-//        let entity = availableEntities.first(where: {$0.name == name})
-//        return entity?.label
-//    }
+    static let shared = EntitiesManager()
+
+    private var availableEntities: [Contact] = []
+
+    func setEntities(_ entities: [Contact]) {
+        availableEntities = entities
+    }
+
+    func getEntityLabelFor(name: String?) -> String? {
+        let entity = availableEntities.first(where: {$0.name == name})
+        return entity?.name
+    }
     
 //    func getEntitySubtitleTypeFor(name: String?) -> String? {
 //        let entity = availableEntities.first(where: {$0.name == name})

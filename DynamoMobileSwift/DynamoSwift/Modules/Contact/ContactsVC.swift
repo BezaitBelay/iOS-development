@@ -27,7 +27,7 @@ class ContactsVC: BaseVC {
     
     private func bindViewModel(_ viewModel: ContactsViewModelProtocol?) {
         viewModel?.entities.bindAndFire { [weak self] _ in
-        self?.tableView.reloadData()
+            self?.tableView.reloadData()
         }
     }
 }
@@ -35,16 +35,10 @@ class ContactsVC: BaseVC {
 // MARK: UITableViewDataSource methods
 extension ContactsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let configurator = viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section) else { return UITableViewCell() }
-        guard let contacts = viewModel?.entities.value else { return UITableViewCell()}
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath)
-            as? ContactsTableViewCell else { return UITableViewCell() }
+        let cell = tableView.configureCell(for: configurator, at: indexPath)
         
-        let cellViewModel = ContactCellModel(id: contacts[indexPath.row].id, es: contacts[indexPath.row].es)
         configurator.configure(cell)
-        cell.configureWith(cellViewModel)
-        
         return cell
     }
     
