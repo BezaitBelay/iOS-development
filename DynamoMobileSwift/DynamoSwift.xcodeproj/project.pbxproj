@@ -26,9 +26,10 @@
 		3A41D3322487D977003665C4 /* BaseApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3312487D977003665C4 /* BaseApiClientProtocol.swift */; };
 		3A41D3342487DD89003665C4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3332487DD89003665C4 /* Endpoint.swift */; };
 		3A41D3362487E340003665C4 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3352487E340003665C4 /* ApiClient.swift */; };
-		3A41D3382488E607003665C4 /* ContactsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3372488E607003665C4 /* ContactsCellViewModel.swift */; };
+		3A41D3382488E607003665C4 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3372488E607003665C4 /* ContactsViewModel.swift */; };
 		3A41D33A2488EF07003665C4 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3392488EF07003665C4 /* ContactsTableViewCell.swift */; };
 		3A41D33C2488F484003665C4 /* ContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A41D33B2488F484003665C4 /* ContactsTableViewCell.xib */; };
+		3A41D33E24893F19003665C4 /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D33D24893F19003665C4 /* ContactsRepository.swift */; };
 		B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBA247CEFCF00EF0A02 /* ParserInterface.swift */; };
 		B5418DDC247CEFCF00EF0A02 /* NetworkingInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBB247CEFCF00EF0A02 /* NetworkingInterface.swift */; };
 		B5418DDD247CEFCF00EF0A02 /* CacheableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBC247CEFCF00EF0A02 /* CacheableProtocol.swift */; };
@@ -151,9 +152,10 @@
 		3A41D3312487D977003665C4 /* BaseApiClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseApiClientProtocol.swift; path = DynamoSwift/Modules/Recent/BaseApiClientProtocol.swift; sourceTree = SOURCE_ROOT; };
 		3A41D3332487DD89003665C4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = DynamoSwift/Modules/Recent/Endpoint.swift; sourceTree = SOURCE_ROOT; };
 		3A41D3352487E340003665C4 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApiClient.swift; path = DynamoSwift/Modules/Recent/ApiClient.swift; sourceTree = SOURCE_ROOT; };
-		3A41D3372488E607003665C4 /* ContactsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCellViewModel.swift; sourceTree = "<group>"; };
+		3A41D3372488E607003665C4 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		3A41D3392488EF07003665C4 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		3A41D33B2488F484003665C4 /* ContactsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsTableViewCell.xib; sourceTree = "<group>"; };
+		3A41D33D24893F19003665C4 /* ContactsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsRepository.swift; path = DynamoSwift/Modules/Contact/ContactsRepository.swift; sourceTree = SOURCE_ROOT; };
 		506EF5A8ACE39114D8968608 /* Pods-Skeleton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.debug.xcconfig"; sourceTree = "<group>"; };
 		64FAEDE524787B8587B1BD96 /* Pods-DynamoSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamoSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DynamoSwift/Pods-DynamoSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		85D930213B5B75D9AA05C80E /* Pods-Skeleton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.release.xcconfig"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		3A41D2F924852A13003665C4 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				3A41D3372488E607003665C4 /* ContactsViewModel.swift */,
 				3A41D2D5248134C8003665C4 /* ContactsCoordinator.swift */,
 				3A41D2D92481384B003665C4 /* ContactsVC.swift */,
 				3A41D2FB24852C29003665C4 /* Contacts.storyboard */,
@@ -445,6 +448,7 @@
 		B972A805219ABA0D00B4BB6C /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				3A41D33D24893F19003665C4 /* ContactsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -453,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				3A41D32F2487D011003665C4 /* ContactEntityModel.swift */,
-				3A41D3372488E607003665C4 /* ContactsCellViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -714,10 +717,11 @@
 				B972A7BD219AB63B00B4BB6C /* Bundle+VersionNumber.swift in Sources */,
 				B5418DF6247CEFCF00EF0A02 /* BaseAPIRequest.swift in Sources */,
 				B92D655D2111AB14008D9A7B /* Coordinator.swift in Sources */,
+				3A41D33E24893F19003665C4 /* ContactsRepository.swift in Sources */,
 				B972A7B4219AB2E000B4BB6C /* BaseViewConfigurator.swift in Sources */,
 				B9D7491B2113424600C5D388 /* Array+UniqueAddRemove.swift in Sources */,
 				B5418DFB247CEFF400EF0A02 /* NetworkKit+NoConnection.swift in Sources */,
-				3A41D3382488E607003665C4 /* ContactsCellViewModel.swift in Sources */,
+				3A41D3382488E607003665C4 /* ContactsViewModel.swift in Sources */,
 				B5418DE4247CEFCF00EF0A02 /* ApiKeyRequest.swift in Sources */,
 				B972A7BF219AB66D00B4BB6C /* UIView+Animations.swift in Sources */,
 				B5418DE3247CEFCF00EF0A02 /* LoginRequest.swift in Sources */,

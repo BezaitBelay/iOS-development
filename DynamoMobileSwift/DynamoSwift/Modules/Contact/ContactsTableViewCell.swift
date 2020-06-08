@@ -8,9 +8,21 @@
 
 import UIKit
 
-class ContactsTableViewCell: UITableViewCell {
-    func configureWith(_ data: ContactsCellViewModel) {
+typealias ContactCellConfigurator = BaseViewConfigurator<ContactsTableViewCell>
+
+class ContactsTableViewCell: UITableViewCell, Configurable {
+    func configureWith(_ data: ContactCellModel) {
         textLabel?.text = data.id
         detailTextLabel?.text = data.es
+    }
+}
+
+class ContactCellModel {
+    var id: String
+    var es: String
+    
+    init(id: String, es: String) {
+        self.id = id
+        self.es = es
     }
 }

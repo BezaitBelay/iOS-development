@@ -9,7 +9,11 @@
 import UIKit
 import TwoWayBondage
 
-class ContactsCoordinator: TabCoordinator {
+protocol ContactsCoordinatorDelegate: class {
+    func openAllEntities(_ entities: [Contact])
+}
+
+class ContactsCoordinator: TabCoordinator, ContactsCoordinatorDelegate {
     
     /*************************************/
     // MARK: - Coordinator
@@ -24,7 +28,7 @@ class ContactsCoordinator: TabCoordinator {
         topVC.shouldFinishScene = true
         rootViewController = BaseNavigationVC(rootViewController: topVC)
         setupTabBar()
-        
+        topVC.viewModel = ContactsViewModel()
         guard let appCoordinator = UIApplication.mainDelegate?.appCoordinator else { return }
         appCoordinator.openMainTabsNavigation()
     }
@@ -43,5 +47,13 @@ class ContactsCoordinator: TabCoordinator {
                                                       image: UIImage(named: "ic_contact_on"),
                                                       selectedImage: UIImage(named: "ic_contact_off"))
         rootViewController?.tabBarItem.tag = tabIndex
+    }
+    
+    func openAllEntities(_ entities: [Contact]) {
+        guard let allEntitiesVC = ContactsVC.instantiateFromStoryboard() as? ContactsVC else { return }
+        let allEntitiesViewModel = ContactsViewModel()
+        allEntitiesViewModel.delegate = self
+        allEntitiesVC.viewModel = allEntitiesViewModel
+        rootViewController?.pushViewController(allEntitiesVC, animated: true)
     }
 }

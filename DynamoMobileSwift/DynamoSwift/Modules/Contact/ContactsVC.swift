@@ -15,50 +15,35 @@ class ContactsVC: BaseVC {
     // MARK: - Properties
     /*************************************/
     @IBOutlet weak var tableView: UITableView!
-    var cellViewModels = [ContactsCellViewModel]()
     
-    let apiClient = ApiClient()
-    override var isVisible: Bool {
-        return true
-    }
+    var viewModel: ContactsViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Constants.Storyboards.contacts
         tableView.register(cellNames: "\(ContactsTableViewCell.self)")
-        loadContacts()
-    }
-    
-    private func loadContacts() {
-        let endpoint = EntityEndpoint.contact(es: "contact")
-        apiClient.contacts(with: endpoint) { (either) in
-            switch either {
-            case .value(let response):
-                print(response)
-                self.cellViewModels = response.data.map {
-                    ContactsCellViewModel(id: $0.id, es: $0.es, url: URL(fileURLWithPath: ""))
-                }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case .error(let error):
-                print(error)
-            }
-        }
     }
 }
 
 // MARK: UITableViewDataSource methods
 extension ContactsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath) as? ContactsTableViewCell else { return UITableViewCell() }
-        let cellViewModel = cellViewModels[indexPath.row]
+        
+        guard let configurator = viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section) else { return UITableViewCell() }
+        guard let contacts = viewModel?.contacts else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath)
+            as? ContactsTableViewCell else { return UITableViewCell() }
+        
+        let cellViewModel = ContactCellModel(id: contacts[indexPath.row].id, es: contacts[indexPath.row].es)
+        configurator.configure(cell)
         cell.configureWith(cellViewModel)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellViewModels.count
+        print(viewModel?.numberOfCellsInSection(section) ?? 0)
+        return viewModel?.numberOfCellsInSection(section) ?? 0
     }
 }
 
