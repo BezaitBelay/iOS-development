@@ -10,7 +10,7 @@ import Foundation
 
 struct EntityData: Codable {
     let success: Bool
-    let links: [String: URL]?
+    let links: Links?
     let data: [Contact]
     let error: String?
 }
@@ -23,5 +23,15 @@ struct Contact: Codable {
         case id = "_id"
         case es = "_es"
         case name = "Identifier"
+    }
+}
+
+struct Links: Codable {
+    let link: String
+    let nextLink: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case link = "self"
+        case nextLink = "next"
     }
 }

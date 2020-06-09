@@ -14,6 +14,7 @@ class ContactsTableViewCell: UITableViewCell, Configurable {
     @IBOutlet weak var entityTypeLabel: UILabel!
     @IBOutlet weak var entityNameLabel: UILabel!
     @IBOutlet weak var entityIconLabel: UILabel!
+    @IBOutlet weak var iconView: UIView!
     
     func configureWith(_ data: Contact) {
         entityTypeLabel.text = data.es
@@ -23,5 +24,6 @@ class ContactsTableViewCell: UITableViewCell, Configurable {
         entityIconLabel.backgroundColor = #colorLiteral(red: 0, green: 0.8, blue: 0, alpha: 1)
         entityIconLabel.layer.cornerRadius = entityIconLabel.frame.width/2
         entityIconLabel.layer.masksToBounds = true
+        iconView.layer.cornerRadius = iconView.frame.width/2
     }
 }

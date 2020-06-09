@@ -56,6 +56,13 @@ extension ContactsVC: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDataSourcePrefetching
+extension ContactsVC: UITableViewDataSourcePrefetching {
+  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    
+  }
+}
+
 // MARK: - StoryboardInstantiatable
 extension ContactsVC: StoryboardInstantiatable {
     static func storyboardName() -> String {

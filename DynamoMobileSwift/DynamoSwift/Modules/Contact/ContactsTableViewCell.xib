@@ -79,6 +79,7 @@
                 <outlet property="entityIconLabel" destination="o4Q-6D-3xc" id="mbe-n1-baC"/>
                 <outlet property="entityNameLabel" destination="qAs-Z5-jV9" id="MCk-W5-8fS"/>
                 <outlet property="entityTypeLabel" destination="V5p-r9-dtQ" id="VID-QM-xDc"/>
+                <outlet property="iconView" destination="OdE-UZ-67t" id="t8o-fJ-zzT"/>
             </connections>
             <point key="canvasLocation" x="150.72463768115944" y="61.607142857142854"/>
         </tableViewCell>

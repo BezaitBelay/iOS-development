@@ -28,8 +28,10 @@ class ContactsViewModel: ContactsViewModelProtocol {
     init(contactsRepository: ContactsRepositoryProtocol) {
         self.contactsRepository = contactsRepository
         self.contactsRepository?.getEntitiesOf(type: currentItemType, nextPageURL: nextPageURL) { (itemsResponse) in
-            print(itemsResponse?.data ?? "itemsResponse is nil")
+            print(itemsResponse ?? "itemsResponse is nil")
             self.entities.value = itemsResponse?.data
+            self.nextPageURL = itemsResponse?.links?.nextLink
+            print(self.nextPageURL ?? "")
             self.shouldReloadTable.value = true
         }
     }
