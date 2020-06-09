@@ -25,9 +25,19 @@ class ContactsVC: BaseVC {
         bindViewModel(viewModel)
     }
     
+    // MARK: Private methods
     private func bindViewModel(_ viewModel: ContactsViewModelProtocol?) {
         viewModel?.entities.bindAndFire { [weak self] _ in
             self?.tableView.reloadData()
+        }
+        
+        viewModel?.shouldShowLoading.bindAndFire { [weak self] (start) in
+            guard let strongSelf = self else { return }
+            if start {
+                strongSelf.startLoading()
+            } else {
+                strongSelf.stopLoading()
+            }
         }
     }
 }

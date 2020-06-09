@@ -12,8 +12,8 @@ class AppCoordinator: Coordinator {
     
     // MARK: Properties
     let window: UIWindow?
-    private var loadingView: ScreenLoadingView?
     var tabsCoordinator: TabBarCoordinator?
+    private var loadingView: ScreenLoadingView?
     
     // MARK: Coordinator
     init(window: UIWindow?) {
@@ -29,6 +29,14 @@ class AppCoordinator: Coordinator {
     override func start() {
         // Start the next coordinator in the heirarchy or the current module rootViewModel
         childCoordinators.first?.start()
+        
+        if loadingView == nil, let window = window {
+            let loadingView = ScreenLoadingView(frame: window.bounds)
+            window.addSubview(loadingView)
+            window.pinTo(toView: loadingView, attributes: .top, .bottom, .leading, .trailing)
+            self.loadingView = loadingView
+        }
+        loadingView?.isHidden = true
     }
     
     override func finish() {

@@ -10,10 +10,10 @@ import UIKit
 import TwoWayBondage
 
 protocol ContactsCoordinatorDelegate: class {
-    func openAllEntities(_ entities: [Contact])
+    func showAllContacts(_ entities: [Contact])
 }
 
-class ContactsCoordinator: TabCoordinator, ContactsCoordinatorDelegate {
+class ContactsCoordinator: TabCoordinator {
     
     /*************************************/
     // MARK: - Coordinator
@@ -27,10 +27,11 @@ class ContactsCoordinator: TabCoordinator, ContactsCoordinatorDelegate {
         guard let topVC = ContactsVC.instantiateFromStoryboard() as? ContactsVC else {return}
         topVC.shouldFinishScene = true
         rootViewController = BaseNavigationVC(rootViewController: topVC)
+        topVC.viewModel = ContactsViewModel(contactsRepository: ContactsRepository())
         setupTabBar()
-        topVC.viewModel = ContactsViewModel()
         guard let appCoordinator = UIApplication.mainDelegate?.appCoordinator else { return }
         appCoordinator.openMainTabsNavigation()
+        
     }
     
     override func start() {
@@ -42,18 +43,23 @@ class ContactsCoordinator: TabCoordinator, ContactsCoordinatorDelegate {
         removeChildCoordinator(self)
     }
     
+    // MARK: Private methods
     private func setupTabBar() {
-        rootViewController?.tabBarItem = UITabBarItem(title: TabBarItem.contact.tabBarTitle,
+        
+        rootViewController?.tabBarItem = UITabBarItem(title: TabBarItem.recent.tabBarTitle,
                                                       image: UIImage(named: "ic_contact_on"),
                                                       selectedImage: UIImage(named: "ic_contact_off"))
         rootViewController?.tabBarItem.tag = tabIndex
     }
     
-    func openAllEntities(_ entities: [Contact]) {
-        guard let allEntitiesVC = ContactsVC.instantiateFromStoryboard() as? ContactsVC else { return }
-        let allEntitiesViewModel = ContactsViewModel()
-        allEntitiesViewModel.delegate = self
-        allEntitiesVC.viewModel = allEntitiesViewModel
-        rootViewController?.pushViewController(allEntitiesVC, animated: true)
+}
+
+extension ContactsCoordinator: ContactsCoordinatorDelegate {
+    func showAllContacts(_ entities: [Contact]) {
+        guard let contactsVC = ContactsVC.instantiateFromStoryboard() as? ContactsVC else { return }
+        let contactsViewModel = ContactsViewModel(contactsRepository: ContactsRepository())
+        contactsViewModel.delegate = self
+        contactsVC.viewModel = contactsViewModel
+        rootViewController?.pushViewController(contactsVC, animated: true)
     }
 }
