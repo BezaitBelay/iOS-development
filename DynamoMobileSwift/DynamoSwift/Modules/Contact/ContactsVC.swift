@@ -47,6 +47,8 @@ extension ContactsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let configurator = viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section) else { return UITableViewCell() }
         let cell = tableView.configureCell(for: configurator, at: indexPath)
+        
+        viewModel?.requestNextPageWhen(index: indexPath.row)
         return cell
     }
     
@@ -56,11 +58,11 @@ extension ContactsVC: UITableViewDataSource {
     }
 }
 
-// MARK: UITableViewDataSourcePrefetching
-extension ContactsVC: UITableViewDataSourcePrefetching {
-  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-    
-  }
+extension ContactsVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section)?.didSelectAction?()
+    }
 }
 
 // MARK: - StoryboardInstantiatable

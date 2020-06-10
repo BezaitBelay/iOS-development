@@ -27,10 +27,10 @@ class ContactsRepository: ContactsRepositoryProtocol {
     func getQueeryParansFromNext(from nextPageURL: String?) -> [String: String]? {
         var queryStrings = [String: String]()
         guard let nextPageURL = nextPageURL else { return nil }
-        for pair in nextPageURL.components(separatedBy: "&") {
-            
+        let splitURl = nextPageURL.components(separatedBy: "?")
+        let params = splitURl[1]
+        for pair in params.components(separatedBy: "&") {
             let key = pair.components(separatedBy: "=")[0]
-            
             let value = pair
                 .components(separatedBy: "=")[1]
                 .replacingOccurrences(of: "+", with: " ")

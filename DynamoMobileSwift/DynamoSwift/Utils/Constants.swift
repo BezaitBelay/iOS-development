@@ -27,5 +27,6 @@ struct Constants {
         static let contacts = "Contacts"
         static let recent = "Recent"
         static let main = "MainNavigation"
+        static let entityDetail = "ContactDetail"
     }
 }

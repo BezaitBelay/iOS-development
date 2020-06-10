@@ -135,14 +135,14 @@ class BaseVC: UIViewController {
     
     // MARK: Loading
     func startLoading() {
-        guard isVisible else { return }
+//        guard isVisible else { return }
         
         view.endEditing(true)
         UIApplication.mainDelegate?.appCoordinator?.startScreenLoading()
     }
     
     func stopLoading() {
-        guard isVisible else { return }
+//        guard isVisible else { return }
         
         UIApplication.mainDelegate?.appCoordinator?.stopScreenLoading()
     }

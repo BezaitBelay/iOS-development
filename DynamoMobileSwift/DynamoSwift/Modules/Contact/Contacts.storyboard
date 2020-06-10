@@ -21,6 +21,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="sgR-hb-6Lg" id="Dfr-kP-ceV"/>
+                                    <outlet property="delegate" destination="sgR-hb-6Lg" id="5mC-Wu-EBd"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -40,6 +41,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G88-dv-eFA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4041" y="53"/>
+        </scene>
+        <!--Contact DetailVC-->
+        <scene sceneID="pEY-gG-Shk">
+            <objects>
+                <viewController storyboardIdentifier="ContactDetailVC" id="JEJ-gM-k2q" customClass="ContactDetailVC" customModule="DynamoSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RdG-2H-tUf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kWG-v6-d7i">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="o8i-tU-84X" firstAttribute="bottom" secondItem="kWG-v6-d7i" secondAttribute="bottom" id="Cv0-cD-mOa"/>
+                            <constraint firstItem="kWG-v6-d7i" firstAttribute="leading" secondItem="o8i-tU-84X" secondAttribute="leading" id="Rju-Py-efY"/>
+                            <constraint firstItem="o8i-tU-84X" firstAttribute="trailing" secondItem="kWG-v6-d7i" secondAttribute="trailing" id="WBH-wb-Eze"/>
+                            <constraint firstItem="kWG-v6-d7i" firstAttribute="top" secondItem="o8i-tU-84X" secondAttribute="top" id="cd0-ab-a8D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="o8i-tU-84X"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cfw-Bh-2U7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3136" y="54"/>
         </scene>
     </scenes>
 </document>
