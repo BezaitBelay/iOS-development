@@ -10,11 +10,12 @@ import UIKit
 import TwoWayBondage
 
 protocol ContactsCoordinatorDelegate: class {
-    //    func showAllContacts(_ entities: [Contact])
-    func showContactsDetail(_ contact: Contact) // openEntityDetail
+    func showContactsDetail(_ contact: Contact, showLoading: Observable<Bool>?, contactId: String) // openEntityDetail
 }
 
 class ContactsCoordinator: TabCoordinator {
+    
+    let contactsRepository = ContactsRepository()
     
     /*************************************/
     // MARK: - Coordinator
@@ -22,8 +23,6 @@ class ContactsCoordinator: TabCoordinator {
     override var tabIndex: Int {
         return TabBarItem.contact.index
     }
-    
-    let contactsRepository = ContactsRepository()
     
     override init() {
         super.init()
@@ -59,20 +58,13 @@ class ContactsCoordinator: TabCoordinator {
 }
 
 extension ContactsCoordinator: ContactsCoordinatorDelegate {
-    
-    //    func showAllContacts(_ entities: [Contact]) {
-    //        guard let contactsVC = ContactsVC.instantiateFromStoryboard() as? ContactsVC else { return }
-    //        let contactsViewModel = ContactsViewModel(contactsRepository: contactsRepository)
-    //        contactsViewModel.delegate = self
-    //        contactsVC.viewModel = contactsViewModel
-    //        rootViewController?.pushViewController(contactsVC, animated: true)
-    //    }
-    
-    func showContactsDetail(_ contact: Contact) {
+
+    func showContactsDetail(_ contact: Contact, showLoading: Observable<Bool>?, contactId: String) {
         guard let contactDetailVC = ContactDetailVC.instantiateFromStoryboard() as? ContactDetailVC else { return }
-        //        let contactsViewModel = ContactsViewModel(contactsRepository: contactsRepository)
-        //        contactsViewModel.delegate = self
-        //        contactsVC.viewModel = contactsViewModel
+        let contactDetailViewModel = ContactDetailViewModel(contactDetailRepository: ContactDetailRepository(), id: contactId)
+//        contactDetailViewModel.delegate = self
+        contactDetailVC.viewModel = contactDetailViewModel
         rootViewController?.pushViewController(contactDetailVC, animated: true)
+        showLoading?.value = false
     }
 }

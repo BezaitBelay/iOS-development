@@ -27,7 +27,7 @@ class ContactsVC: BaseVC {
     
     // MARK: Private methods
     private func bindViewModel(_ viewModel: ContactsViewModelProtocol?) {
-        viewModel?.entities.bindAndFire { [weak self] _ in
+        viewModel?.shouldReloadTable.bindAndFire { [weak self] _ in
             self?.tableView.reloadData()
         }
         

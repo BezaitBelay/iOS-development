@@ -9,10 +9,6 @@
 import UIKit
 import TwoWayBondage
 
-protocol ContactDetailViewModelProtocol: BaseDataSource {
-    var shouldShowLoading: Observable<Bool> {get set}
-}
-
 class ContactDetailVC: BaseVC {
     
     @IBOutlet weak var tableView: UITableView!
@@ -22,18 +18,56 @@ class ContactDetailVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Detail"
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
+        navigationItem.rightBarButtonItem  = editButton
+        tableView.register(cellNames: "\(ContactDetailTableViewCell.self)",
+            "\(ContactDetailWithActionTableViewCell.self)",
+            "\(ContactDetailCommentTableViewCell.self)")
+
         bindViewModel(viewModel)
     }
     
-    // MARK: Private methods
-        private func bindViewModel(_ viewModel: ContactDetailViewModelProtocol?) {
-//            viewModel?.reloadTableAtSection.bind {[weak self] section in
-//                guard let strongSelf = self, let section = section, strongSelf.isVisible else { return }
-//                print("Reload section", section, strongSelf.isVisible)
-//                strongSelf.tableView.reloadData()
-//                strongSelf.reloadTableSection(section)
-//            }
+    @objc func editButtonTapped() {
+        if let title = navigationItem.rightBarButtonItem?.title {
+            navigationItem.rightBarButtonItem?.title = title == "Save" ? "Edit" : "Save"
         }
+        viewModel?.editButtonTapped.value = !(viewModel?.editButtonTapped.value ?? false)
+        if let separatorValue = viewModel?.editButtonTapped.value {
+            tableView.separatorStyle =  separatorValue ? .none : .singleLine
+        }
+    }
+    
+    // MARK: Private methods
+    private func bindViewModel(_ viewModel: ContactDetailViewModelProtocol?) {
+        viewModel?.shouldReloadTable.bindAndFire { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+        
+        viewModel?.editButtonTapped.bindAndFire { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: UITableViewDataSource methods
+extension ContactDetailVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let configurator = viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section) else {
+            return UITableViewCell()
+        }
+        let cell = tableView.configureCell(for: configurator, at: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.numberOfCellsInSection(section) ?? 0
+    }
+}
+
+extension ContactDetailVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 // MARK: - StoryboardInstantiatable

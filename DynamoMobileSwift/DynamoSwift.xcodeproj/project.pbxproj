@@ -33,6 +33,12 @@
 		3AD977152490FA5A00AA939E /* ContactDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD977142490FA5A00AA939E /* ContactDetailTableViewCell.swift */; };
 		3AD977172490FC8800AA939E /* ItemFieldCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD977162490FC8800AA939E /* ItemFieldCellModel.swift */; };
 		3AD9771D24910AF200AA939E /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9771C24910AF200AA939E /* ContactsViewModel.swift */; };
+		3AD9771F2491224700AA939E /* ContactDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9771E2491224700AA939E /* ContactDetailViewModel.swift */; };
+		3AD977212492171B00AA939E /* ContactDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD977202492171B00AA939E /* ContactDetailRepository.swift */; };
+		3AD977232493717E00AA939E /* ContactDetailWithActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD977222493717E00AA939E /* ContactDetailWithActionTableViewCell.xib */; };
+		3AD97725249371D100AA939E /* ContactDetailWithActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD97724249371D100AA939E /* ContactDetailWithActionTableViewCell.swift */; };
+		3AD977272493B64A00AA939E /* ContactDetailCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD977262493B64A00AA939E /* ContactDetailCommentTableViewCell.xib */; };
+		3AD977292493B66B00AA939E /* ContactDetailCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD977282493B66B00AA939E /* ContactDetailCommentTableViewCell.swift */; };
 		B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBA247CEFCF00EF0A02 /* ParserInterface.swift */; };
 		B5418DDC247CEFCF00EF0A02 /* NetworkingInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBB247CEFCF00EF0A02 /* NetworkingInterface.swift */; };
 		B5418DDD247CEFCF00EF0A02 /* CacheableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBC247CEFCF00EF0A02 /* CacheableProtocol.swift */; };
@@ -161,6 +167,12 @@
 		3AD977142490FA5A00AA939E /* ContactDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailTableViewCell.swift; sourceTree = "<group>"; };
 		3AD977162490FC8800AA939E /* ItemFieldCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFieldCellModel.swift; sourceTree = "<group>"; };
 		3AD9771C24910AF200AA939E /* ContactsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsViewModel.swift; path = ../../../../../../../.Trash/ContactsViewModel.swift; sourceTree = "<group>"; };
+		3AD9771E2491224700AA939E /* ContactDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewModel.swift; sourceTree = "<group>"; };
+		3AD977202492171B00AA939E /* ContactDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactDetailRepository.swift; path = "DynamoSwift/Modules/Contact Detail/ContactDetailRepository.swift"; sourceTree = SOURCE_ROOT; };
+		3AD977222493717E00AA939E /* ContactDetailWithActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailWithActionTableViewCell.xib; sourceTree = "<group>"; };
+		3AD97724249371D100AA939E /* ContactDetailWithActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailWithActionTableViewCell.swift; sourceTree = "<group>"; };
+		3AD977262493B64A00AA939E /* ContactDetailCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailCommentTableViewCell.xib; sourceTree = "<group>"; };
+		3AD977282493B66B00AA939E /* ContactDetailCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailCommentTableViewCell.swift; sourceTree = "<group>"; };
 		506EF5A8ACE39114D8968608 /* Pods-Skeleton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.debug.xcconfig"; sourceTree = "<group>"; };
 		64FAEDE524787B8587B1BD96 /* Pods-DynamoSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamoSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DynamoSwift/Pods-DynamoSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		85D930213B5B75D9AA05C80E /* Pods-Skeleton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.release.xcconfig"; sourceTree = "<group>"; };
@@ -320,11 +332,40 @@
 		3AD9770F2490B50700AA939E /* Contact Detail */ = {
 			isa = PBXGroup;
 			children = (
+				3AD9772C24978C4E00AA939E /* ContactDetailCommentCell */,
+				3AD9772B24978C3500AA939E /* ContactDetailCellWithAction */,
+				3AD9772A24978C0100AA939E /* ContactDetailCell */,
+				3AD9771E2491224700AA939E /* ContactDetailViewModel.swift */,
 				3AD977102490B5BD00AA939E /* ContactDetailVC.swift */,
-				3AD977122490E51300AA939E /* ContactDetailTableViewCell.xib */,
-				3AD977142490FA5A00AA939E /* ContactDetailTableViewCell.swift */,
 			);
 			path = "Contact Detail";
+			sourceTree = "<group>";
+		};
+		3AD9772A24978C0100AA939E /* ContactDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				3AD977142490FA5A00AA939E /* ContactDetailTableViewCell.swift */,
+				3AD977122490E51300AA939E /* ContactDetailTableViewCell.xib */,
+			);
+			path = ContactDetailCell;
+			sourceTree = "<group>";
+		};
+		3AD9772B24978C3500AA939E /* ContactDetailCellWithAction */ = {
+			isa = PBXGroup;
+			children = (
+				3AD97724249371D100AA939E /* ContactDetailWithActionTableViewCell.swift */,
+				3AD977222493717E00AA939E /* ContactDetailWithActionTableViewCell.xib */,
+			);
+			path = ContactDetailCellWithAction;
+			sourceTree = "<group>";
+		};
+		3AD9772C24978C4E00AA939E /* ContactDetailCommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				3AD977282493B66B00AA939E /* ContactDetailCommentTableViewCell.swift */,
+				3AD977262493B64A00AA939E /* ContactDetailCommentTableViewCell.xib */,
+			);
+			path = ContactDetailCommentCell;
 			sourceTree = "<group>";
 		};
 		765A56321FB416363579F524 /* Pods */ = {
@@ -479,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				3A41D33D24893F19003665C4 /* ContactsRepository.swift */,
+				3AD977202492171B00AA939E /* ContactDetailRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -656,12 +698,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A41D2FC24852C29003665C4 /* Contacts.storyboard in Resources */,
+				3AD977232493717E00AA939E /* ContactDetailWithActionTableViewCell.xib in Resources */,
 				3A41D326248632F2003665C4 /* MainNavigation.storyboard in Resources */,
 				B92D65392111A564008D9A7B /* LaunchScreen.storyboard in Resources */,
 				B92D65552111AA6A008D9A7B /* Assets.xcassets in Resources */,
 				3AD9770A248E6F0B00AA939E /* DynamoIcons.ttf in Resources */,
 				3A41D33C2488F484003665C4 /* ContactsTableViewCell.xib in Resources */,
 				3A41D32D24878191003665C4 /* Recent.storyboard in Resources */,
+				3AD977272493B64A00AA939E /* ContactDetailCommentTableViewCell.xib in Resources */,
 				3AD977132490E51300AA939E /* ContactDetailTableViewCell.xib in Resources */,
 				3AD9770E248E904B00AA939E /* ScreenLoadingView.xib in Resources */,
 			);
@@ -739,6 +783,7 @@
 				B5418DEE247CEFCF00EF0A02 /* ShowSLARequest.swift in Sources */,
 				B9D7491521133BEC00C5D388 /* UtilFunctions.swift in Sources */,
 				B9D7491321133BB100C5D388 /* UIView+UpxExtension.swift in Sources */,
+				3AD977212492171B00AA939E /* ContactDetailRepository.swift in Sources */,
 				B92D65602111AD26008D9A7B /* AppCoordinator.swift in Sources */,
 				B5418DF0247CEFCF00EF0A02 /* SSOLoginRequest.swift in Sources */,
 				B9D1EE4D219D9798006509CA /* Constants.swift in Sources */,
@@ -758,6 +803,7 @@
 				B5418DFB247CEFF400EF0A02 /* NetworkKit+NoConnection.swift in Sources */,
 				B5418DE4247CEFCF00EF0A02 /* ApiKeyRequest.swift in Sources */,
 				B972A7BF219AB66D00B4BB6C /* UIView+Animations.swift in Sources */,
+				3AD97725249371D100AA939E /* ContactDetailWithActionTableViewCell.swift in Sources */,
 				B5418DE3247CEFCF00EF0A02 /* LoginRequest.swift in Sources */,
 				B5418DE0247CEFCF00EF0A02 /* StatusCode+Utils.swift in Sources */,
 				B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */,
@@ -777,6 +823,7 @@
 				B5418DDF247CEFCF00EF0A02 /* APIManager.swift in Sources */,
 				B5418DE1247CEFCF00EF0A02 /* ViewsRequest.swift in Sources */,
 				B5418DF7247CEFCF00EF0A02 /* APIConfig.swift in Sources */,
+				3AD9771F2491224700AA939E /* ContactDetailViewModel.swift in Sources */,
 				B972A7C3219AB73100B4BB6C /* NotificaitonNameExtension.swift in Sources */,
 				B5418DF4247CEFCF00EF0A02 /* EntityDeleteRequest.swift in Sources */,
 				B5418DEA247CEFCF00EF0A02 /* BusinessCardRequest.swift in Sources */,
@@ -798,6 +845,7 @@
 				B5418DF2247CEFCF00EF0A02 /* SLAToyRequest.swift in Sources */,
 				3A41D2CE24812DD9003665C4 /* TabCoordinator.swift in Sources */,
 				3A41D3292487816A003665C4 /* RecentCoordinator.swift in Sources */,
+				3AD977292493B66B00AA939E /* ContactDetailCommentTableViewCell.swift in Sources */,
 				B5418DDC247CEFCF00EF0A02 /* NetworkingInterface.swift in Sources */,
 				3A41D2D6248134C8003665C4 /* ContactsCoordinator.swift in Sources */,
 				B5418DE9247CEFCF00EF0A02 /* EntityUpdateRequest.swift in Sources */,
@@ -974,14 +1022,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UWBDU93DZY;
+				DEVELOPMENT_TEAM = BC54WQP7M3;
 				INFOPLIST_FILE = "$(SRCROOT)/DynamoSwift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.dynamo2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dynamosoftware.dynamo2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -995,14 +1043,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UWBDU93DZY;
+				DEVELOPMENT_TEAM = BC54WQP7M3;
 				INFOPLIST_FILE = "$(SRCROOT)/DynamoSwift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.dynamo2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dynamosoftware.dynamo2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

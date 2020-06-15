@@ -14,7 +14,7 @@ protocol ContactsRepositoryProtocol {
 
 class ContactsRepository: ContactsRepositoryProtocol {
     func getEntitiesOf(type: String, nextPageURL: String?, completion: @escaping ((EntityData?) -> Void)) {
-        let header: [String: String] = ["x-columns": "Identifier"]
+        let header: [String: String] = ["x-columns": "Identifier", "x-sort": "Identifier:asc"]
         let queryParams = getQueeryParansFromNext(from: nextPageURL)
         EntityDataRequest(pathParameters: [type],
                           queryParameters: queryParams,
