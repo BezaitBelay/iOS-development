@@ -81,6 +81,7 @@ class TabBarCoordinator: Coordinator {
 
 extension TabBarCoordinator: TabBarCoordinatorProtocol {
     func didSelectTab(_ index: Int) {
+        print("selected tab")
         guard index != previousTabIndex else { return }
         let tabCoordinator = childCoordinators.first { (coordinator) -> Bool in
             if let coordinator = coordinator as? TabCoordinator {

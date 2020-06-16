@@ -26,7 +26,7 @@ class ContactsCoordinator: TabCoordinator {
     
     override init() {
         super.init()
-        guard let topVC = ContactsVC.instantiateFromStoryboard() as? ContactsVC else {return}
+        guard let topVC = ContactsVC.instantiateFromStoryboard() as? ContactsVC else { return }
         topVC.shouldFinishScene = true
         rootViewController = BaseNavigationVC(rootViewController: topVC)
         topVC.viewModel = ContactsViewModel(contactsRepository: contactsRepository)
@@ -34,11 +34,10 @@ class ContactsCoordinator: TabCoordinator {
         setupTabBar()
         guard let appCoordinator = UIApplication.mainDelegate?.appCoordinator else { return }
         appCoordinator.openMainTabsNavigation()
-        
     }
     
     override func start() {
-        rootViewController?.popToRootViewController(animated: false)
+        childCoordinators.first?.start()
     }
     
     override func finish() {
@@ -58,13 +57,9 @@ class ContactsCoordinator: TabCoordinator {
 }
 
 extension ContactsCoordinator: ContactsCoordinatorDelegate {
-
     func showContactsDetail(_ contact: Contact, showLoading: Observable<Bool>?, contactId: String) {
-        guard let contactDetailVC = ContactDetailVC.instantiateFromStoryboard() as? ContactDetailVC else { return }
-        let contactDetailViewModel = ContactDetailViewModel(contactDetailRepository: ContactDetailRepository(), id: contactId)
-//        contactDetailViewModel.delegate = self
-        contactDetailVC.viewModel = contactDetailViewModel
-        rootViewController?.pushViewController(contactDetailVC, animated: true)
+        let contactDetailCoordinator = ContactDetailCoordinator(navVC: rootViewController, contactId: contactId)
+        addChildCoordinator(contactDetailCoordinator)
         showLoading?.value = false
     }
 }

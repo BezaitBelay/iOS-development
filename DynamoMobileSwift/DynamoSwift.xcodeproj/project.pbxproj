@@ -25,6 +25,7 @@
 		3A41D33A2488EF07003665C4 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D3392488EF07003665C4 /* ContactsTableViewCell.swift */; };
 		3A41D33C2488F484003665C4 /* ContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A41D33B2488F484003665C4 /* ContactsTableViewCell.xib */; };
 		3A41D33E24893F19003665C4 /* ContactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41D33D24893F19003665C4 /* ContactsRepository.swift */; };
+		3A6E6C862498B22C008FF62C /* KeyboardObserversHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E6C852498B22C008FF62C /* KeyboardObserversHandler.swift */; };
 		3AD9770A248E6F0B00AA939E /* DynamoIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AD97709248E6F0B00AA939E /* DynamoIcons.ttf */; };
 		3AD9770B248E6F0B00AA939E /* DynamoIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AD97709248E6F0B00AA939E /* DynamoIcons.ttf */; };
 		3AD9770E248E904B00AA939E /* ScreenLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD9770D248E904B00AA939E /* ScreenLoadingView.xib */; };
@@ -39,6 +40,7 @@
 		3AD97725249371D100AA939E /* ContactDetailWithActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD97724249371D100AA939E /* ContactDetailWithActionTableViewCell.swift */; };
 		3AD977272493B64A00AA939E /* ContactDetailCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD977262493B64A00AA939E /* ContactDetailCommentTableViewCell.xib */; };
 		3AD977292493B66B00AA939E /* ContactDetailCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD977282493B66B00AA939E /* ContactDetailCommentTableViewCell.swift */; };
+		3AD9773024978F9F00AA939E /* ContactDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9772F24978F9F00AA939E /* ContactDetailCoordinator.swift */; };
 		B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBA247CEFCF00EF0A02 /* ParserInterface.swift */; };
 		B5418DDC247CEFCF00EF0A02 /* NetworkingInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBB247CEFCF00EF0A02 /* NetworkingInterface.swift */; };
 		B5418DDD247CEFCF00EF0A02 /* CacheableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5418DBC247CEFCF00EF0A02 /* CacheableProtocol.swift */; };
@@ -160,6 +162,7 @@
 		3A41D3392488EF07003665C4 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		3A41D33B2488F484003665C4 /* ContactsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsTableViewCell.xib; sourceTree = "<group>"; };
 		3A41D33D24893F19003665C4 /* ContactsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsRepository.swift; path = DynamoSwift/Modules/Contact/ContactsRepository.swift; sourceTree = SOURCE_ROOT; };
+		3A6E6C852498B22C008FF62C /* KeyboardObserversHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserversHandler.swift; sourceTree = "<group>"; };
 		3AD97709248E6F0B00AA939E /* DynamoIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DynamoIcons.ttf; path = ../../../../../../../Downloads/DynamoIcons.ttf; sourceTree = "<group>"; };
 		3AD9770D248E904B00AA939E /* ScreenLoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenLoadingView.xib; sourceTree = "<group>"; };
 		3AD977102490B5BD00AA939E /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
@@ -173,6 +176,7 @@
 		3AD97724249371D100AA939E /* ContactDetailWithActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailWithActionTableViewCell.swift; sourceTree = "<group>"; };
 		3AD977262493B64A00AA939E /* ContactDetailCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailCommentTableViewCell.xib; sourceTree = "<group>"; };
 		3AD977282493B66B00AA939E /* ContactDetailCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailCommentTableViewCell.swift; sourceTree = "<group>"; };
+		3AD9772F24978F9F00AA939E /* ContactDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailCoordinator.swift; sourceTree = "<group>"; };
 		506EF5A8ACE39114D8968608 /* Pods-Skeleton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.debug.xcconfig"; sourceTree = "<group>"; };
 		64FAEDE524787B8587B1BD96 /* Pods-DynamoSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamoSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DynamoSwift/Pods-DynamoSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		85D930213B5B75D9AA05C80E /* Pods-Skeleton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.release.xcconfig"; sourceTree = "<group>"; };
@@ -337,6 +341,7 @@
 				3AD9772A24978C0100AA939E /* ContactDetailCell */,
 				3AD9771E2491224700AA939E /* ContactDetailViewModel.swift */,
 				3AD977102490B5BD00AA939E /* ContactDetailVC.swift */,
+				3AD9772F24978F9F00AA939E /* ContactDetailCoordinator.swift */,
 			);
 			path = "Contact Detail";
 			sourceTree = "<group>";
@@ -570,6 +575,7 @@
 			children = (
 				B9D7491421133BEC00C5D388 /* UtilFunctions.swift */,
 				B9D749202115C27B00C5D388 /* StoryboardInstantiatable.swift */,
+				3A6E6C852498B22C008FF62C /* KeyboardObserversHandler.swift */,
 			);
 			path = CommonProtocolsAndFunctions;
 			sourceTree = "<group>";
@@ -835,6 +841,7 @@
 				3A41D2D82481359D003665C4 /* TabBarItemEnum.swift in Sources */,
 				B5418DF9247CEFCF00EF0A02 /* EnvironmentsAndBaseURLs.swift in Sources */,
 				B5418DE2247CEFCF00EF0A02 /* ExportReportRequest.swift in Sources */,
+				3A6E6C862498B22C008FF62C /* KeyboardObserversHandler.swift in Sources */,
 				B5418DDE247CEFCF00EF0A02 /* Networker.swift in Sources */,
 				3A41D2D024812E39003665C4 /* BaseNavigationVC.swift in Sources */,
 				B5418DE5247CEFCF00EF0A02 /* AvailableEntitiesRequest.swift in Sources */,
@@ -843,6 +850,7 @@
 				3A41D33A2488EF07003665C4 /* ContactsTableViewCell.swift in Sources */,
 				B5418DED247CEFCF00EF0A02 /* DataRequestWithSearch.swift in Sources */,
 				B5418DF2247CEFCF00EF0A02 /* SLAToyRequest.swift in Sources */,
+				3AD9773024978F9F00AA939E /* ContactDetailCoordinator.swift in Sources */,
 				3A41D2CE24812DD9003665C4 /* TabCoordinator.swift in Sources */,
 				3A41D3292487816A003665C4 /* RecentCoordinator.swift in Sources */,
 				3AD977292493B66B00AA939E /* ContactDetailCommentTableViewCell.swift in Sources */,

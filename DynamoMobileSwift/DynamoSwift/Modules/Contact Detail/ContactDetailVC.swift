@@ -7,12 +7,13 @@
 //
 
 import UIKit
-import TwoWayBondage
+//import TwoWayBondage
 
 class ContactDetailVC: BaseVC {
     
     @IBOutlet weak var tableView: UITableView!
-    
+    fileprivate var originalInsetBottom: CGFloat = 0
+
     var viewModel: ContactDetailViewModelProtocol?
     
     override func viewDidLoad() {
@@ -23,8 +24,10 @@ class ContactDetailVC: BaseVC {
         tableView.register(cellNames: "\(ContactDetailTableViewCell.self)",
             "\(ContactDetailWithActionTableViewCell.self)",
             "\(ContactDetailCommentTableViewCell.self)")
-
+        
         bindViewModel(viewModel)
+        tableView.keyboardDismissMode = .onDrag
+        registerForKeyboardNotifications()
     }
     
     @objc func editButtonTapped() {
@@ -47,6 +50,7 @@ class ContactDetailVC: BaseVC {
             self?.tableView.reloadData()
         }
     }
+    
 }
 
 // MARK: UITableViewDataSource methods
@@ -74,5 +78,34 @@ extension ContactDetailVC: UITableViewDelegate {
 extension ContactDetailVC: StoryboardInstantiatable {
     static func storyboardName() -> String {
         return Constants.Storyboards.contacts
+    }
+}
+
+// MARK: - Keyboard Notifications
+extension ContactDetailVC: KeyboardОbserversHandler {
+    func keyboardWillShowAction(notification: NSNotification) {
+        let userInfo = notification.userInfo
+        guard let kbRect = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect),
+            let rootView = self.view.window?.rootViewController?.view
+        else { return }
+        
+        let newKbSize = view.window?.convert(kbRect, to: rootView).size ?? .zero
+        
+        let contentInsets = UIEdgeInsets(top: tableView.contentInset.top,
+                                         left: 0.0,
+                                         bottom: originalInsetBottom + newKbSize.height,
+                                         right: tableView.contentInset.right)
+        
+        tableView.contentInset = contentInsets
+        tableView.scrollIndicatorInsets = contentInsets
+    }
+    
+    func keyboardWillHideAction() {
+        let contentInsets = UIEdgeInsets(top: tableView.contentInset.top,
+                                         left: 0.0,
+                                         bottom: originalInsetBottom,
+                                         right: tableView.contentInset.right)
+        tableView.contentInset = contentInsets
+        tableView.scrollIndicatorInsets = contentInsets
     }
 }

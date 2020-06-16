@@ -19,17 +19,4 @@ class TabCoordinator: Coordinator {
     override init() {
         super.init()
     }
-    
-//    func setupTabBarTitleColors() {
-//        rootViewController?.tabBarItem.setTitleTextAttributes([
-//            NSAttributedString.Key.foregroundColor: UIColor.lightGray,
-//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.5)
-//            ],
-//                                                              for: .normal)
-//        rootViewController?.tabBarItem.setTitleTextAttributes([
-//            NSAttributedString.Key.foregroundColor: UIColor.baseBlue,
-//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.5)
-//            ],
-//                                                              for: .selected)
-//    }
 }
