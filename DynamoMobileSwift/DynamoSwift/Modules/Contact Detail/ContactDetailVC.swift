@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import TwoWayBondage
 
 class ContactDetailVC: BaseVC {
     
@@ -71,6 +70,7 @@ extension ContactDetailVC: UITableViewDataSource {
 extension ContactDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section)?.didSelectAction?()
     }
 }
 

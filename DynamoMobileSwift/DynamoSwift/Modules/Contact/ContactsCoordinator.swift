@@ -47,7 +47,6 @@ class ContactsCoordinator: TabCoordinator {
     
     // MARK: Private methods
     private func setupTabBar() {
-        
         rootViewController?.tabBarItem = UITabBarItem(title: TabBarItem.recent.tabBarTitle,
                                                       image: UIImage(named: "ic_contact_on"),
                                                       selectedImage: UIImage(named: "ic_contact_off"))
