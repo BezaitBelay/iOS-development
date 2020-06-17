@@ -14,6 +14,7 @@ protocol ContactDetailViewModelProtocol: BaseDataSource {
     var shouldReloadTable: Observable<Bool> { get set }
     var editButtonTapped: Observable<Bool> { get set }
     var shouldShowLoading: Observable<Bool> { get set}
+    func updateItem(_ properties: [String: String])
 }
 
 class ContactDetailViewModel: ContactDetailViewModelProtocol {
@@ -21,6 +22,7 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
     var shouldShowLoading = Observable<Bool>(false)
     var shouldReloadTable = Observable<Bool>(false)
     var fieldItems = [ItemFieldCellModel]()
+    var rawData: [String: String] = [:]
     private var contactDetailRepository: ContactDetailRepositoryProtocol?
     var numberOfSections: Int = 1
     weak var delegate: ContactDetailCoordinatorDelegate?
@@ -31,23 +33,13 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
         self.contactDetailRepository?.getEntityDataFor(id, itemType: "contact") { [weak self] (itemsResponse) in
             print(itemsResponse ?? "item detail Response is nil")
             guard let strongSelf = self else { return }
-            let fieldData = itemsResponse?.data ?? [:]
-            var fieldItems: [ItemFieldCellModel] = []
-            for field in fieldData {
-                guard field.key != "_id", field.key != "_es" else { continue }
-                let model = ContactDetailSorting.init(rawValue: field.key.lowercased())
-                let fieldModel = ItemField(key: model?.label ?? "",
-                                       value: field.value,
-                                       position: model?.position ?? 0,
-                                       isEditing: strongSelf.editButtonTapped.value ?? false)
-                fieldItems.append(fieldModel)
-            }
-            strongSelf.fieldItems = fieldItems.sorted { $0.propertyPosition < $1.propertyPosition }
+            strongSelf.rawData = itemsResponse?.data ?? [:]
+            strongSelf.transformData(strongSelf.rawData)
             strongSelf.shouldReloadTable.value = true
             strongSelf.shouldShowLoading.value = false
         }
     }
-    
+
     func numberOfCellsInSection(_ section: Int) -> Int? {
         return fieldItems.count
     }
@@ -77,4 +69,29 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
         return configurator
     }
     
+    private func transformData(_ rawData: [String: String]) {
+        fieldItems = []
+        for field in rawData {
+            guard field.key != "_id", field.key != "_es" else { continue }
+            let model = ContactDetailSorting.init(rawValue: field.key.lowercased())
+            let fieldModel = ItemField(key: model?.label ?? "",
+                                       value: field.value,
+                                       position: model?.position ?? 0,
+                                       isEditing: editButtonTapped.value ?? false)
+            fieldItems.append(fieldModel)
+        }
+        fieldItems = fieldItems.sorted { $0.propertyPosition < $1.propertyPosition }
+    }
+    
+    func updateItem(_ properties: [String: String]) {
+        let id = rawData.first(where: { item -> Bool in  return item.key == "_id" })
+        
+        contactDetailRepository?.postEntityDataFor(id?.value ?? "", itemType: "contact", properties: properties) { [weak self] (itemsResponse) in
+            guard let strongSelf = self else { return }
+            strongSelf.rawData = itemsResponse?.data ?? [:]
+            strongSelf.transformData(strongSelf.rawData)
+            strongSelf.shouldReloadTable.value = true
+            strongSelf.shouldShowLoading.value = false
+        }
+    }
 }

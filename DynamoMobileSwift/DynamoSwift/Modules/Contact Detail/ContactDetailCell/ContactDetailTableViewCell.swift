@@ -10,7 +10,15 @@ import UIKit
 
 typealias ContactDetailCellConfigurator = BaseViewConfigurator<ContactDetailTableViewCell>
 
-class ContactDetailTableViewCell: UITableViewCell, Configurable {
+protocol CellDataDelegate: class {
+   
+}
+
+protocol CellDataProtocol: class {
+    func populateData() -> [String: String]
+}
+
+class ContactDetailTableViewCell: UITableViewCell, Configurable, CellDataProtocol {
     
     @IBOutlet weak var propertyNameLabel: UILabel!
     @IBOutlet weak var propertyValueTextField: UITextField!
@@ -23,5 +31,9 @@ class ContactDetailTableViewCell: UITableViewCell, Configurable {
         propertyValueTextField.isEnabled = data.isEditing
         propertyValueTextField.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
         view.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
+    }
+    
+    func populateData() -> [String: String] {
+        return [propertyNameLabel.text ?? "": propertyValueTextField.text ?? ""]
     }
 }

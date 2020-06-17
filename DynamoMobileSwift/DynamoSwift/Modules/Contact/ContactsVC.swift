@@ -25,6 +25,11 @@ class ContactsVC: BaseVC {
         bindViewModel(viewModel)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.shouldReloadTable.value = true
+    }
+    
     // MARK: Private methods
     private func bindViewModel(_ viewModel: ContactsViewModelProtocol?) {
         viewModel?.shouldReloadTable.bindAndFire { [weak self] _ in

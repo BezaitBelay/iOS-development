@@ -24,7 +24,7 @@ class ContactsRepository: ContactsRepositoryProtocol {
         }
     }
     
-    func getQueeryParansFromNext(from nextPageURL: String?) -> [String: String]? {
+    private func getQueeryParansFromNext(from nextPageURL: String?) -> [String: String]? {
         var queryStrings = [String: String]()
         guard let nextPageURL = nextPageURL else { return nil }
         let splitURl = nextPageURL.components(separatedBy: "?")

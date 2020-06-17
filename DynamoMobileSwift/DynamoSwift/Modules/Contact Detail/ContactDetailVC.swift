@@ -12,7 +12,7 @@ class ContactDetailVC: BaseVC {
     
     @IBOutlet weak var tableView: UITableView!
     fileprivate var originalInsetBottom: CGFloat = 0
-
+    
     var viewModel: ContactDetailViewModelProtocol?
     
     override func viewDidLoad() {
@@ -30,12 +30,22 @@ class ContactDetailVC: BaseVC {
     }
     
     @objc func editButtonTapped() {
-        if let title = navigationItem.rightBarButtonItem?.title {
-            navigationItem.rightBarButtonItem?.title = title == "Save" ? "Edit" : "Save"
-        }
-        viewModel?.editButtonTapped.value = !(viewModel?.editButtonTapped.value ?? false)
-        if let separatorValue = viewModel?.editButtonTapped.value {
-            tableView.separatorStyle =  separatorValue ? .none : .singleLine
+        if let title = navigationItem.rightBarButtonItem?.title, title == "Edit" {
+            navigationItem.rightBarButtonItem?.title = "Save"
+            changeShowRowMode()
+        } else {
+            let count = tableView.numberOfRows(inSection: 0)
+            var properties: [String: String] = [:]
+            for index in 0...count {
+                let indexPath = IndexPath(row: index, section: 0)
+                guard let property = tableView.cellForRow(at: indexPath) as? CellDataProtocol,
+                    property.populateData().keys.first != ContactDetailSorting.companyName.label else { continue }
+                properties[property.populateData().keys.first ?? ""] = property.populateData().values.first ?? ""
+            }
+            viewModel?.shouldShowLoading.value = true
+            viewModel?.updateItem(properties)
+            navigationItem.rightBarButtonItem?.title = "Edit"
+            changeShowRowMode()
         }
     }
     
@@ -56,6 +66,13 @@ class ContactDetailVC: BaseVC {
             } else {
                 strongSelf.stopLoading()
             }
+        }
+    }
+    
+    private func changeShowRowMode() {
+        viewModel?.editButtonTapped.value = !(viewModel?.editButtonTapped.value ?? false)
+        if let separatorValue = viewModel?.editButtonTapped.value {
+            tableView.separatorStyle =  separatorValue ? .none : .singleLine
         }
     }
     
@@ -96,7 +113,7 @@ extension ContactDetailVC: KeyboardОbserversHandler {
         let userInfo = notification.userInfo
         guard let kbRect = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect),
             let rootView = self.view.window?.rootViewController?.view
-        else { return }
+            else { return }
         
         let newKbSize = view.window?.convert(kbRect, to: rootView).size ?? .zero
         

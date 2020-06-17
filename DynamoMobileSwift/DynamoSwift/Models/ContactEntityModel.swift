@@ -24,10 +24,10 @@ struct EntityDetailData: Codable {
 
 enum ContactDetailSorting: String {
     case fullName = "fullname"
-    case primarycontactemail = "primarycontactemail"
+    case primarycontactemail = "contactinfo_email"
     case companyName = "companyname"
     case jobtitle = "jobtitle"
-    case primarycontactphone = "primarycontactphone"
+    case primarycontactphone = "contactinfo_businessphone"
     case comments = "comments"
     case contactInfoCompanyLink = "contactinfo_companylink"
     

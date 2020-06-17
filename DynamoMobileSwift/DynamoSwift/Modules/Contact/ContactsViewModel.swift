@@ -35,7 +35,6 @@ class ContactsViewModel: ContactsViewModelProtocol {
                                                 let entities: [Contact] = itemsResponse?.data ?? []
                                                 strongSelf.entities = entities.sorted { $0.name.lowercased() < $1.name.lowercased() }
                                                 strongSelf.nextPageURL = itemsResponse?.links?.nextLink
-                                                print(strongSelf.nextPageURL ?? "")
                                                 strongSelf.shouldReloadTable.value = true
                                                 strongSelf.shouldShowLoading.value = false
         }
@@ -65,7 +64,6 @@ class ContactsViewModel: ContactsViewModelProtocol {
             guard let strongSelf = self else { return }
             strongSelf.entities.append(contentsOf: itemsResponse?.data ?? [])
             strongSelf.nextPageURL = itemsResponse?.links?.nextLink
-            print(strongSelf.nextPageURL ?? "")
             strongSelf.shouldShowLoading.value = false
             strongSelf.shouldReloadTable.value = true
         }

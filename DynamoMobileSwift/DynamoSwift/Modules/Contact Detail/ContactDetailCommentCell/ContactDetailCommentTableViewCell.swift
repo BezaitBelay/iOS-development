@@ -10,13 +10,14 @@ import UIKit
 
 typealias ContactDetailCommentCellConfigurator = BaseViewConfigurator<ContactDetailCommentTableViewCell>
 
-class ContactDetailCommentTableViewCell: UITableViewCell, Configurable {
+class ContactDetailCommentTableViewCell: UITableViewCell, Configurable, CellDataProtocol {
 
     @IBOutlet weak var propertyNameLabel: UILabel!
     @IBOutlet weak var propertyValueTextView: UITextView!
     @IBOutlet weak var view: UIView!
     
     func configureWith(_ data: ItemFieldCellModel) {
+
         propertyNameLabel.text = data.propertyName
         propertyValueTextView.text = data.propertyValue
         propertyValueTextView.isEditable = data.isEditing
@@ -24,4 +25,9 @@ class ContactDetailCommentTableViewCell: UITableViewCell, Configurable {
 //        propertyValueTextView.textColor = data.isEditing ? #colorLiteral(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0) : #colorLiteral(red: 0.564, green: 0.573, blue: 0.6, alpha: 1)
         view.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
     }
+    
+    func populateData() -> [String: String] {
+        return [propertyNameLabel.text ?? "": propertyValueTextView.text ?? ""]
+    }
+    
 }
