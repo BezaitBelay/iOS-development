@@ -59,8 +59,4 @@ extension ContactDetailCoordinator: ContactDetailCoordinatorDelegate {
             rootNavigationController?.present(alert, animated: true, completion: nil)
         }
     }
-    
-    func callContact(propertyValue: String) {
-        
-    }
 }

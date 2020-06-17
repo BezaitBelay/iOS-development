@@ -13,10 +13,12 @@ protocol ContactDetailViewModelProtocol: BaseDataSource {
     var fieldItems: [ItemFieldCellModel] { get }
     var shouldReloadTable: Observable<Bool> { get set }
     var editButtonTapped: Observable<Bool> { get set }
+    var shouldShowLoading: Observable<Bool> { get set}
 }
 
 class ContactDetailViewModel: ContactDetailViewModelProtocol {
     var editButtonTapped = Observable<Bool>(false)
+    var shouldShowLoading = Observable<Bool>(false)
     var shouldReloadTable = Observable<Bool>(false)
     var fieldItems = [ItemFieldCellModel]()
     private var contactDetailRepository: ContactDetailRepositoryProtocol?
@@ -25,6 +27,7 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
     
     init(contactDetailRepository: ContactDetailRepositoryProtocol, id: String) {
         self.contactDetailRepository = contactDetailRepository
+        shouldShowLoading.value = true
         self.contactDetailRepository?.getEntityDataFor(id, itemType: "contact") { [weak self] (itemsResponse) in
             print(itemsResponse ?? "item detail Response is nil")
             guard let strongSelf = self else { return }
@@ -33,22 +36,15 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
             for field in fieldData {
                 guard field.key != "_id", field.key != "_es" else { continue }
                 let model = ContactDetailSorting.init(rawValue: field.key.lowercased())
-                let fieldModel: ItemFieldCellModel
-                //                if field.key == "Primarycontactemail" {
-                //                    fieldModel = MailField(key: model?.label ?? "",
-                //                                           value: field.value,
-                //                                           position: model?.position ?? 0,
-                //                                           isEditing: strongSelf.editButtonTapped.value ?? false)
-                //                } else {
-                fieldModel = ItemField(key: model?.label ?? "",
+                let fieldModel = ItemField(key: model?.label ?? "",
                                        value: field.value,
                                        position: model?.position ?? 0,
                                        isEditing: strongSelf.editButtonTapped.value ?? false)
-                //                }
                 fieldItems.append(fieldModel)
             }
             strongSelf.fieldItems = fieldItems.sorted { $0.propertyPosition < $1.propertyPosition }
             strongSelf.shouldReloadTable.value = true
+            strongSelf.shouldShowLoading.value = false
         }
     }
     
