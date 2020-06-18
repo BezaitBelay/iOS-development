@@ -39,7 +39,7 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
             strongSelf.shouldShowLoading.value = false
         }
     }
-
+    
     func numberOfCellsInSection(_ section: Int) -> Int? {
         return fieldItems.count
     }
@@ -52,21 +52,26 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
         case 0, 2, 3: configurator = ContactDetailCellConfigurator(data: cellModel, didSelectAction: nil)
         case 1, 4, 6: configurator = ContactDetailWithActionCellConfigurator(data: cellModel) { [weak self] in
             guard let strongSelf = self else { return }
-            if !(strongSelf.editButtonTapped.value ?? true) {
-                if cellModel.propertyName == ContactDetailSorting.primarycontactemail.label {
-                    strongSelf.delegate?.openMailComposeViewController(propertyValue: cellModel.propertyValue)
-                } else if cellModel.propertyName == ContactDetailSorting.primarycontactphone.label {
-                    let number = (cellModel.propertyValue ?? "").components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-                    guard let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) else { return }
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                } else {
-                    guard let url = URL(string: cellModel.propertyValue ?? "") else { return }
-                    UIApplication.shared.open(url)
-                }}
+            strongSelf.contactDetailConfigureAction(for: cellModel)
             }
         default: configurator = ContactDetailCommentCellConfigurator(data: cellModel, didSelectAction: nil)
         }
         return configurator
+    }
+    
+    private func contactDetailConfigureAction(for cellModel: ItemFieldCellModel) {
+        if !(editButtonTapped.value ?? true) {
+            if cellModel.propertyName == ContactDetailSorting.primarycontactemail.label {
+                delegate?.openMailComposeViewController(propertyValue: cellModel.propertyValue)
+            } else if cellModel.propertyName == ContactDetailSorting.primarycontactphone.label {
+                let number = (cellModel.propertyValue ?? "").components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+                guard let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) else { return }
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                guard let url = URL(string: cellModel.propertyValue ?? "") else { return }
+                UIApplication.shared.open(url)
+            }
+        }
     }
     
     private func transformData(_ rawData: [String: String]) {

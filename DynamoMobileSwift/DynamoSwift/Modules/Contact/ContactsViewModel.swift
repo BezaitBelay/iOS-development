@@ -17,7 +17,7 @@ protocol ContactsViewModelProtocol: BaseDataSource {
 
 class ContactsViewModel: ContactsViewModelProtocol {
     var shouldShowLoading = Observable<Bool>(false)
-    var entities = [Contact]()
+    var entities: [Contact] = []
     var shouldReloadTable = Observable<Bool>(false)
     private var currentItemType: String = "contact"
     private var nextPageURL: String?
@@ -49,7 +49,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
             guard let strongSelf = self else { return }
             strongSelf.saveRecentContact(cellModel)
             strongSelf.shouldShowLoading.value = true
-            strongSelf.delegate?.showContactsDetail(cellModel, showLoading: strongSelf.shouldShowLoading, contactId: cellModel.id)
+            strongSelf.delegate?.showContactsDetail(cellModel.id, showLoading: strongSelf.shouldShowLoading)
         }
         
         return configurator

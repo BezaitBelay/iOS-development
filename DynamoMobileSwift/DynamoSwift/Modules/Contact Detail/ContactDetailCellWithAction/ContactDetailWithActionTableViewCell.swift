@@ -23,10 +23,24 @@ class ContactDetailWithActionTableViewCell: UITableViewCell, Configurable, CellD
         propertyValueTextField.isEnabled = data.isEditing
         propertyValueTextField.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
         view.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
-        kartinka.isHidden = data.isEditing 
+        kartinka.isHidden = data.isEditing
+        pickKeyboardType(for: data.propertyName ?? "")
     }
     
     func populateData() -> [String: String] {
         return [propertyNameLabel.text ?? "": propertyValueTextField.text ?? ""]
+    }
+    
+    func pickKeyboardType(for label: String) {
+        switch label {
+        case ContactDetailSorting.contactInfoCompanyLink.label:
+            propertyValueTextField.keyboardType = UIKeyboardType(rawValue: 10) ?? .default
+        case ContactDetailSorting.primarycontactemail.label:
+            propertyValueTextField.keyboardType = UIKeyboardType(rawValue: 7) ?? .default
+        case ContactDetailSorting.primarycontactphone.label:
+            propertyValueTextField.keyboardType = UIKeyboardType(rawValue: 5) ?? .default
+        default:
+            return
+        }
     }
 }

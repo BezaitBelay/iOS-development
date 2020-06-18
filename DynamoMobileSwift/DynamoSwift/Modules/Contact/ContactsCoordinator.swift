@@ -10,7 +10,7 @@ import UIKit
 import TwoWayBondage
 
 protocol ContactsCoordinatorDelegate: class {
-    func showContactsDetail(_ contact: Contact, showLoading: Observable<Bool>?, contactId: String) // openEntityDetail
+    func showContactsDetail(_ contactId: String, showLoading: Observable<Bool>?)
 }
 
 class ContactsCoordinator: TabCoordinator {
@@ -54,7 +54,7 @@ class ContactsCoordinator: TabCoordinator {
 }
 
 extension ContactsCoordinator: ContactsCoordinatorDelegate {
-    func showContactsDetail(_ contact: Contact, showLoading: Observable<Bool>?, contactId: String) {
+    func showContactsDetail(_ contactId: String, showLoading: Observable<Bool>?) {
         let contactDetailCoordinator = ContactDetailCoordinator(navVC: rootViewController, contactId: contactId)
         addChildCoordinator(contactDetailCoordinator)
         showLoading?.value = false

@@ -278,9 +278,9 @@
 			isa = PBXGroup;
 			children = (
 				3A6E6C872498C224008FF62C /* ContactsViewModel.swift */,
-				3A41D2D5248134C8003665C4 /* ContactsCoordinator.swift */,
 				3A41D2D92481384B003665C4 /* ContactsVC.swift */,
 				3A41D2FB24852C29003665C4 /* Contacts.storyboard */,
+				3A41D2D5248134C8003665C4 /* ContactsCoordinator.swift */,
 				3A41D3392488EF07003665C4 /* ContactsTableViewCell.swift */,
 				3A41D33B2488F484003665C4 /* ContactsTableViewCell.xib */,
 			);
