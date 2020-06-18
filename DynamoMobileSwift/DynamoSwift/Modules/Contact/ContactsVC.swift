@@ -21,7 +21,7 @@ class ContactsVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Constants.Storyboards.contacts
-        tableView.register(cellNames: "\(ContactsTableViewCell.self)")
+        tableView.register(cellNames: "\(ContactsTableViewCell.self)", "\(LoadingTableViewCell.self)")
         bindViewModel(viewModel)
     }
     
