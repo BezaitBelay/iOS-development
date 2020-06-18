@@ -27,6 +27,7 @@ class ContactDetailVC: BaseVC {
         bindViewModel(viewModel)
         tableView.keyboardDismissMode = .onDrag
         registerForKeyboardNotifications()
+        tableView.tableFooterView = UIView()
     }
     
     @objc func editButtonTapped() {

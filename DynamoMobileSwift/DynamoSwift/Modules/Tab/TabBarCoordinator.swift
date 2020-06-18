@@ -13,10 +13,6 @@ protocol TabCoordinationDelegate: class {
     // props & funcs which should be handled by the AppCoordinator
 }
 
-protocol TabBarCoordinatorProtocol: class {
-    func didSelectTab(_ index: Int)
-}
-
 class TabBarCoordinator: Coordinator {
     
     var rootViewController: MainTabBarVC!
@@ -76,23 +72,5 @@ class TabBarCoordinator: Coordinator {
         }
         
         rootViewController?.viewControllers = viewControllers
-    }
-}
-
-extension TabBarCoordinator: TabBarCoordinatorProtocol {
-    func didSelectTab(_ index: Int) {
-        print("selected tab")
-        guard index != previousTabIndex else { return }
-        let tabCoordinator = childCoordinators.first { (coordinator) -> Bool in
-            if let coordinator = coordinator as? TabCoordinator {
-                return coordinator.tabIndex == index
-            }
-            return false
-        }
-        if let tabCoordinator = tabCoordinator as? TabCoordinator {
-            print("DidSelectTab: \(index)")
-            previousTabIndex = index
-            tabCoordinator.start()
-        }
     }
 }
