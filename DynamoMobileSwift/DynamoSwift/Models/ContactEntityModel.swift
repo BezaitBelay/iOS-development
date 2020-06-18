@@ -60,6 +60,7 @@ struct Contact: Codable {
     var id: String
     var es: String
     var name: String
+    var date = Date()
     //    var fullName: String?
     //    var email: String?
     //    var companyName: String?
@@ -81,6 +82,20 @@ struct Contact: Codable {
         //        case webSite = "ContactInfo_CompanyLink"
     }
 }
+
+//class UserDefaultContact: Codable {
+//    var id: String
+//    var es: String
+//    var name: String
+//    var timestamp: Date
+//   
+//    init(contact: Contact, date: Date) {
+//        id = contact.id
+//        es = contact.es
+//        name = contact.name
+//        timestamp = date
+//    }
+//}
 
 struct Links: Codable {
     let link: String

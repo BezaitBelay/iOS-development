@@ -21,13 +21,10 @@ class RecentCoordinator: TabCoordinator {
     override init() {
         super.init()
         guard let topVC = RecentVC.instantiateFromStoryboard() as? RecentVC else {return}
-        
         topVC.shouldFinishScene = true
+        topVC.viewModel = RecentsViewModel()
         rootViewController = BaseNavigationVC(rootViewController: topVC)
         setupTabBar()
-        
-        guard let appCoordinator = UIApplication.mainDelegate?.appCoordinator else { return }
-        appCoordinator.openMainTabsNavigation()
     }
     
     override func start() {

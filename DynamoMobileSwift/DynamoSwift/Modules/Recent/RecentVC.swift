@@ -16,6 +16,8 @@ class RecentVC: BaseVC {
     /*************************************/
     @IBOutlet weak var tableView: UITableView!
     
+    var viewModel: RecentsViewModel?
+    
     override var isVisible: Bool {
         return true
     }
@@ -23,6 +25,14 @@ class RecentVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Constants.Storyboards.recent
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(UserDefaults.standard.dictionaryRepresentation().keys)
+        if let item = UserDefaults.standard.array(forKey: Constants.Storyboards.contacts) as? [Contact] {
+            print(item)
+        }
     }
 }
 

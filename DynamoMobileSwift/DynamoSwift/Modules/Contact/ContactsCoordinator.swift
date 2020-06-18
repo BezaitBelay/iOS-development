@@ -32,8 +32,6 @@ class ContactsCoordinator: TabCoordinator {
         topVC.viewModel = ContactsViewModel(contactsRepository: contactsRepository)
         topVC.viewModel?.delegate = self
         setupTabBar()
-        guard let appCoordinator = UIApplication.mainDelegate?.appCoordinator else { return }
-        appCoordinator.openMainTabsNavigation()
     }
     
     override func start() {

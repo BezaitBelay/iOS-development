@@ -66,13 +66,6 @@ class AppCoordinator: Coordinator {
         print("ViewWillDisappear: \(sceneVC.vcName)")
     }
     
-    func openMainTabsNavigation() {
-        guard let tabsCoordinator = tabsCoordinator, let window = window else { return }
-        
-        window.rootViewController = tabsCoordinator.rootViewController ?? UIViewController()
-        window.makeKeyAndVisible()
-    }
-    
     // MARK: Scene loading
     func startScreenLoading() {
         guard let loadingView = loadingView, loadingView.isHidden else {

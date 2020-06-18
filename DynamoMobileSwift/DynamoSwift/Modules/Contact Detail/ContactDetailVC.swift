@@ -42,8 +42,8 @@ class ContactDetailVC: BaseVC {
                     property.populateData().keys.first != ContactDetailSorting.companyName.label else { continue }
                 properties[property.populateData().keys.first ?? ""] = property.populateData().values.first ?? ""
             }
-            viewModel?.shouldShowLoading.value = true
-            viewModel?.updateItem(properties)
+//            viewModel?.shouldShowLoading.value = true
+//            viewModel?.updateItem(properties)
             navigationItem.rightBarButtonItem?.title = "Edit"
             changeShowRowMode()
         }

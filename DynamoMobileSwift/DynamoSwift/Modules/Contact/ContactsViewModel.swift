@@ -30,10 +30,8 @@ class ContactsViewModel: ContactsViewModelProtocol {
         shouldShowLoading.value = true
         self.contactsRepository?.getEntitiesOf(type: currentItemType,
                                                nextPageURL: nextPageURL) { [weak self] (itemsResponse) in
-                                                print(itemsResponse ?? "itemsResponse is nil")
                                                 guard let strongSelf = self else { return }
-                                                let entities: [Contact] = itemsResponse?.data ?? []
-                                                strongSelf.entities = entities.sorted { $0.name.lowercased() < $1.name.lowercased() }
+                                                strongSelf.entities = itemsResponse?.data ?? []
                                                 strongSelf.nextPageURL = itemsResponse?.links?.nextLink
                                                 strongSelf.shouldReloadTable.value = true
                                                 strongSelf.shouldShowLoading.value = false
@@ -49,6 +47,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
         let cellModel = entities[index]
         configurator = ContactCellConfigurator(data: cellModel) {[weak self] in
             guard let strongSelf = self else { return }
+            strongSelf.saveRecentContact(cellModel)
             strongSelf.shouldShowLoading.value = true
             strongSelf.delegate?.showContactsDetail(cellModel, showLoading: strongSelf.shouldShowLoading, contactId: cellModel.id)
         }
@@ -60,7 +59,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
         guard index == entities.count - 1, nextPageURL != nil else { return }
         shouldShowLoading.value = true
         contactsRepository?.getEntitiesOf(type: currentItemType, nextPageURL: nextPageURL) { [weak self] (itemsResponse) in
-            print(itemsResponse ?? "itemsResponse is nil")
+            //            print(itemsResponse ?? "itemsResponse is nil")
             guard let strongSelf = self else { return }
             strongSelf.entities.append(contentsOf: itemsResponse?.data ?? [])
             strongSelf.nextPageURL = itemsResponse?.links?.nextLink
@@ -68,4 +67,42 @@ class ContactsViewModel: ContactsViewModelProtocol {
             strongSelf.shouldReloadTable.value = true
         }
     }
+    
+    private func saveRecentContact(_ contact: Contact) {
+//        UserDefaults.standard.removeObject(forKey: Constants.Storyboards.contacts)
+//        let date = Date()
+//        let dataFormatter = DateFormatter()
+//        dataFormatter.dateStyle = .short
+//        dataFormatter.timeStyle = .short
+//        let dateString = dataFormatter.string(from: date)
+//
+       //  let items = UserDefaults.standard.array(forKey: Constants.Storyboards.contacts) //else {
+            let info = contact //UserDefaultContact(contact: contact, date: date)
+            let encoder = JSONEncoder()
+//            encoder.dateEncodingStrategy = .formatted(.dateFormatter)
+            let array = [info]
+            if let encoded = try? encoder.encode(array) {
+                UserDefaults.standard.set(encoded, forKey: Constants.Storyboards.contacts)
+                print("added successfully")
+            }
+            return
+        //}
+//        guard var savedContacts = existingValue as? [UserDefaultContact] else { return }
+//        let info = UserDefaultContact(contact: contact, date: date)
+//        savedContacts.append(info)
+//        let encoder = JSONEncoder()
+////        encoder.dateEncodingStrategy = .formatted(.dateFormatter)
+//        if let encoded = try? encoder.encode(savedContacts) {
+//            UserDefaults.standard.set(encoded, forKey: "Contacts")
+//            print("added successfully")
+//        }
+    }
+}
+
+extension DateFormatter {
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        return formatter
+    }()
 }
