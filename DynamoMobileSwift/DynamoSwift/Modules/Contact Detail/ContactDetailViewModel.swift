@@ -14,7 +14,7 @@ protocol ContactDetailViewModelProtocol: BaseDataSource {
     var shouldReloadTable: Observable<Bool> { get set }
     var editButtonTapped: Observable<Bool> { get set }
     var shouldShowLoading: Observable<Bool> { get set}
-    func updateItem()
+    func updateItem(completion: @escaping () -> Void)
 }
 
 class ContactDetailViewModel: ContactDetailViewModelProtocol {
@@ -60,7 +60,7 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
         return configurator
     }
     
-    func updateItem() {
+    func updateItem(completion: @escaping () -> Void) {
         let id = rawData.first(where: { item -> Bool in  return item.key == "_id" })
         var properties: [String: String] = [:]
         for item in fieldItems {
@@ -72,8 +72,9 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
             guard let strongSelf = self else { return }
             strongSelf.rawData = itemsResponse?.data ?? [:]
             strongSelf.transformData(strongSelf.rawData)
-            strongSelf.shouldReloadTable.value = true
             strongSelf.shouldShowLoading.value = false
+            strongSelf.shouldReloadTable.value = true
+            completion()
         }
     }
     

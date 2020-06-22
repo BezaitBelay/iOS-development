@@ -56,11 +56,10 @@ enum ContactDetailSorting: String {
     }
 }
 
-struct Contact: Codable {
+class Contact: Codable {
     var id: String
     var es: String
     var name: String
-    var date = Date()
     //    var fullName: String?
     //    var email: String?
     //    var companyName: String?

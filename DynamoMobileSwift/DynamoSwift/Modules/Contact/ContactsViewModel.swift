@@ -60,52 +60,42 @@ class ContactsViewModel: ContactsViewModelProtocol {
     
     func requestNextPageWhen(index: Int) {
         guard index == entities.count - 1, nextPageURL != nil else { return }
-//        shouldShowLoading.value = true
         contactsRepository?.getEntitiesOf(type: currentItemType, nextPageURL: nextPageURL) { [weak self] (itemsResponse) in
             //            print(itemsResponse ?? "itemsResponse is nil")
             guard let strongSelf = self else { return }
             strongSelf.entities.append(contentsOf: itemsResponse?.data ?? [])
             strongSelf.nextPageURL = itemsResponse?.links?.nextLink
-//            strongSelf.shouldShowLoading.value = false
             strongSelf.shouldReloadTable.value = true
         }
     }
     
     private func saveRecentContact(_ contact: Contact) {
-        //        UserDefaults.standard.removeObject(forKey: Constants.Storyboards.contacts)
-        //        let date = Date()
-        //        let dataFormatter = DateFormatter()
-        //        dataFormatter.dateStyle = .short
-        //        dataFormatter.timeStyle = .short
-        //        let dateString = dataFormatter.string(from: date)
-        //
-        //  let items = UserDefaults.standard.array(forKey: Constants.Storyboards.contacts) //else {
-        let info = contact //UserDefaultContact(contact: contact, date: date)
-        let encoder = JSONEncoder()
-        //            encoder.dateEncodingStrategy = .formatted(.dateFormatter)
-        let array = [info]
-        if let encoded = try? encoder.encode(array) {
-            UserDefaults.standard.set(encoded, forKey: Constants.Storyboards.contacts)
-            print("added successfully")
+        //                        UserDefaults.standard.removeObject(forKey: Constants.Storyboards.contacts)
+        
+        guard var items = UserDefaultHelper.getObjectsArray(of: Contact.self, for: Constants.Storyboards.contacts) else { return }
+        if items.isEmpty {
+            let encoder = JSONEncoder()
+            let array = [contact]
+            if let encoded = try? encoder.encode(array) {
+                UserDefaults.standard.set(encoded, forKey: Constants.Storyboards.contacts)
+            }
+        } else {
+            if items.first(where: {$0.id == contact.id}) != nil {
+                items.removeAll(where: {$0.id == contact.id})
+            }
+            items.insert(contact, at: 0)
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(items) {
+                UserDefaults.standard.set(encoded, forKey: Constants.Storyboards.contacts)
+            }
         }
-        return
-        //}
-        //        guard var savedContacts = existingValue as? [UserDefaultContact] else { return }
-        //        let info = UserDefaultContact(contact: contact, date: date)
-        //        savedContacts.append(info)
-        //        let encoder = JSONEncoder()
-        ////        encoder.dateEncodingStrategy = .formatted(.dateFormatter)
-        //        if let encoded = try? encoder.encode(savedContacts) {
-        //            UserDefaults.standard.set(encoded, forKey: "Contacts")
-        //            print("added successfully")
-        //        }
     }
 }
 
-extension DateFormatter {
-    static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        return formatter
-    }()
-}
+//extension DateFormatter {
+//    static let dateFormatter: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "dd-MM-yyyy"
+//        return formatter
+//    }()
+//}

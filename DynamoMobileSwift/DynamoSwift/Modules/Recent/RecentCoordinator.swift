@@ -22,7 +22,7 @@ class RecentCoordinator: TabCoordinator {
         super.init()
         guard let topVC = RecentVC.instantiateFromStoryboard() as? RecentVC else {return}
         topVC.shouldFinishScene = true
-        topVC.viewModel = RecentsViewModel()
+        topVC.viewModel = RecentViewModel()
         rootViewController = BaseNavigationVC(rootViewController: topVC)
         setupTabBar()
     }

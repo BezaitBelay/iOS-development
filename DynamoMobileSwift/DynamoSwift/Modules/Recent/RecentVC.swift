@@ -16,7 +16,8 @@ class RecentVC: BaseVC {
     /*************************************/
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: RecentsViewModel?
+    var contacts: [Contact]?
+    var viewModel: RecentViewModel?
     
     override var isVisible: Bool {
         return true
@@ -25,13 +26,33 @@ class RecentVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Constants.Storyboards.recent
+        tableView.register(cellNames: "\(ContactsTableViewCell.self)")
+        bindViewModel(viewModel)
+        tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(UserDefaults.standard.dictionaryRepresentation().keys)
-        if let item = UserDefaults.standard.array(forKey: Constants.Storyboards.contacts) as? [Contact] {
-            print(item)
+        //        print(UserDefaults.standard.dictionaryRepresentation().keys)
+        viewModel?.entities = UserDefaultHelper.getObjectsArray(of: Contact.self, for: "Contacts") ?? []
+        viewModel?.shouldReloadTable.value = true
+    }
+    
+    // MARK: Private methods
+    private func bindViewModel(_ viewModel: RecentViewModel?) {
+        viewModel?.shouldReloadTable.bindAndFire { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+        
+        viewModel?.shouldShowLoading.bindAndFire { [weak self] (start) in
+            guard let strongSelf = self else { return }
+            if start {
+                strongSelf.startLoading()
+                strongSelf.tableView.isHidden = true
+            } else {
+                strongSelf.stopLoading()
+                strongSelf.tableView.isHidden = false
+            }
         }
     }
 }
@@ -39,15 +60,26 @@ class RecentVC: BaseVC {
 // MARK: UITableViewDataSource methods
 extension RecentVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let configurator = viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section) else { return UITableViewCell() }
+        let cell = tableView.configureCell(for: configurator, at: indexPath)
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        print(viewModel?.numberOfCellsInSection(section) ?? 0)
+        return viewModel?.numberOfCellsInSection(section) ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+}
+
+extension RecentVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section)?.didSelectAction?()
     }
 }
 
@@ -57,3 +89,4 @@ extension RecentVC: StoryboardInstantiatable {
         return Constants.Storyboards.recent
     }
 }
+

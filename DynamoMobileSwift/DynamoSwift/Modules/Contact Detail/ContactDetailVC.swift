@@ -35,8 +35,9 @@ class ContactDetailVC: BaseVC {
             changeShowRowMode(buttonTitle: "Save")
         } else {
             viewModel?.shouldShowLoading.value = true
-            viewModel?.updateItem()
-            changeShowRowMode(buttonTitle: "Edit")
+            viewModel?.updateItem { [weak self] in
+                self?.changeShowRowMode(buttonTitle: "Edit")
+            }
         }
     }
     
@@ -56,7 +57,6 @@ class ContactDetailVC: BaseVC {
         
         viewModel?.editButtonTapped.bindAndFire { [weak self] _ in
             self?.tableView.reloadData()
-//            self?.changeShowRowMode(buttonTitle: "Edit")
         }
         
         viewModel?.shouldShowLoading.bindAndFire { [weak self] (start) in
