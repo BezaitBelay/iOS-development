@@ -10,16 +10,23 @@ import UIKit
 
 typealias ContactDetailWithActionCellConfigurator = BaseViewConfigurator<ContactDetailWithActionTableViewCell>
 
-class ContactDetailWithActionTableViewCell: UITableViewCell, Configurable, CellDataProtocol {
+class ContactDetailWithActionTableViewCell: UITableViewCell, Configurable {
     
     @IBOutlet weak var propertyNameLabel: UILabel!
     @IBOutlet weak var propertyValueTextField: UITextField!
     @IBOutlet weak var view: UIView!
     @IBOutlet var kartinka: UIImageView!
+    var model: ItemField?
     
     func configureWith(_ data: ItemFieldCellModel) {
+        if let model = model?.newValue.value {
+            propertyValueTextField.text = model
+        } else {
+            guard let existing = data as? ItemField else { return }
+            model = existing
+            propertyValueTextField.text = data.propertyValue
+        }
         propertyNameLabel.text = data.propertyName
-        propertyValueTextField.text = data.propertyValue
         propertyValueTextField.isEnabled = data.isEditing
         propertyValueTextField.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
         view.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
@@ -27,8 +34,8 @@ class ContactDetailWithActionTableViewCell: UITableViewCell, Configurable, CellD
         pickKeyboardType(for: data.propertyName ?? "")
     }
     
-    func populateData() -> [String: String] {
-        return [propertyNameLabel.text ?? "": propertyValueTextField.text ?? ""]
+    @IBAction func textFieldIsChanging(_ sender: UITextField) {
+         model?.newValue.value = sender.text
     }
     
     func pickKeyboardType(for label: String) {

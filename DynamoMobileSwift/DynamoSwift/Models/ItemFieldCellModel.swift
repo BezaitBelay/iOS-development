@@ -7,13 +7,15 @@
 //
 
 import UIKit
-import MessageUI
+import TwoWayBondage
 
-protocol ItemFieldCellModel: Codable {
+protocol ItemFieldCellModel {
     var propertyName: String? { get set }
     var propertyValue: String? { get set }
     var propertyPosition: Int { get set }
     var isEditing: Bool { get set }
+    
+    var newValue: Observable<String?> { get set }
     
 }
 
@@ -22,6 +24,8 @@ class ItemField: ItemFieldCellModel {
     var propertyValue: String?
     var propertyPosition: Int
     var isEditing: Bool = false
+    
+    var newValue = Observable<String?>(nil)
     
     init(key: String, value: String, position: Int, isEditing: Bool) {
         propertyName = key

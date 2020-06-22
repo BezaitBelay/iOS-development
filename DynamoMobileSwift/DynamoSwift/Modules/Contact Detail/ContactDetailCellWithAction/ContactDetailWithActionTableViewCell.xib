@@ -35,6 +35,9 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="textFieldIsChanging:" destination="Krs-jj-NQ4" eventType="editingChanged" id="VFY-b9-vJW"/>
+                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="OMc-cf-lQ1">
                                 <rect key="frame" x="343" y="9.5" width="39" height="32"/>

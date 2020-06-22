@@ -14,18 +14,19 @@ protocol ContactDetailViewModelProtocol: BaseDataSource {
     var shouldReloadTable: Observable<Bool> { get set }
     var editButtonTapped: Observable<Bool> { get set }
     var shouldShowLoading: Observable<Bool> { get set}
-    func updateItem(_ properties: [String: String])
+    func updateItem()
 }
 
 class ContactDetailViewModel: ContactDetailViewModelProtocol {
     var editButtonTapped = Observable<Bool>(false)
     var shouldShowLoading = Observable<Bool>(false)
     var shouldReloadTable = Observable<Bool>(false)
-    var fieldItems = [ItemFieldCellModel]()
+    
+    var fieldItems: [ItemFieldCellModel] = []
     var rawData: [String: String] = [:]
-    private var contactDetailRepository: ContactDetailRepositoryProtocol?
     var numberOfSections: Int = 1
     weak var delegate: ContactDetailCoordinatorDelegate?
+    private var contactDetailRepository: ContactDetailRepositoryProtocol?
     
     init(contactDetailRepository: ContactDetailRepositoryProtocol, id: String) {
         self.contactDetailRepository = contactDetailRepository
@@ -52,14 +53,31 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
         case 0, 2, 3: configurator = ContactDetailCellConfigurator(data: cellModel, didSelectAction: nil)
         case 1, 4, 6: configurator = ContactDetailWithActionCellConfigurator(data: cellModel) { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.contactDetailConfigureAction(for: cellModel)
+            strongSelf.configureAction(for: cellModel)
             }
         default: configurator = ContactDetailCommentCellConfigurator(data: cellModel, didSelectAction: nil)
         }
         return configurator
     }
     
-    private func contactDetailConfigureAction(for cellModel: ItemFieldCellModel) {
+    func updateItem() {
+        let id = rawData.first(where: { item -> Bool in  return item.key == "_id" })
+        var properties: [String: String] = [:]
+        for item in fieldItems {
+            if let updatedItem = item.newValue.value, let index = item.propertyName {
+                properties[index] = updatedItem
+            }
+        }
+        contactDetailRepository?.postEntityDataFor(id?.value ?? "", itemType: "contact", properties: properties) { [weak self] (itemsResponse) in
+            guard let strongSelf = self else { return }
+            strongSelf.rawData = itemsResponse?.data ?? [:]
+            strongSelf.transformData(strongSelf.rawData)
+            strongSelf.shouldReloadTable.value = true
+            strongSelf.shouldShowLoading.value = false
+        }
+    }
+    
+    private func configureAction(for cellModel: ItemFieldCellModel) {
         if !(editButtonTapped.value ?? true) {
             if cellModel.propertyName == ContactDetailSorting.primarycontactemail.label {
                 delegate?.openMailComposeViewController(propertyValue: cellModel.propertyValue)
@@ -68,7 +86,7 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
                 guard let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) else { return }
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
-                guard let url = URL(string: cellModel.propertyValue ?? "") else { return }
+                guard let url = cellModel.propertyValue?.webUrlAddressFromString  else { return }
                 UIApplication.shared.open(url)
             }
         }
@@ -88,15 +106,25 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
         fieldItems = fieldItems.sorted { $0.propertyPosition < $1.propertyPosition }
     }
     
-    func updateItem(_ properties: [String: String]) {
-        let id = rawData.first(where: { item -> Bool in  return item.key == "_id" })
-        
-        contactDetailRepository?.postEntityDataFor(id?.value ?? "", itemType: "contact", properties: properties) { [weak self] (itemsResponse) in
-            guard let strongSelf = self else { return }
-            strongSelf.rawData = itemsResponse?.data ?? [:]
-            strongSelf.transformData(strongSelf.rawData)
-            strongSelf.shouldReloadTable.value = true
-            strongSelf.shouldShowLoading.value = false
+}
+
+extension String {
+    var webUrlAddressFromString: URL? {
+        guard !self.isEmpty else {
+            return nil
         }
+        
+        var stringForURL: String?
+        
+        // add http in the beginning if required
+        if hasPrefix("http://") || hasPrefix("https://") {
+            stringForURL = self
+        } else {
+            stringForURL = "http://" + self
+        }
+        
+        // add encoding for non latin strings
+        let encodedString = stringForURL?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return URL(string: encodedString ?? "")
     }
 }

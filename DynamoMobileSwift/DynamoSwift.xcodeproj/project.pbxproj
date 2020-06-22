@@ -360,9 +360,9 @@
 		3AD9770F2490B50700AA939E /* Contact Detail */ = {
 			isa = PBXGroup;
 			children = (
-				3AD9772C24978C4E00AA939E /* ContactDetailCommentCell */,
-				3AD9772B24978C3500AA939E /* ContactDetailCellWithAction */,
 				3AD9772A24978C0100AA939E /* ContactDetailCell */,
+				3AD9772B24978C3500AA939E /* ContactDetailCellWithAction */,
+				3AD9772C24978C4E00AA939E /* ContactDetailCommentCell */,
 				3AD9771E2491224700AA939E /* ContactDetailViewModel.swift */,
 				3AD977102490B5BD00AA939E /* ContactDetailVC.swift */,
 				3AD9772F24978F9F00AA939E /* ContactDetailCoordinator.swift */,

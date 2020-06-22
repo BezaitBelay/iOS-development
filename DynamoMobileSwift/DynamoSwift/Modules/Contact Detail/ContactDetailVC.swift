@@ -32,25 +32,23 @@ class ContactDetailVC: BaseVC {
     
     @objc func editButtonTapped() {
         if let title = navigationItem.rightBarButtonItem?.title, title == "Edit" {
-            navigationItem.rightBarButtonItem?.title = "Save"
-            changeShowRowMode()
+            changeShowRowMode(buttonTitle: "Save")
         } else {
-            let count = tableView.numberOfRows(inSection: 0)
-            var properties: [String: String] = [:]
-            for index in 0...count {
-                let indexPath = IndexPath(row: index, section: 0)
-                guard let property = tableView.cellForRow(at: indexPath) as? CellDataProtocol,
-                    property.populateData().keys.first != ContactDetailSorting.companyName.label else { continue }
-                properties[property.populateData().keys.first ?? ""] = property.populateData().values.first ?? ""
-            }
-//            viewModel?.shouldShowLoading.value = true
-//            viewModel?.updateItem(properties)
-            navigationItem.rightBarButtonItem?.title = "Edit"
-            changeShowRowMode()
+            viewModel?.shouldShowLoading.value = true
+            viewModel?.updateItem()
+            changeShowRowMode(buttonTitle: "Edit")
         }
     }
     
     // MARK: Private methods
+    private func changeShowRowMode(buttonTitle: String) {
+        viewModel?.editButtonTapped.value = !(viewModel?.editButtonTapped.value ?? false)
+        navigationItem.rightBarButtonItem?.title = buttonTitle
+        if let separatorValue = viewModel?.editButtonTapped.value {
+            tableView.separatorStyle =  separatorValue ? .none : .singleLine
+        }
+    }
+    
     private func bindViewModel(_ viewModel: ContactDetailViewModelProtocol?) {
         viewModel?.shouldReloadTable.bindAndFire { [weak self] _ in
             self?.tableView.reloadData()
@@ -58,6 +56,7 @@ class ContactDetailVC: BaseVC {
         
         viewModel?.editButtonTapped.bindAndFire { [weak self] _ in
             self?.tableView.reloadData()
+//            self?.changeShowRowMode(buttonTitle: "Edit")
         }
         
         viewModel?.shouldShowLoading.bindAndFire { [weak self] (start) in
@@ -69,14 +68,6 @@ class ContactDetailVC: BaseVC {
             }
         }
     }
-    
-    private func changeShowRowMode() {
-        viewModel?.editButtonTapped.value = !(viewModel?.editButtonTapped.value ?? false)
-        if let separatorValue = viewModel?.editButtonTapped.value {
-            tableView.separatorStyle =  separatorValue ? .none : .singleLine
-        }
-    }
-    
 }
 
 // MARK: UITableViewDataSource methods
