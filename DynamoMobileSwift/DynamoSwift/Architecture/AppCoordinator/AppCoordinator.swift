@@ -20,6 +20,7 @@ class AppCoordinator: Coordinator {
         self.window = window
         super.init()
         let tabCoordinator = TabBarCoordinator()
+//        tabCoordinator.delegate = self
         addChildCoordinator(tabCoordinator)
         guard let window = window else { return }
         window.rootViewController = tabCoordinator.rootViewController ?? UIViewController()
@@ -88,3 +89,7 @@ class AppCoordinator: Coordinator {
         })
     }
 }
+
+//// MARK: - TabCoordinationDelegate
+//extension AppCoordinator: TabCoordinationDelegate {
+//}

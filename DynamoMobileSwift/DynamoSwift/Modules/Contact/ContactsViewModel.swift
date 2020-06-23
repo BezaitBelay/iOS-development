@@ -19,7 +19,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
     var shouldShowLoading = Observable<Bool>(false)
     var entities: [Contact] = []
     var shouldReloadTable = Observable<Bool>(false)
-    private var currentItemType: String = "contact"
+    private let currentItemType: String = "contact"
     private var nextPageURL: String?
     private var contactsRepository: ContactsRepositoryProtocol?
     var numberOfSections: Int = 1
@@ -91,11 +91,3 @@ class ContactsViewModel: ContactsViewModelProtocol {
         }
     }
 }
-
-//extension DateFormatter {
-//    static let dateFormatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd-MM-yyyy"
-//        return formatter
-//    }()
-//}

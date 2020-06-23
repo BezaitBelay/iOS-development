@@ -11,6 +11,7 @@ import TwoWayBondage
 
 protocol ContactsCoordinatorDelegate: class {
     func showContactsDetail(_ contactId: String, showLoading: Observable<Bool>?)
+//    func finishCoordination()
 }
 
 class ContactsCoordinator: TabCoordinator {
@@ -35,12 +36,12 @@ class ContactsCoordinator: TabCoordinator {
     }
     
     override func start() {
-        childCoordinators.first?.start()
+        rootViewController?.popToRootViewController(animated: false)
+        finishChildCoordinators()
     }
     
     override func finish() {
         // Clean up your rootViewController or any data that will persist and remove self from parentCoordinator
-        removeChildCoordinator(self)
     }
     
     // MARK: Private methods

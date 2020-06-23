@@ -34,8 +34,7 @@ class ContactDetailCoordinator: Coordinator {
     }
     
     override func finish() {
-        // Clean up your rootViewController or any data that will persist and remove self from parentCoordinator
-        removeChildCoordinator(self)
+//         Clean up your rootViewController or any data that will persist and remove self from parentCoordinator
     }
 }
 

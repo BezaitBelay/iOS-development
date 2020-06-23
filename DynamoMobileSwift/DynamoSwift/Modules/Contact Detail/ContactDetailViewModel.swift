@@ -32,7 +32,7 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
         self.contactDetailRepository = contactDetailRepository
         shouldShowLoading.value = true
         self.contactDetailRepository?.getEntityDataFor(id, itemType: "contact") { [weak self] (itemsResponse) in
-            print(itemsResponse ?? "item detail Response is nil")
+            //print(itemsResponse ?? "item detail Response is nil")
             guard let strongSelf = self else { return }
             strongSelf.rawData = itemsResponse?.data ?? [:]
             strongSelf.transformData(strongSelf.rawData)

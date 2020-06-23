@@ -33,8 +33,7 @@ class RecentVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        print(UserDefaults.standard.dictionaryRepresentation().keys)
-        viewModel?.entities = UserDefaultHelper.getObjectsArray(of: Contact.self, for: "Contacts") ?? []
+        viewModel?.entities = UserDefaultHelper.getObjectsArray(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
         viewModel?.shouldReloadTable.value = true
     }
     
@@ -67,7 +66,6 @@ extension RecentVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel?.numberOfCellsInSection(section) ?? 0)
         return viewModel?.numberOfCellsInSection(section) ?? 0
     }
     
@@ -89,4 +87,3 @@ extension RecentVC: StoryboardInstantiatable {
         return Constants.Storyboards.recent
     }
 }
-
