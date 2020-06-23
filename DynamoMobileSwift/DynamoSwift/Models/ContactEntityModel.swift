@@ -60,41 +60,13 @@ class Contact: Codable {
     var id: String
     var es: String
     var name: String
-    //    var fullName: String?
-    //    var email: String?
-    //    var companyName: String?
-    //    var jobTitle: String?
-    //    var phone: String?
-    //    var comments: String?
-    //    var webSite: String?
     
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
         case es = "_es"
         case name = "Identifier"
-        //        case fullName = "FullName"
-        //        case email = "Primarycontactemail"
-        //        case companyName = " Companyname"
-        //        case jobTitle = "Jobtitle"
-        //        case phone = "Primarycontactphone"
-        //        case comments = "Comments"
-        //        case webSite = "ContactInfo_CompanyLink"
     }
 }
-
-//class UserDefaultContact: Codable {
-//    var id: String
-//    var es: String
-//    var name: String
-//    var timestamp: Date
-//   
-//    init(contact: Contact, date: Date) {
-//        id = contact.id
-//        es = contact.es
-//        name = contact.name
-//        timestamp = date
-//    }
-//}
 
 struct Links: Codable {
     let link: String

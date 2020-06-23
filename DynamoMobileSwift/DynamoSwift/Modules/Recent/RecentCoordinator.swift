@@ -33,7 +33,9 @@ class RecentCoordinator: TabCoordinator {
     
     override func finish() {
         // Clean up your rootViewController or any data that will persist and remove self from parentCoordinator
-        removeChildCoordinator(self)
+//        removeChildCoordinator(self)
+        rootViewController?.popToRootViewController(animated: false)
+        finishChildCoordinators()
     }
     
     private func setupTabBar() {
@@ -42,5 +44,17 @@ class RecentCoordinator: TabCoordinator {
                                                       selectedImage: UIImage(named: "ic_recent_off"))
         rootViewController?.tabBarItem.tag = tabIndex
        // setupTabBarTitleColors()
+    }
+}
+
+extension RecentCoordinator: ContactsCoordinatorDelegate {
+    func showContactsDetail(_ contactId: String, showLoading: Observable<Bool>?) {
+        let contactDetailCoordinator = ContactDetailCoordinator(navVC: rootViewController, contactId: contactId)
+        addChildCoordinator(contactDetailCoordinator)
+        showLoading?.value = false
+    }
+    
+    func finishCoordination() {
+        finish()
     }
 }

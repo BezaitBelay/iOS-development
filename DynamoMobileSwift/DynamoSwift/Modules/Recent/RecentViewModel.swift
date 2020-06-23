@@ -15,7 +15,7 @@ class RecentViewModel {
     var shouldReloadTable = Observable<Bool>(false)
     
     init() {
-        entities = UserDefaultHelper.getObjectsArray(of: Contact.self, for: "Contacts") ?? []
+        entities = UserDefaultHelper.getObjectsArray(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
     }
 }
 
