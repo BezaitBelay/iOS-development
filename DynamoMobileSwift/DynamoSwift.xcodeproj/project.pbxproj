@@ -31,6 +31,7 @@
 		3A6E6C8C249A48DB008FF62C /* RecentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E6C8B249A48DB008FF62C /* RecentViewModel.swift */; };
 		3A6E6C90249BA7B4008FF62C /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6E6C8F249BA7B4008FF62C /* LoadingTableViewCell.xib */; };
 		3A6E6C92249BA7CF008FF62C /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E6C91249BA7CF008FF62C /* LoadingTableViewCell.swift */; };
+		3A6E6C9424A21FB8008FF62C /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E6C9324A21FB7008FF62C /* UserDefaultHelper.swift */; };
 		3AD9770E248E904B00AA939E /* ScreenLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD9770D248E904B00AA939E /* ScreenLoadingView.xib */; };
 		3AD977112490B5BD00AA939E /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD977102490B5BD00AA939E /* ContactDetailVC.swift */; };
 		3AD977132490E51300AA939E /* ContactDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD977122490E51300AA939E /* ContactDetailTableViewCell.xib */; };
@@ -170,6 +171,7 @@
 		3A6E6C8B249A48DB008FF62C /* RecentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewModel.swift; sourceTree = "<group>"; };
 		3A6E6C8F249BA7B4008FF62C /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		3A6E6C91249BA7CF008FF62C /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		3A6E6C9324A21FB7008FF62C /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 		3AD9770D248E904B00AA939E /* ScreenLoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenLoadingView.xib; sourceTree = "<group>"; };
 		3AD977102490B5BD00AA939E /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
 		3AD977122490E51300AA939E /* ContactDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				B9D7491121133ABA00C5D388 /* Extensions */,
 				B9D1EE4C219D9798006509CA /* Constants.swift */,
 				B9D1EE4E219D97AA006509CA /* LocalizerKeys.swift */,
+				3A6E6C9324A21FB7008FF62C /* UserDefaultHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				3AD97725249371D100AA939E /* ContactDetailWithActionTableViewCell.swift in Sources */,
 				B5418DE3247CEFCF00EF0A02 /* LoginRequest.swift in Sources */,
 				B5418DE0247CEFCF00EF0A02 /* StatusCode+Utils.swift in Sources */,
+				3A6E6C9424A21FB8008FF62C /* UserDefaultHelper.swift in Sources */,
 				B5418DDB247CEFCF00EF0A02 /* ParserInterface.swift in Sources */,
 				3AD977112490B5BD00AA939E /* ContactDetailVC.swift in Sources */,
 				B9D7491A2113424600C5D388 /* UIColor+UpxExtension.swift in Sources */,

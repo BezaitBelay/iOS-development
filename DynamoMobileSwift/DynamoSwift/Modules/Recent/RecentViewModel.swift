@@ -13,6 +13,7 @@ class RecentViewModel {
     var shouldShowLoading = Observable<Bool>(false)
     var entities: [Contact] = []
     var shouldReloadTable = Observable<Bool>(false)
+    weak var delegate: ContactsCoordinatorDelegate?
     
     init() {
         entities = UserDefaultHelper.getObjectsArray(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
@@ -32,22 +33,13 @@ extension RecentViewModel: BaseDataSource {
         let configurator: ViewConfigurator
         guard entities.count > index else { return nil }
         
-        configurator = ContactCellConfigurator(data: entities[index], didSelectAction: nil)
-        
-        return configurator
-    }
-}
-
-class UserDefaultHelper {
-    static func getObjectsArray<T: Codable>(of type: T.Type, for key: String) -> [T]? {
-        let objects: [T]
-        if let data = UserDefaults.standard.object(forKey: key) as? Data {
-            let decoder = JSONDecoder()
-            objects = (try? decoder.decode(Array.self, from: data) as [T]) ?? []
-        } else {
-            objects = []
+        configurator = ContactCellConfigurator(data: entities[index]) {[weak self] in
+            guard let strongSelf = self else { return }
+            UserDefaultHelper.saveRecentContact(strongSelf.entities[index])
+            strongSelf.shouldShowLoading.value = true
+            strongSelf.delegate?.showContactsDetail(strongSelf.entities[index].id, showLoading: strongSelf.shouldShowLoading)
         }
         
-        return objects.count > 20 ? Array(objects[..<20]) : objects
+        return configurator
     }
 }

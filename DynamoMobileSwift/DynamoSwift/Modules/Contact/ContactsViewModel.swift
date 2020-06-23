@@ -50,7 +50,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
         } else {
             configurator = ContactCellConfigurator(data: cellModel) {[weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.saveRecentContact(cellModel)
+                UserDefaultHelper.saveRecentContact(cellModel)
                 strongSelf.shouldShowLoading.value = true
                 strongSelf.delegate?.showContactsDetail(cellModel.id, showLoading: strongSelf.shouldShowLoading)
             }
@@ -66,28 +66,6 @@ class ContactsViewModel: ContactsViewModelProtocol {
             strongSelf.entities.append(contentsOf: itemsResponse?.data ?? [])
             strongSelf.nextPageURL = itemsResponse?.links?.nextLink
             strongSelf.shouldReloadTable.value = true
-        }
-    }
-    
-    private func saveRecentContact(_ contact: Contact) {
-        //                        UserDefaults.standard.removeObject(forKey: Constants.Storyboards.contacts)
-        
-        guard var items = UserDefaultHelper.getObjectsArray(of: Contact.self, for: Constants.Storyboards.contacts) else { return }
-        if items.isEmpty {
-            let encoder = JSONEncoder()
-            let array = [contact]
-            if let encoded = try? encoder.encode(array) {
-                UserDefaults.standard.set(encoded, forKey: Constants.Storyboards.contacts)
-            }
-        } else {
-            if items.first(where: {$0.id == contact.id}) != nil {
-                items.removeAll(where: {$0.id == contact.id})
-            }
-            items.insert(contact, at: 0)
-            let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(items) {
-                UserDefaults.standard.set(encoded, forKey: Constants.Storyboards.contacts)
-            }
         }
     }
 }
