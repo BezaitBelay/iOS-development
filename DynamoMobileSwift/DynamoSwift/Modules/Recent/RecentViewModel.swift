@@ -13,10 +13,20 @@ class RecentViewModel {
     var shouldShowLoading = Observable<Bool>(false)
     var entities: [Contact] = []
     var shouldReloadTable = Observable<Bool>(false)
+    
     weak var delegate: ContactsCoordinatorDelegate?
     
     init() {
-        entities = UserDefaultHelper.getObjectsArray(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
+        entities = UserDefaultRepository.getContacts(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
+    }
+    
+    func deleteContact(_ index: IndexPath) {
+        UserDefaultRepository.removeFromRecent(entities[index.row]) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.entities = UserDefaultRepository.getContacts(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
+            strongSelf.shouldReloadTable.value = true
+            strongSelf.shouldShowLoading.value = false
+        }
     }
 }
 
@@ -35,11 +45,10 @@ extension RecentViewModel: BaseDataSource {
         
         configurator = ContactCellConfigurator(data: entities[index]) {[weak self] in
             guard let strongSelf = self else { return }
-            UserDefaultHelper.saveRecentContact(strongSelf.entities[index])
+            UserDefaultRepository.saveRecentContact(strongSelf.entities[index])
             strongSelf.shouldShowLoading.value = true
             strongSelf.delegate?.showContactsDetail(strongSelf.entities[index].id, showLoading: strongSelf.shouldShowLoading)
         }
-        
         return configurator
     }
 }

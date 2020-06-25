@@ -17,7 +17,6 @@ class ContactsVC: BaseVC {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: ContactsViewModel?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Constants.Storyboards.contacts
@@ -31,14 +30,17 @@ class ContactsVC: BaseVC {
             self?.tableView.reloadData()
         }
         
+        viewModel?.shouldHideTable.bindAndFire { [weak self] (start) in
+            guard let strongSelf = self else { return }
+            strongSelf.tableView.isHidden = start
+        }
+        
         viewModel?.shouldShowLoading.bindAndFire { [weak self] (start) in
             guard let strongSelf = self else { return }
             if start {
                 strongSelf.startLoading()
-                strongSelf.tableView.isHidden = true
             } else {
                 strongSelf.stopLoading()
-                strongSelf.tableView.isHidden = false
             }
         }
     }
@@ -63,6 +65,17 @@ extension ContactsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section)?.didSelectAction?()
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            viewModel?.shouldShowLoading.value = true
+            viewModel?.deleteContact(indexPath)
+        }
     }
 }
 

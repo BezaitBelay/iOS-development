@@ -33,7 +33,7 @@ class RecentVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel?.entities = UserDefaultHelper.getObjectsArray(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
+        viewModel?.entities = UserDefaultRepository.getContacts(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
         viewModel?.shouldReloadTable.value = true
     }
     
@@ -53,6 +53,7 @@ class RecentVC: BaseVC {
                 strongSelf.tableView.isHidden = false
             }
         }
+        
     }
 }
 
@@ -78,6 +79,21 @@ extension RecentVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section)?.didSelectAction?()
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            viewModel?.shouldShowLoading.value = true
+            viewModel?.deleteContact(indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+      return "Remove from Recent"
     }
 }
 

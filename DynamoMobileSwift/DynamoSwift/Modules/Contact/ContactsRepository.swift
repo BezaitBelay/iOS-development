@@ -10,6 +10,7 @@ import Foundation
 
 protocol ContactsRepositoryProtocol {
     func getEntitiesOf(type: String, nextPageURL: String?, completion: @escaping ((EntityData?) -> Void))
+    func deleteContact(type: String, id: String, completion: @escaping (Bool) -> Void)
 }
 
 class ContactsRepository: ContactsRepositoryProtocol {
@@ -24,6 +25,15 @@ class ContactsRepository: ContactsRepositoryProtocol {
         }
     }
     
+    func deleteContact(type: String, id: String, completion: @escaping (Bool) -> Void) {
+        EntityDeleteRequest(pathParameters: [type, id])
+            .executeParsed(of: EntityData.self) { (response, _, _) in
+                if let errorMessage = response?.error {
+                    print(errorMessage)
+                }
+                completion(response?.success == true)
+        }
+    }
 }
 protocol ContactRepositoryHelper {
     func getQueeryParansFromNext(from nextPageURL: String?) -> [String: String]?

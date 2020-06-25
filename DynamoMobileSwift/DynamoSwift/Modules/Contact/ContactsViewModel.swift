@@ -13,12 +13,14 @@ protocol ContactsViewModelProtocol: BaseDataSource {
     var entities: [Contact] {get}
     var shouldShowLoading: Observable<Bool> {get set}
     var shouldReloadTable: Observable<Bool> {get set}
+    var shouldHideTable: Observable<Bool> { get set }
 }
 
 class ContactsViewModel: ContactsViewModelProtocol {
-    var shouldShowLoading = Observable<Bool>(false)
     var entities: [Contact] = []
     var shouldReloadTable = Observable<Bool>(false)
+    var shouldShowLoading = Observable<Bool>(false)
+    var shouldHideTable = Observable<Bool>(false)
     private let currentItemType: String = "contact"
     private var nextPageURL: String?
     private var contactsRepository: ContactsRepositoryProtocol?
@@ -27,6 +29,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
     
     init(contactsRepository: ContactsRepositoryProtocol) {
         self.contactsRepository = contactsRepository
+        shouldHideTable.value = true
         shouldShowLoading.value = true
         self.contactsRepository?.getEntitiesOf(type: currentItemType,
                                                nextPageURL: nextPageURL) { [weak self] (itemsResponse) in
@@ -34,6 +37,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
                                                 strongSelf.entities = itemsResponse?.data ?? []
                                                 strongSelf.nextPageURL = itemsResponse?.links?.nextLink
                                                 strongSelf.shouldReloadTable.value = true
+                                                strongSelf.shouldHideTable.value = false
                                                 strongSelf.shouldShowLoading.value = false
         }
     }
@@ -50,7 +54,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
         } else {
             configurator = ContactCellConfigurator(data: cellModel) {[weak self] in
                 guard let strongSelf = self else { return }
-                UserDefaultHelper.saveRecentContact(cellModel)
+                UserDefaultRepository.saveRecentContact(cellModel)
                 strongSelf.shouldShowLoading.value = true
                 strongSelf.delegate?.showContactsDetail(cellModel.id, showLoading: strongSelf.shouldShowLoading)
             }
@@ -67,5 +71,15 @@ class ContactsViewModel: ContactsViewModelProtocol {
             strongSelf.nextPageURL = itemsResponse?.links?.nextLink
             strongSelf.shouldReloadTable.value = true
         }
+    }
+    
+    func deleteContact(_ index: IndexPath) {
+        contactsRepository?.deleteContact(type: "contact", id: entities[index.row].id) { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.entities.remove(at: index.row)
+            strongSelf.shouldReloadTable.value = true
+            strongSelf.shouldShowLoading.value = false
+        }
+        UserDefaultRepository.removeFromRecent(entities[index.row], completion: nil)
     }
 }

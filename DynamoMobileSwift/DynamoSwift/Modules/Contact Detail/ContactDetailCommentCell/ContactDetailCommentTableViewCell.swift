@@ -10,7 +10,7 @@ import UIKit
 
 typealias ContactDetailCommentCellConfigurator = BaseViewConfigurator<ContactDetailCommentTableViewCell>
 
-class ContactDetailCommentTableViewCell: UITableViewCell, Configurable, UITextViewDelegate {
+class ContactDetailCommentTableViewCell: UITableViewCell, Configurable {
 
     @IBOutlet weak var propertyNameLabel: UILabel!
     @IBOutlet weak var propertyValueTextView: UITextView!
@@ -21,15 +21,6 @@ class ContactDetailCommentTableViewCell: UITableViewCell, Configurable, UITextVi
     override func awakeFromNib() {
         super.awakeFromNib()
         propertyValueTextView.delegate = self
-    }
-    
-    func textChanged(action: @escaping (String) -> Void) {
-        self.textChanged = action
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        textChanged?(textView.text)
-        model?.newValue.value = textView.text
     }
     
     func configureWith(_ data: ItemFieldCellModel) {
@@ -44,5 +35,16 @@ class ContactDetailCommentTableViewCell: UITableViewCell, Configurable, UITextVi
         propertyValueTextView.isEditable = data.isEditing
         propertyValueTextView.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
         view.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
+    }
+}
+
+extension ContactDetailCommentTableViewCell : UITextViewDelegate {
+    func textChanged(action: @escaping (String) -> Void) {
+        self.textChanged = action
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textChanged?(textView.text)
+        model?.newValue.value = textView.text
     }
 }

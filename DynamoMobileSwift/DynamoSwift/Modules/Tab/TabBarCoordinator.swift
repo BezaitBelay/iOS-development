@@ -34,9 +34,7 @@ class TabBarCoordinator: Coordinator {
             rootViewController = tabBarInstantiatedVC
             rootViewController?.tabBarCoordinatorDelegate = self
         }
-        
-        let contactsCoordinator = ContactsCoordinator()
-        self.manageTabCoordinatorsAndControllersWith(firstCoordinator: contactsCoordinator)
+        manageTabCoordinatorsAndControllersWith()
     }
     
     override func start() {
@@ -53,12 +51,13 @@ class TabBarCoordinator: Coordinator {
         return tabCoordinator as? TabCoordinator
     }
     
-    private func manageTabCoordinatorsAndControllersWith(firstCoordinator: TabCoordinator) {
+    private func manageTabCoordinatorsAndControllersWith() {
         // Store the roots of each coordinator
         var tabCoordinators: [TabCoordinator] = []
         var viewControllers: [UIViewController] = []
         
-        tabCoordinators.append(firstCoordinator)
+        let contactsCoordinator = ContactsCoordinator()
+        tabCoordinators.append(contactsCoordinator)
         
         let recentCoordinator = RecentCoordinator()
         tabCoordinators.append(recentCoordinator)
