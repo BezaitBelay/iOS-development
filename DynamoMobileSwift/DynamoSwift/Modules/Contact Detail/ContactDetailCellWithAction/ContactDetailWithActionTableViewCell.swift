@@ -15,12 +15,12 @@ class ContactDetailWithActionTableViewCell: UITableViewCell, Configurable {
     @IBOutlet weak var propertyNameLabel: UILabel!
     @IBOutlet weak var propertyValueTextField: UITextField!
     @IBOutlet weak var view: UIView!
-    @IBOutlet var kartinka: UIImageView!
+    @IBOutlet var picture: UIImageView!
     var model: ItemField?
     
     func configureWith(_ data: ItemFieldCellModel) {
-        if let model = model?.newValue.value {
-            propertyValueTextField.text = model
+        if let value = model?.newValue.value {
+            propertyValueTextField.text = value
         } else {
             guard let existing = data as? ItemField else { return }
             model = existing
@@ -30,7 +30,7 @@ class ContactDetailWithActionTableViewCell: UITableViewCell, Configurable {
         propertyValueTextField.isEnabled = data.isEditing
         propertyValueTextField.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
         view.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
-        kartinka.isHidden = data.isEditing
+        picture.isHidden = data.isEditing
         pickKeyboardType(for: data.propertyName ?? "")
     }
     

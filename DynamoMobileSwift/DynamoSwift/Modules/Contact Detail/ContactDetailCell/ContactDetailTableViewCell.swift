@@ -18,9 +18,9 @@ class ContactDetailTableViewCell: UITableViewCell, Configurable {
     var model: ItemField?
     
     func configureWith(_ data: ItemFieldCellModel) {
-        guard propertyNameLabel.text != ContactDetailSorting.companyName.label else { return }
-        if let model = model?.newValue.value {
-            propertyValueTextField.text = model
+        guard data.isReadOnly else { return }
+        if let value = model?.newValue.value {
+            propertyValueTextField.text = value
         } else {
             guard let existing = data as? ItemField else { return }
             model = existing

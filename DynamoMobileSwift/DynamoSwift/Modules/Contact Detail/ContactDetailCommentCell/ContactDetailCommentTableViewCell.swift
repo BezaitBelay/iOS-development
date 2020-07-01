@@ -24,8 +24,8 @@ class ContactDetailCommentTableViewCell: UITableViewCell, Configurable {
     }
     
     func configureWith(_ data: ItemFieldCellModel) {
-        if let model = model?.newValue.value {
-            propertyValueTextView.text = model
+        if let value = model?.newValue.value {
+            propertyValueTextView.text = value
         } else {
             guard let existing = data as? ItemField else { return }
             model = existing
@@ -38,7 +38,7 @@ class ContactDetailCommentTableViewCell: UITableViewCell, Configurable {
     }
 }
 
-extension ContactDetailCommentTableViewCell : UITextViewDelegate {
+extension ContactDetailCommentTableViewCell: UITextViewDelegate {
     func textChanged(action: @escaping (String) -> Void) {
         self.textChanged = action
     }

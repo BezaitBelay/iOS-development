@@ -14,6 +14,7 @@ protocol ItemFieldCellModel {
     var propertyValue: String? { get set }
     var propertyPosition: Int { get set }
     var isEditing: Bool { get set }
+    var isReadOnly: Bool { get set }
     
     var newValue: Observable<String?> { get set }
     
@@ -24,6 +25,7 @@ class ItemField: ItemFieldCellModel {
     var propertyValue: String?
     var propertyPosition: Int
     var isEditing: Bool = false
+    var isReadOnly: Bool
     
     var newValue = Observable<String?>(nil)
     
@@ -32,5 +34,6 @@ class ItemField: ItemFieldCellModel {
         propertyValue = value
         propertyPosition = position
         self.isEditing = isEditing
+        isReadOnly = key == ContactDetailSorting.companyName.label
     }
 }

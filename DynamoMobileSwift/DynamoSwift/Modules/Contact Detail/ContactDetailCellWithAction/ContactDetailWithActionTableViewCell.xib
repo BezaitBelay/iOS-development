@@ -70,7 +70,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="kartinka" destination="OMc-cf-lQ1" id="hkG-Ct-WK5"/>
+                <outlet property="picture" destination="OMc-cf-lQ1" id="hkG-Ct-WK5"/>
                 <outlet property="propertyNameLabel" destination="vjW-Ed-svh" id="dog-Af-pRK"/>
                 <outlet property="propertyValueTextField" destination="Rgy-GG-4GK" id="c4u-u0-tlr"/>
                 <outlet property="view" destination="dTF-mZ-M8h" id="c4t-kR-KCV"/>
