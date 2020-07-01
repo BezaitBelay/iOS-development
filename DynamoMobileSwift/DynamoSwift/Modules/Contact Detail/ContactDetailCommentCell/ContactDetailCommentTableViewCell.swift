@@ -24,17 +24,14 @@ class ContactDetailCommentTableViewCell: UITableViewCell, Configurable {
     }
     
     func configureWith(_ data: ItemFieldCellModel) {
-        if let value = model?.newValue.value {
-            propertyValueTextView.text = value
-        } else {
-            guard let existing = data as? ItemField else { return }
-            model = existing
-            propertyValueTextView.text = data.propertyValue
-        }
+        let isEditingEnabled = data.isEditing && !data.isReadOnly
+        guard let convertedData = data as? ItemField else { return }
+        model = convertedData
+        propertyValueTextView.text = convertedData.newValue.value ?? data.propertyValue
         propertyNameLabel.text = data.propertyName
-        propertyValueTextView.isEditable = data.isEditing
-        propertyValueTextView.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
-        view.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
+        propertyValueTextView.isEditable = isEditingEnabled
+        propertyValueTextView.backgroundColor = isEditingEnabled ? #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.backgroundColor = isEditingEnabled ? #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
 }
 

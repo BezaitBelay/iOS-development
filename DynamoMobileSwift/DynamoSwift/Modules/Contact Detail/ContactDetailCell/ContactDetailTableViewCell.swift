@@ -18,18 +18,14 @@ class ContactDetailTableViewCell: UITableViewCell, Configurable {
     var model: ItemField?
     
     func configureWith(_ data: ItemFieldCellModel) {
-        guard data.isReadOnly else { return }
-        if let value = model?.newValue.value {
-            propertyValueTextField.text = value
-        } else {
-            guard let existing = data as? ItemField else { return }
-            model = existing
-            propertyValueTextField.text = data.propertyValue
-        }
+        let isEditingEnabled = data.isEditing && !data.isReadOnly
+        guard let convertedData = data as? ItemField else { return }
+        model = convertedData
+        propertyValueTextField.text = convertedData.newValue.value ?? data.propertyValue
         propertyNameLabel.text = data.propertyName
-        propertyValueTextField.isEnabled = data.isEditing
-        propertyValueTextField.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
-        view.backgroundColor = !data.isEditing ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1)
+        propertyValueTextField.isEnabled = isEditingEnabled
+        propertyValueTextField.backgroundColor = isEditingEnabled ? #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.backgroundColor = isEditingEnabled ? #colorLiteral(red: 0.909, green: 0.909, blue: 0.929, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     @IBAction func propertyValueIsEditing(_ sender: UITextField) {

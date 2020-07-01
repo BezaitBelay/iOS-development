@@ -49,6 +49,7 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
         let configurator: ViewConfigurator
         var cellModel = fieldItems[index]
         cellModel.isEditing = editButtonTapped.value ?? false
+        
         switch cellModel.propertyPosition {
         case 0, 2, 3: configurator = ContactDetailCellConfigurator(data: cellModel, didSelectAction: nil)
         case 1, 4, 6: configurator = ContactDetailWithActionCellConfigurator(data: cellModel) { [weak self] in
