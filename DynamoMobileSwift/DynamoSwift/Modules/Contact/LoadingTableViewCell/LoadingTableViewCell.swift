@@ -12,7 +12,6 @@ class LoadingTableViewCell: UITableViewCell, Configurable {
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     func configureWith(_ data: Any?) {
-        // No need this
         loadingView.startAnimating()
     }
 }

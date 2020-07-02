@@ -22,8 +22,6 @@ class UserDefaultRepository {
     }
     
     static func saveRecentContact(_ contact: Contact) {
-//                                UserDefaults.standard.removeObject(forKey: Constants.Storyboards.contacts)
-        
         guard var items = UserDefaultRepository.getContacts(of: Contact.self, for: Constants.Storyboards.contacts) else { return }
         if items.isEmpty {
             let encoder = JSONEncoder()

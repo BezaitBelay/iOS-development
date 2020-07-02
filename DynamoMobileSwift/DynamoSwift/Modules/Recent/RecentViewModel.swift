@@ -30,6 +30,7 @@ class RecentViewModel {
     }
 }
 
+// MARK: BaseDataSource methods
 extension RecentViewModel: BaseDataSource {
     var numberOfSections: Int {
         return 1

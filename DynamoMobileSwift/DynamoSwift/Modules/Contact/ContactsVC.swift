@@ -15,8 +15,8 @@ class ContactsVC: BaseVC {
     // MARK: - Properties
     /*************************************/
     @IBOutlet weak var tableView: UITableView!
-    
     var viewModel: ContactsViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Constants.Storyboards.contacts
@@ -61,6 +61,8 @@ extension ContactsVC: UITableViewDataSource {
     }
 }
 
+
+// MARK: UITableViewDelegate methods
 extension ContactsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

@@ -16,7 +16,6 @@ class RecentVC: BaseVC {
     /*************************************/
     @IBOutlet weak var tableView: UITableView!
     
-    var contacts: [Contact]?
     var viewModel: RecentViewModel?
     
     override var isVisible: Bool {
@@ -53,7 +52,6 @@ class RecentVC: BaseVC {
                 strongSelf.tableView.isHidden = false
             }
         }
-        
     }
 }
 
@@ -75,6 +73,7 @@ extension RecentVC: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate methods
 extension RecentVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

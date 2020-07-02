@@ -30,6 +30,7 @@ class MainTabBarVC: UITabBarController {
     }
 }
 
+// MARK: - StoryboardInstantiatable
 extension MainTabBarVC: StoryboardInstantiatable {
     static func storyboardName() -> String {
         return Constants.Storyboards.main

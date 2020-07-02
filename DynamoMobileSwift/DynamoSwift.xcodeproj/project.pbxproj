@@ -32,6 +32,7 @@
 		3A6E6C90249BA7B4008FF62C /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6E6C8F249BA7B4008FF62C /* LoadingTableViewCell.xib */; };
 		3A6E6C92249BA7CF008FF62C /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E6C91249BA7CF008FF62C /* LoadingTableViewCell.swift */; };
 		3A6E6C9424A21FB8008FF62C /* UserDefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E6C9324A21FB7008FF62C /* UserDefaultRepository.swift */; };
+		3A6E6C9624ADCDD6008FF62C /* StringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E6C9524ADCDD5008FF62C /* StringExtenstion.swift */; };
 		3AD9770E248E904B00AA939E /* ScreenLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD9770D248E904B00AA939E /* ScreenLoadingView.xib */; };
 		3AD977112490B5BD00AA939E /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD977102490B5BD00AA939E /* ContactDetailVC.swift */; };
 		3AD977132490E51300AA939E /* ContactDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD977122490E51300AA939E /* ContactDetailTableViewCell.xib */; };
@@ -171,6 +172,7 @@
 		3A6E6C8F249BA7B4008FF62C /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		3A6E6C91249BA7CF008FF62C /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		3A6E6C9324A21FB7008FF62C /* UserDefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultRepository.swift; sourceTree = "<group>"; };
+		3A6E6C9524ADCDD5008FF62C /* StringExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtenstion.swift; sourceTree = "<group>"; };
 		3AD9770D248E904B00AA939E /* ScreenLoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenLoadingView.xib; sourceTree = "<group>"; };
 		3AD977102490B5BD00AA939E /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
 		3AD977122490E51300AA939E /* ContactDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 				B9D7491221133BB100C5D388 /* UIView+UpxExtension.swift */,
 				B9D7491C2113444B00C5D388 /* Url+OpenUrl.swift */,
 				B9D1EE43219D6E1E006509CA /* UICollectionView+EmptyCellExtension.swift */,
+				3A6E6C9524ADCDD5008FF62C /* StringExtenstion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				B9D7491321133BB100C5D388 /* UIView+UpxExtension.swift in Sources */,
 				3AD977212492171B00AA939E /* ContactDetailRepository.swift in Sources */,
 				B92D65602111AD26008D9A7B /* AppCoordinator.swift in Sources */,
+				3A6E6C9624ADCDD6008FF62C /* StringExtenstion.swift in Sources */,
 				B5418DF0247CEFCF00EF0A02 /* SSOLoginRequest.swift in Sources */,
 				B9D1EE4D219D9798006509CA /* Constants.swift in Sources */,
 				B5418DF5247CEFCF00EF0A02 /* EntityDataRequest.swift in Sources */,

@@ -37,6 +37,7 @@ class RecentCoordinator: TabCoordinator {
         // Clean up your rootViewController or any data that will persist and remove self from parentCoordinator
     }
     
+    // MARK: Private methods
     private func setupTabBar() {
         rootViewController?.tabBarItem = UITabBarItem(title: TabBarItem.recent.tabBarTitle,
                                                       image: UIImage(named: "ic_recent_on"),
@@ -45,6 +46,7 @@ class RecentCoordinator: TabCoordinator {
     }
 }
 
+// MARK: ContactsCoordinatorDelegate methods
 extension RecentCoordinator: ContactsCoordinatorDelegate {
     func showContactsDetail(_ contactId: String, showLoading: Observable<Bool>?) {
         let contactDetailCoordinator = ContactDetailCoordinator(navVC: rootViewController, contactId: contactId)

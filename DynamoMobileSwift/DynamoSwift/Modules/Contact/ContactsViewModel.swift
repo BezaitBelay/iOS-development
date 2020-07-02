@@ -42,25 +42,6 @@ class ContactsViewModel: ContactsViewModelProtocol {
         }
     }
     
-    func numberOfCellsInSection(_ section: Int) -> Int? {
-        return entities.count
-    }
-    
-    func viewConfigurator(at index: Int, in section: Int) -> ViewConfigurator? {
-        let configurator: ViewConfigurator
-        let cellModel = entities[index]
-        if index == entities.count - 1, nextPageURL != nil {
-            configurator = LoadingCellConfigurator(data: nil)
-        } else {
-            configurator = ContactCellConfigurator(data: cellModel) {[weak self] in
-                guard let strongSelf = self else { return }
-                UserDefaultRepository.saveRecentContact(cellModel)
-                strongSelf.shouldShowLoading.value = true
-                strongSelf.delegate?.showContactsDetail(cellModel.id, showLoading: strongSelf.shouldShowLoading)
-            }
-        }
-        return configurator
-    }
     
     func requestNextPageWhen(index: Int) {
         guard index == entities.count - 1, nextPageURL != nil else { return }
@@ -81,5 +62,30 @@ class ContactsViewModel: ContactsViewModelProtocol {
             strongSelf.shouldShowLoading.value = false
         }
         UserDefaultRepository.removeFromRecent(entities[index.row], completion: nil)
+    }
+}
+
+
+// MARK: BaseDataSource methods
+extension ContactsViewModel: BaseDataSource {
+    
+    func numberOfCellsInSection(_ section: Int) -> Int? {
+        return entities.count
+    }
+    
+    func viewConfigurator(at index: Int, in section: Int) -> ViewConfigurator? {
+        let configurator: ViewConfigurator
+        let cellModel = entities[index]
+        if index == entities.count - 1, nextPageURL != nil {
+            configurator = LoadingCellConfigurator(data: nil)
+        } else {
+            configurator = ContactCellConfigurator(data: cellModel) {[weak self] in
+                guard let strongSelf = self else { return }
+                UserDefaultRepository.saveRecentContact(cellModel)
+                strongSelf.shouldShowLoading.value = true
+                strongSelf.delegate?.showContactsDetail(cellModel.id, showLoading: strongSelf.shouldShowLoading)
+            }
+        }
+        return configurator
     }
 }

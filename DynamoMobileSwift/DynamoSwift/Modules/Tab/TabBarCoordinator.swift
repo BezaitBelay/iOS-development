@@ -34,7 +34,7 @@ class TabBarCoordinator: Coordinator {
             rootViewController = tabBarInstantiatedVC
             rootViewController?.tabBarCoordinatorDelegate = self
         }
-        manageTabCoordinatorsAndControllersWith()
+        manageTabCoordinatorsAndControllers()
     }
     
     override func start() {
@@ -51,7 +51,8 @@ class TabBarCoordinator: Coordinator {
         return tabCoordinator as? TabCoordinator
     }
     
-    private func manageTabCoordinatorsAndControllersWith() {
+    // MARK: Private methods
+    private func manageTabCoordinatorsAndControllers() {
         // Store the roots of each coordinator
         var tabCoordinators: [TabCoordinator] = []
         var viewControllers: [UIViewController] = []
@@ -79,6 +80,7 @@ class TabBarCoordinator: Coordinator {
     }
 }
 
+// MARK: TabBarCoordinatorProtocol methods
 extension TabBarCoordinator: TabBarCoordinatorProtocol {
     func didSelectTab(_ index: Int) {
         guard index != previousTabIndex else { return }

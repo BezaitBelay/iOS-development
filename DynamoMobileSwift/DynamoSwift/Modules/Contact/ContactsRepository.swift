@@ -13,6 +13,10 @@ protocol ContactsRepositoryProtocol {
     func deleteContact(type: String, id: String, completion: @escaping (Bool) -> Void)
 }
 
+protocol ContactRepositoryHelper {
+    func getQueeryParansFromNext(from nextPageURL: String?) -> [String: String]?
+}
+
 class ContactsRepository: ContactsRepositoryProtocol {
     func getEntitiesOf(type: String, nextPageURL: String?, completion: @escaping ((EntityData?) -> Void)) {
         let header: [String: String] = ["x-columns": "Identifier", "x-sort": "Identifier:asc"]
@@ -35,10 +39,8 @@ class ContactsRepository: ContactsRepositoryProtocol {
         }
     }
 }
-protocol ContactRepositoryHelper {
-    func getQueeryParansFromNext(from nextPageURL: String?) -> [String: String]?
-}
 
+// MARK: ContactRepositoryHelper methods
 extension ContactsRepository: ContactRepositoryHelper {
     func getQueeryParansFromNext(from nextPageURL: String?) -> [String: String]? {
         var queryStrings = [String: String]()

@@ -34,7 +34,7 @@ class ContactDetailCoordinator: Coordinator {
     }
     
     override func finish() {
-//         Clean up your rootViewController or any data that will persist and remove self from parentCoordinator
+        //         Clean up your rootViewController or any data that will persist and remove self from parentCoordinator
     }
 }
 
@@ -44,18 +44,23 @@ protocol ContactDetailCoordinatorDelegate: class {
 
 extension ContactDetailCoordinator: ContactDetailCoordinatorDelegate {
     func openMailComposeViewController(propertyValue: String?) {
-        if MFMailComposeViewController.canSendMail() {
-            let mailComposeViewController = MFMailComposeViewController()
-            if let propertyValue = propertyValue {
-                mailComposeViewController.setToRecipients([propertyValue])
-                mailComposeViewController.setSubject("Cheers!")
-            }
-            rootNavigationController?.present(mailComposeViewController, animated: true)
-        } else {
-            let alert = UIAlertController(title: "Not available!", message: "Mail services are not configured", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(action)
-            rootNavigationController?.present(alert, animated: true, completion: nil)
+        MFMailComposeViewController.canSendMail() ? openMailComposer(with: propertyValue) : openAlertMailMessage()
+    }
+    
+    // MARK: Private methods
+    private func openAlertMailMessage() {
+        let alert = UIAlertController(title: "Not available!", message: "Mail services are not configured", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        rootNavigationController?.present(alert, animated: true, completion: nil)
+    }
+    
+    private func openMailComposer(with recipients: String?) {
+        let mailComposeViewController = MFMailComposeViewController()
+        if let recipients = recipients {
+            mailComposeViewController.setToRecipients([recipients])
+            mailComposeViewController.setSubject("Cheers!")
         }
+        rootNavigationController?.present(mailComposeViewController, animated: true)
     }
 }

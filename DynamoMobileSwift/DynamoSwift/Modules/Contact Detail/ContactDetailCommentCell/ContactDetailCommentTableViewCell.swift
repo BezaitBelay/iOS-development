@@ -35,6 +35,7 @@ class ContactDetailCommentTableViewCell: UITableViewCell, Configurable {
     }
 }
 
+// MARK: UITextViewDelegate methods
 extension ContactDetailCommentTableViewCell: UITextViewDelegate {
     func textChanged(action: @escaping (String) -> Void) {
         self.textChanged = action

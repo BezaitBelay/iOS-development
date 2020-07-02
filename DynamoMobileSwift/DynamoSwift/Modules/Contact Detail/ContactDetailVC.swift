@@ -9,10 +9,8 @@
 import UIKit
 
 class ContactDetailVC: BaseVC {
-    
     @IBOutlet weak var tableView: UITableView!
     fileprivate var originalInsetBottom: CGFloat = 0
-    
     var viewModel: ContactDetailViewModelProtocol?
     
     override func viewDidLoad() {
@@ -25,16 +23,17 @@ class ContactDetailVC: BaseVC {
             "\(ContactDetailCommentTableViewCell.self)")
         
         bindViewModel(viewModel)
-        tableView.keyboardDismissMode = .onDrag
         registerForKeyboardNotifications()
         tableView.tableFooterView = UIView()
     }
     
     @objc func editButtonTapped() {
         if let title = navigationItem.rightBarButtonItem?.title, title == "Edit" {
+            viewModel?.editButtonTapped = true
             changeShowRowMode(buttonTitle: "Save")
         } else {
             viewModel?.shouldShowLoading.value = true
+            viewModel?.editButtonTapped = false
             viewModel?.updateItem { [weak self] in
                 self?.changeShowRowMode(buttonTitle: "Edit")
             }
@@ -43,19 +42,15 @@ class ContactDetailVC: BaseVC {
     
     // MARK: Private methods
     private func changeShowRowMode(buttonTitle: String) {
-        viewModel?.editButtonTapped.value = !(viewModel?.editButtonTapped.value ?? false)
         navigationItem.rightBarButtonItem?.title = buttonTitle
-        if let separatorValue = viewModel?.editButtonTapped.value {
+        if let separatorValue = viewModel?.editButtonTapped {
             tableView.separatorStyle =  separatorValue ? .none : .singleLine
         }
+        viewModel?.shouldReloadTable.value = true
     }
     
     private func bindViewModel(_ viewModel: ContactDetailViewModelProtocol?) {
         viewModel?.shouldReloadTable.bindAndFire { [weak self] _ in
-            self?.tableView.reloadData()
-        }
-        
-        viewModel?.editButtonTapped.bindAndFire { [weak self] _ in
             self?.tableView.reloadData()
         }
         
@@ -85,6 +80,7 @@ extension ContactDetailVC: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate methods
 extension ContactDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
