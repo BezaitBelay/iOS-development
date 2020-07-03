@@ -42,7 +42,6 @@ class ContactsViewModel: ContactsViewModelProtocol {
         }
     }
     
-    
     func requestNextPageWhen(index: Int) {
         guard index == entities.count - 1, nextPageURL != nil else { return }
         contactsRepository?.getEntitiesOf(type: currentItemType, nextPageURL: nextPageURL) { [weak self] (itemsResponse) in
@@ -64,7 +63,6 @@ class ContactsViewModel: ContactsViewModelProtocol {
         UserDefaultRepository.removeFromRecent(entities[index.row], completion: nil)
     }
 }
-
 
 // MARK: BaseDataSource methods
 extension ContactsViewModel: BaseDataSource {

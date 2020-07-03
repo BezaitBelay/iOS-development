@@ -49,8 +49,8 @@ class RecentCoordinator: TabCoordinator {
 // MARK: ContactsCoordinatorDelegate methods
 extension RecentCoordinator: ContactsCoordinatorDelegate {
     func showContactsDetail(_ contactId: String, showLoading: Observable<Bool>?) {
-        let contactDetailCoordinator = ContactDetailCoordinator(navVC: rootViewController, contactId: contactId)
-        addChildCoordinator(contactDetailCoordinator)
-        showLoading?.value = false
+//        let contactDetailCoordinator = ContactDetailCoordinator(navVC: rootViewController, contactId: contactId)
+//        addChildCoordinator(contactDetailCoordinator)
+//        showLoading?.value = false
     }
 }

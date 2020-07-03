@@ -12,21 +12,19 @@ import MessageUI
 
 class ContactDetailCoordinator: Coordinator {
     
-    var rootNavigationController: UINavigationController?
+    var rootViewController: ContactDetailVC?
     /*************************************/
     // MARK: - Coordinator
     /*************************************/
     
-    init(navVC: BaseNavigationVC? = nil, contactId: String) {
+    init(contactId: String) {
         super.init()
         guard let contactDetailVC = ContactDetailVC.instantiateFromStoryboard() as? ContactDetailVC else { return }
         contactDetailVC.shouldFinishScene = true
+        rootViewController = contactDetailVC
         let contactDetailViewModel = ContactDetailViewModel(contactDetailRepository: ContactDetailRepository(), id: contactId)
         contactDetailViewModel.delegate = self
-        contactDetailVC.viewModel = contactDetailViewModel
-        guard let navVC = navVC else { return }
-        self.rootNavigationController = navVC
-        self.rootNavigationController?.pushViewController(contactDetailVC, animated: true)
+        rootViewController?.viewModel = contactDetailViewModel
     }
     
     override func start() {
@@ -52,7 +50,7 @@ extension ContactDetailCoordinator: ContactDetailCoordinatorDelegate {
         let alert = UIAlertController(title: "Not available!", message: "Mail services are not configured", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
-        rootNavigationController?.present(alert, animated: true, completion: nil)
+        rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     private func openMailComposer(with recipients: String?) {
@@ -61,6 +59,6 @@ extension ContactDetailCoordinator: ContactDetailCoordinatorDelegate {
             mailComposeViewController.setToRecipients([recipients])
             mailComposeViewController.setSubject("Cheers!")
         }
-        rootNavigationController?.present(mailComposeViewController, animated: true)
+        rootViewController?.present(mailComposeViewController, animated: true)
     }
 }

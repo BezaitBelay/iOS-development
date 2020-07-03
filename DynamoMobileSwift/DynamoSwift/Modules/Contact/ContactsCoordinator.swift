@@ -57,8 +57,11 @@ class ContactsCoordinator: TabCoordinator {
 // MARK: ContactsCoordinatorDelegate methods
 extension ContactsCoordinator: ContactsCoordinatorDelegate {
     func showContactsDetail(_ contactId: String, showLoading: Observable<Bool>?) {
-        let contactDetailCoordinator = ContactDetailCoordinator(navVC: rootViewController, contactId: contactId)
+        let contactDetailCoordinator = ContactDetailCoordinator(contactId: contactId)
+        
+        guard let vc = contactDetailCoordinator.rootViewController else { return }
         addChildCoordinator(contactDetailCoordinator)
         showLoading?.value = false
+        rootViewController?.pushViewController(vc, animated: true)
     }
 }

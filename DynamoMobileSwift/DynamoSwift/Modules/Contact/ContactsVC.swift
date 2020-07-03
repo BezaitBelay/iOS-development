@@ -61,7 +61,6 @@ extension ContactsVC: UITableViewDataSource {
     }
 }
 
-
 // MARK: UITableViewDelegate methods
 extension ContactsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

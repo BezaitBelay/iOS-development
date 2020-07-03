@@ -58,7 +58,7 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
         }
     }
     
-    //MARK: Private methods
+    // MARK: Private methods
     private func transformData(_ rawData: [String: String]) {
         fieldItems = []
         for field in rawData {
@@ -97,7 +97,7 @@ extension ContactDetailViewModel: BaseDataSource {
         return configurator
     }
     
-    //MARK: Private methods
+    // MARK: Private methods
     private func configureAction(for cellModel: ItemFieldCellModel) {
         guard editButtonTapped == false else { return }
            if cellModel.propertyName == ContactDetailSorting.primarycontactemail.label {
