@@ -20,6 +20,10 @@ class RecentViewModel {
         entities = UserDefaultRepository.getContacts(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
     }
     
+    func getAllRecent() {
+        entities = UserDefaultRepository.getContacts(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
+    }
+    
     func deleteContact(_ index: IndexPath) {
         UserDefaultRepository.removeFromRecent(entities[index.row]) { [weak self] in
             guard let strongSelf = self else { return }

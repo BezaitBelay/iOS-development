@@ -32,7 +32,7 @@ class RecentVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel?.entities = UserDefaultRepository.getContacts(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
+        viewModel?.getAllRecent()
         viewModel?.shouldReloadTable.value = true
     }
     
@@ -60,7 +60,6 @@ extension RecentVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let configurator = viewModel?.viewConfigurator(at: indexPath.row, in: indexPath.section) else { return UITableViewCell() }
         let cell = tableView.configureCell(for: configurator, at: indexPath)
-        
         return cell
     }
     
@@ -92,7 +91,7 @@ extension RecentVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-      return "Remove from Recent"
+        return "Remove from Recent"
     }
 }
 
