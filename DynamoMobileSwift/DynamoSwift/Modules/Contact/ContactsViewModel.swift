@@ -68,15 +68,15 @@ class ContactsViewModel: ContactsViewModelProtocol {
 extension ContactsViewModel: BaseDataSource {
     
     func numberOfCellsInSection(_ section: Int) -> Int? {
-        return entities.count
+        return entities.count == 0 ? 0 : entities.count + 1
     }
     
     func viewConfigurator(at index: Int, in section: Int) -> ViewConfigurator? {
         let configurator: ViewConfigurator
-        let cellModel = entities[index]
-        if index == entities.count - 1, nextPageURL != nil {
+        if index == entities.count, nextPageURL != nil {
             configurator = LoadingCellConfigurator(data: nil)
         } else {
+            let cellModel = entities[index]
             configurator = ContactCellConfigurator(data: cellModel) {[weak self] in
                 guard let strongSelf = self else { return }
                 UserDefaultRepository.saveRecentContact(cellModel)
