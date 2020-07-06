@@ -35,7 +35,8 @@ class ContactDetailWithActionTableViewCell: UITableViewCell, Configurable {
          model?.newValue.value = sender.text
     }
     
-    func pickKeyboardType(for label: String) {
+    // MARK: Private methods 
+    private func pickKeyboardType(for label: String) {
         switch label {
         case ContactDetailSorting.contactInfoCompanyLink.label:
             propertyValueTextField.keyboardType = UIKeyboardType(rawValue: 10) ?? .default

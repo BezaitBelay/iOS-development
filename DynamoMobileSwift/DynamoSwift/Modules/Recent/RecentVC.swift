@@ -33,7 +33,6 @@ class RecentVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel?.getAllRecent()
-        viewModel?.shouldReloadTable.value = true
     }
     
     // MARK: Private methods

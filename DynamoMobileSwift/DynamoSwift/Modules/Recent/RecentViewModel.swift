@@ -22,6 +22,7 @@ class RecentViewModel {
     
     func getAllRecent() {
         entities = UserDefaultRepository.getContacts(of: Contact.self, for: Constants.Storyboards.contacts) ?? []
+        shouldReloadTable.value = true
     }
     
     func deleteContact(_ index: IndexPath) {
