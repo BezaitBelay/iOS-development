@@ -68,7 +68,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
 extension ContactsViewModel: BaseDataSource {
     
     func numberOfCellsInSection(_ section: Int) -> Int? {
-        return entities.count == 0 ? 0 : entities.count + 1
+        return nextPageURL != nil ? entities.count + 1 : entities.count
     }
     
     func viewConfigurator(at index: Int, in section: Int) -> ViewConfigurator? {
