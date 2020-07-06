@@ -42,6 +42,7 @@ class ContactDetailViewModel: ContactDetailViewModelProtocol {
     }
     
     func updateItem(completion: @escaping () -> Void) {
+        shouldShowLoading.value = true
         let idProperty = rawData.first(where: { item -> Bool in return item.key == "_id" })
         var properties: [String: String] = [:]
         for item in fieldItems {

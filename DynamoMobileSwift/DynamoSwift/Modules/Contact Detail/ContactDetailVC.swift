@@ -32,7 +32,7 @@ class ContactDetailVC: BaseVC {
             viewModel?.editButtonTapped = true
             changeShowRowMode(buttonTitle: "Save")
         } else {
-            viewModel?.shouldShowLoading.value = true
+//            viewModel?.shouldShowLoading.value = true
             viewModel?.editButtonTapped = false
             viewModel?.updateItem { [weak self] in
                 self?.changeShowRowMode(buttonTitle: "Edit")
