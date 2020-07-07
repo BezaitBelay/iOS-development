@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
+    var apiManager: ApiManagerProtocol = APIManager.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -20,6 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize the window and the appCoordinator
         window = UIWindow(frame: UIScreen.main.bounds)
         appCoordinator = AppCoordinator(window: window)
+        
+        // ApiManager
+        apiManager.configure(withCacher: nil,
+                             reachabilityDelegate: nil,
+                             andAuthenticator: nil,
+                             andUrlSwitch: nil,
+                             delegate: appCoordinator as? StartLoginFlowDelegate)
+        
         appCoordinator?.start()
         
         return true

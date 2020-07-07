@@ -42,6 +42,7 @@ final class APIConfig {
     var accessToken: String?
     
     init() {
+        authToken = "LKQzc0a3IIeRq35muxFXr887rVePdivPlCB5nF1kQWHhawAD-UgPsQ-1scfZIWdgJZ7Vr0zYjQHM6xCzSGgQLQ"
         let userDefaults = UserDefaults.standard
         if let defaultsEnvironment = userDefaults.string(forKey: APIConfigConstants.userDefaultsEnvironmentKey),
             let environment = Environment(rawValue: defaultsEnvironment) {

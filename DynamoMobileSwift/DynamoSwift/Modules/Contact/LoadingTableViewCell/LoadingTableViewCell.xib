@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadingTableViewCell" id="aU9-Gb-NIu" customClass="LoadingTableViewCell" customModule="DynamoSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aU9-Gb-NIu" id="X4N-CB-KQR">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ysB-D8-9yi">
+                        <rect key="frame" x="150" y="12" width="20" height="20"/>
+                        <color key="color" name="Base Blue"/>
+                    </activityIndicatorView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ysB-D8-9yi" firstAttribute="centerX" secondItem="X4N-CB-KQR" secondAttribute="centerX" id="Zvc-TB-4l0"/>
+                    <constraint firstItem="ysB-D8-9yi" firstAttribute="top" secondItem="X4N-CB-KQR" secondAttribute="top" constant="12" id="lHJ-OF-R0C"/>
+                    <constraint firstAttribute="bottom" secondItem="ysB-D8-9yi" secondAttribute="bottom" constant="12" id="m6E-lc-h1q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="G7e-AU-6O9"/>
+            <connections>
+                <outlet property="loadingView" destination="ysB-D8-9yi" id="HM3-UF-l7b"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="87"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Base Blue">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
