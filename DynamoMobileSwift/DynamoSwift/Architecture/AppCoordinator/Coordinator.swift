@@ -58,6 +58,13 @@ class Coordinator {
         }
     }
     
+    func finishChildCoordinators() {
+        childCoordinators.forEach { child in
+            child.finishChildCoordinators()
+            child.finish()
+        }
+    }
+    
     /// Removes all child coordinators of a generic type if they exist from the childCoordinators array
     ///
     /// - Parameter type: the type by which the array is filtered
@@ -69,7 +76,6 @@ class Coordinator {
     func removeAllChildCoordinators() {
         childCoordinators.removeAll()
     }
-    
 }
 
 extension Coordinator: Equatable {

@@ -46,6 +46,12 @@ class BaseVC: UIViewController {
     
     private var pullToRefreshCustomView: UIView?
     
+    var isVisible: Bool {
+           return isViewLoaded && view.window != nil
+       }
+    
+    var shouldFinishScene: Bool = false
+    
     /// Override for custom logic for pull to refresh
     var pullToRefreshAction: (() -> Void)? {
         preconditionFailure("Override pullToRefreshAction if you're using pull to refresh")
@@ -125,6 +131,20 @@ class BaseVC: UIViewController {
             pullToRefreshAction?()
             
         }
+    }
+    
+    // MARK: Loading
+    func startLoading() {
+//        guard isVisible else { return }
+        
+        view.endEditing(true)
+        UIApplication.mainDelegate?.appCoordinator?.startScreenLoading()
+    }
+    
+    func stopLoading() {
+//        guard isVisible else { return }
+        
+        UIApplication.mainDelegate?.appCoordinator?.stopScreenLoading()
     }
     
     /// You can set a custom refresh control type. Either just a tint color of the default one

@@ -56,11 +56,11 @@ struct DevBaseURLs: BaseURLs {
     // Rome
     var newClUrl = "https://dynamo-in.dynamosoftware.com"
     // Prod
-//    var newClUrl = "https://dynamo.dynamosoftware.com"
+    //    var newClUrl = "https://dynamo.dynamosoftware.com"
     // internal url for tests before rome
-//    var newClUrl = "https://dynamoweb1.netagesolutions.com:1111"
-//    var baseUrl = "https://api.dynamosoftware.com"
-//    var baseUrl = "https://apiuat.dynamosoftware.com"
+    //    var newClUrl = "https://dynamoweb1.netagesolutions.com:1111"
+    //    var baseUrl = "https://api.dynamosoftware.com"
+    //    var baseUrl = "https://apiuat.dynamosoftware.com"
     var baseUrl = "http://10.1.2.211:82"
     var businessCardUrl = "https://bcr1.intsig.net"
 }
@@ -76,6 +76,6 @@ struct StageEnvironment: EnvironmentInterface {
 
 struct StageBaseURLs: BaseURLs {
     var newClUrl = "https://dynamo.dynamosoftware.com"
-    var baseUrl = "https://api.dynamosoftware.com"
+    var baseUrl = "https://apiuat.dynamosoftware.com"
     var businessCardUrl = "https://bcr1.intsig.net"
 }

@@ -15,5 +15,5 @@ target 'DynamoSwift' do
   pod 'SwiftLint'
   pod 'TwoWayBondage', '~> 2.0.1'
   pod 'Alamofire', '5.0.0-rc.2'
-
+  pod 'RealmSwift', '~> 3.18'
 end
